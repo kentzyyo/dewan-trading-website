@@ -11,12 +11,20 @@ body {
 
 /* Top Info Bar */
 .top-info-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background-color: #01312B;
     color: white;
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: none;
+    border-bottom: none;
+    height: 1.5rem;
 }
 
 .location-info, .contact-info {
@@ -36,11 +44,17 @@ body {
 
 /* Navbar */
 .navbar {
+    position: fixed;
+    top: 2.5rem; /* Exact height of top info bar (1.5rem + 1rem padding) */
+    left: 0;
+    right: 0;
+    z-index: 999;
     background-color: white;
-    padding: 1rem;
-    border-top: 1px solid #e5e7eb;
+    padding: 0.5rem 0rem;
+    margin-top: 0;
+    border-top: none;
     border-bottom: 1px solid #e5e7eb;
-    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -76,19 +90,22 @@ body {
 }
 
 .nav-links li:before {
-    content: "•";
-    margin-right: 0.5rem;
-    color: #333;
-}
-
-.nav-links li:first-child:before {
-    display: none;
+    display: none; /* Remove bullet points */
 }
 
 .nav-links a {
     font-weight: 500;
     text-decoration: none;
     color: #333;
+    outline: none; /* Remove glowing highlight */
+    padding: 0.5rem; /* Consistent padding */
+}
+
+.nav-links a:hover {
+    color: #41B3A2; /* Change text color on hover */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    background-color: rgba(65, 179, 162, 0.1); /* Add highlighted box */
+    border-radius: 5px;
 }
 
 /* Hero Section */
@@ -98,7 +115,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 180px 0 140px 0;
+    padding: 220px 0 140px 0;
     margin-bottom: 0;
     background-color: #01312B;
     overflow: visible; /* Allow content to overflow */
@@ -223,14 +240,18 @@ body {
     background-color: #41B3A2;
     color: white;
     padding: 0.5rem 1.5rem;
-    border-radius: 0;
+    border-radius: 5px;
     border: none;
     font-size: 0.9rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .contact-button:hover {
     background-color: #369b8a;
+    transform: scale(1.05);
 }
 
 /* Light green background section */
