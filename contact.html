@@ -109,14 +109,68 @@
 
         <!-- Office Locations -->
         <section class="locations-section">
-            <h2 class="locations-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <h2 class="locations-title" onclick="toggleImages()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 18l6-6-6-6"/>
                 </svg>
                 How to find us
             </h2>
             <div class="locations-grid">
-                <!-- Row 1: Palo Plant -->
+                <!-- Palo Plant Display (Left Image) -->
+                <div class="plant-display">
+                    <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" target="_blank" class="plant-image">
+                        <img src="branch/palo-plant.png" alt="Palo Plant">
+                    </a>
+                    <div class="plant-details">
+                        <h3 class="plant-name">PALO PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Bgry. Campetic, Palo, Leyte</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dumaguete Plant Display (Right Image) -->
+                <div class="plant-display reverse">
+                    <div class="plant-details">
+                        <h3 class="plant-name">DUMAGUETE PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" target="_blank" class="plant-image">
+                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant">
+                    </a>
+                </div>
+                
+                <!-- Legazpi Plant Display (Left Image) -->
+                <div class="plant-display">
+                    <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" target="_blank" class="plant-image">
+                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant">
+                    </a>
+                    <div class="plant-details">
+                        <h3 class="plant-name">LEGAZPI PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Diversion Road, Bogtong, Legazpi City</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Keep old rows for script compatibility but they'll be hidden via CSS -->
                 <div class="location-row">
                     <div class="location-image-container">
                         <img src="branch/palo-plant.png" alt="Palo Plant" class="location-image">
@@ -130,7 +184,6 @@
                     </div>
                 </div>
                 
-                <!-- Row 2: Dumaguete Plant -->
                 <div class="location-row reverse">
                     <div class="location-image-container">
                         <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant" class="location-image">
@@ -144,7 +197,6 @@
                     </div>
                 </div>
                 
-                <!-- Row 3: Legazpi Plant -->
                 <div class="location-row">
                     <div class="location-image-container">
                         <img src="branch/legazpi-plant.png" alt="Legazpi Plant" class="location-image">
@@ -222,5 +274,7 @@
     <footer class="copyright-footer">
         <p>©2025 DEWAN TRADING CORP. All Rights Reserved.</p>
     </footer>
+
+    <script src="contact.js"></script>
 </body>
 </html>
