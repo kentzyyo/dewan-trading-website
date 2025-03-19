@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dewan Trading Corp</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-info-bar">
+        <div class="location-info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+        </div>
+        <div class="contact-info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>dewantrading88@gmail.com</span>
+            <span class="divider">|</span>
+            <span>09175179396</span>
+        </div>
+    </div>
+
+    <!-- Navbar with Logo and Centered Navigation -->
+    <nav class="navbar">
+        <!-- Logo in the corner -->
+        <div class="logo-container">
+            <img src="logo/logo.png" alt="Dewan Trading Logo" class="logo">
+        </div>
+        
+        <!-- Centered navigation items with bullet separators -->
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="#">Products & Services</a></li> 
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: url('gas-tank.jpg');">
+        <div class="hero-overlay"></div>
+        
+        <!-- Text content -->
+        <div class="hero-content">
+            <h1 class="hero-title">Get in touch</h1>
+            <p class="hero-text">Want to get in touch? We'd love to hear from you. Here's how you can reach us.</p>
+        </div>
+        
+        <!-- Absolutely positioned image -->
+        <div class="hero-image">
+            <img src="../images/call-center.jpg" alt="Call Center Representative" class="shadow-lg">
+        </div>
+        
+        <!-- Contact Cards - positioned to overlap with the background -->
+        <div class="contact-cards">
+            <div class="contact-card">
+                <img src="icons/telephone.png" alt="Telephone" class="card-icon">
+                <h2 class="card-title">Talk to Sales</h2>
+                <p class="card-text">+63 917 517 9396</p>
+            </div>
+            <div class="contact-card">
+                <img src="icons/mail.png" alt="mail" class="card-icon">
+                <h2 class="card-title">Contact via Email</h2>
+                <a href="mailto:dewantrading88@gmail.com" class="contact-button">Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Light green section -->
+    <div class="light-green-section">
+        <!-- Heading for global offices -->
+        <h2 class="global-offices-title">Connect with our global offices</h2>
+        
+        <div class="map-and-address-container">
+            <!-- Map Section -->
+            <div class="map-container">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe class="gmap_iframe" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dewan trading&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;maptype=roadmap"></iframe>
+                    </div>
+                    <div class="map-controls">
+                        <a href="https://maps.google.com/maps?q=dewan+trading&amp;t=&amp;z=7" target="_blank" class="view-larger-map">View larger map</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plant Address Information -->
+            <div class="plant-address-container">
+                <h3 class="plant-address-title">PLANT ADDRESS:</h3>
+                <p class="plant-address">LEGAZPI PLANT: Diversion Road, Bogtong, Legaspi City</p>
+                <p class="plant-address">PALO PLANT : Bgry. Campetic, Palo, Leyte</p>
+                <p class="plant-address">DUMAGUETE PLANT : Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
+                
+                <p class="general-manager">General Manager: Dominic T. Papin</p>
+                <p class="email-address">E-mail Address: <a href="mailto:dewantrading88@gmail.com">dewantrading88@gmail.com</a></p>
+                <p class="phone-number">Telephone/Cellphone Number: 09175179396</p>
+                <p class="contact-person">Contact Person: SHELBY R. BELARDO</p>
+                <p class="officer-title">ADMINISTRATIVE OFFICER</p>
+            </div>
+        </div>
+
+        <!-- Office Locations -->
+        <section class="locations-section">
+            <h2 class="locations-title" onclick="toggleImages()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+                How to find us
+            </h2>
+            <div class="locations-grid">
+                <!-- Palo Plant Display (Left Image) -->
+                <div class="plant-display">
+                    <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" target="_blank" class="plant-image">
+                        <img src="branch/palo-plant.png" alt="Palo Plant">
+                    </a>
+                    <div class="plant-details">
+                        <h3 class="plant-name">PALO PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Bgry. Campetic, Palo, Leyte</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dumaguete Plant Display (Right Image) -->
+                <div class="plant-display reverse">
+                    <div class="plant-details">
+                        <h3 class="plant-name">DUMAGUETE PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" target="_blank" class="plant-image">
+                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant">
+                    </a>
+                </div>
+                
+                <!-- Legazpi Plant Display (Left Image) -->
+                <div class="plant-display">
+                    <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" target="_blank" class="plant-image">
+                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant">
+                    </a>
+                    <div class="plant-details">
+                        <h3 class="plant-name">LEGAZPI PLANT</h3>
+                        <div class="detail-row">
+                            <span class="plant-label">Address</span>
+                            <p class="plant-value">Diversion Road, Bogtong, Legazpi City</p>
+                        </div>
+                        <div class="detail-row">
+                            <span class="plant-label">Phone</span>
+                            <p class="plant-value">+63 917 517 9396</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Keep old rows for script compatibility but they'll be hidden via CSS -->
+                <div class="location-row">
+                    <div class="location-image-container">
+                        <img src="branch/palo-plant.png" alt="Palo Plant" class="location-image">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-title">PALO PLANT</h3>
+                        <p class="location-address-label">Address</p>
+                        <p class="location-address">Bgry. Campetic, Palo, Leyte</p>
+                        <p class="location-phone-label">Phone</p>
+                        <p class="location-phone">+63 917 517 9396</p>
+                    </div>
+                </div>
+                
+                <div class="location-row reverse">
+                    <div class="location-image-container">
+                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant" class="location-image">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-title">DUMAGUETE PLANT</h3>
+                        <p class="location-address-label">Address</p>
+                        <p class="location-address">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
+                        <p class="location-phone-label">Phone</p>
+                        <p class="location-phone">+63 917 517 9396</p>
+                    </div>
+                </div>
+                
+                <div class="location-row">
+                    <div class="location-image-container">
+                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant" class="location-image">
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-title">LEGAZPI PLANT</h3>
+                        <p class="location-address-label">Address</p>
+                        <p class="location-address">Diversion Road, Bogtong, Legazpi City</p>
+                        <p class="location-phone-label">Phone</p>
+                        <p class="location-phone">+63 917 517 9396</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Footer with Contact Information -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                        <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Address Information -->
+            <div>
+                <h3 class="footer-heading">OUR ADDRESS</h3>
+                <p class="font-bold"><strong>MAIN OFFICE ADDRESS:</strong></p>
+                <ul class="address-list">
+                    <li>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</li>
+                </ul>
+                
+                <p class="font-bold"><strong>PLANT ADDRESS:</strong></p>
+                <ul class="address-list">
+                    <li>LEGASPI PLANT: Diversion Road, Bogtong, Legaspi City</li>
+                    <li>PALO PLANT : Bgry. Campetic, Palo, Leyte</li>
+                    <li>DUMAGUETE PLANT : Bgry. Bagacay, Dumaguete City, Negros Oriental</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="footer-heading">CONTACT INFO</h3>
+                <ul class="contact-list">
+                    <li>Contact No. : 09175179396</li>
+                    <li>E-mail : dewantrading88@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Footer -->
+    <footer class="copyright-footer">
+        <p>©2025 DEWAN TRADING CORP. All Rights Reserved.</p>
+    </footer>
+
+    <script src="contact.js"></script>
+</body>
+</html>

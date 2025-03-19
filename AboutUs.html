@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dewan Trading Corp</title>
+    <link rel="stylesheet" href="contact.css">
+    <style>
+        .history-container {
+            display: flex;
+            flex-direction: column; /* Change to column layout */
+            align-items: center; /* Center align items */
+            margin-top: 20px;
+            background-color: #2ed573; /* Dark mint background */
+            padding: 20px;
+            border-radius: 0px; /* Optional: Rounded corners */
+        }
+        .history-title {
+            text-align: center;
+            color: #6f2c91; /* Purple color for the title */
+            font-size: 24px; /* Adjust font size as needed */
+            margin-bottom: 20px; /* Space between title and columns */
+        }
+        .history-columns {
+            display: flex; /* Flex layout for columns */
+            justify-content: space-between;
+            width: 980px; /* Full width for columns */
+        }
+        .history-column {
+            flex: 1;
+            padding: 20px;
+            margin: 0 20px;
+            margin-right: 30px;
+            border-radius: 30px; /* Optional: Rounded corners */
+            background-color: white; /* White background for columns */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+        }
+        h2 {
+            color: black; /* Purple color for headings */
+            text-align: center;
+        }
+        p {
+            text-align: center; /* Center align text */
+            font-size: 15px; /* Font size for paragraphs */
+        }
+        .about-section {
+            display: flex; /* Flex layout for two columns */
+            background-color: transparent; /* Light background color */
+            padding: 40px;
+            border-radius: 10px; /* Rounded corners */
+            margin: 20px; /* Margin around the section */
+        }
+        .about-details {
+            flex: 1; /* Left column for text */
+            padding-right: 20px; /* Space between columns */
+        }
+        .about-details p {
+            flex: 1; /* Left column for text */
+            padding-right: 20px; /* Space between columns */
+            font-size: 18px;
+        }
+        .about-image {
+            flex: 1; /* Right column for image */
+            display: flex; /* Center the image vertically */
+            justify-content: center; /* Center the image horizontally */
+            align-items: center; /* Center the image vertically */
+        }
+        .about-image img {
+            width: 500px; 
+            height: 500px;
+            /* height: auto; Maintain aspect ratio */
+        }
+        h1 {
+            color: #6f2c91; /* Purple color for headings */
+            font-size: 36px; /* Adjust font size as needed */
+            margin-bottom: -30px;
+            text-align: center;
+        }
+        h1.cbackground {
+            color: #00796b; /* Purple color for headings */
+            font-size: 36px; /* Adjust font size as needed */
+            margin-top: -30px;
+            margin-bottom: 40px;
+        }
+        h3 {
+            color: black; /* Darker green for subheading */
+            font-size: 24px; /* Adjust font size as needed */
+            text-align: center;
+        }
+        p {
+            color: black; /* Dark text color for readability */
+            font-size: 16px; /* Adjust font size as needed */
+            margin: 10px 0; /* Margin for paragraphs */
+        }
+        .mission-section {
+            background-color: transparent; /* Light background color */
+            padding: 40px;
+            border-radius: 10px; /* Rounded corners */
+            margin: 20px; /* Margin around the section */
+            text-align: center; /* Center align text */
+        }
+        .mission-section h1 {
+            background-color: transparent; /* Light background color */
+            padding: 10px;
+            border-radius: 10px; /* Rounded corners */
+            margin: 5px; /* Margin around the section */
+            text-align: center; /* Center align text */
+            margin-top: -20px;
+        }
+        .mission-section p {
+            text-align: justify;
+            font-size: 25px;
+        }
+        .mission-columns {
+            display: flex; /* Flex layout for two columns */
+            margin-top: 20px; /* Space above the columns */
+        }
+        .mission-details {
+            flex: 1; /* Left column for text */
+            padding-right: 20px; /* Space between columns */
+        }
+        .mission-image {
+            flex: 1; /* Right column for image */
+            display: flex; /* Center the image vertically */
+            justify-content: center; /* Center the image horizontally */
+            align-items: center; /* Center the image vertically */
+        }
+        .mission-image img {
+            width: 500px; /* Responsive image */
+            height: 300px; /* Maintain aspect ratio */
+        }
+        .capabilities-section {
+            background-color: transparent; /* No background for the section */
+            padding: 40px;
+            border-radius: 10px; /* Rounded corners */
+            margin: 20px; /* Margin around the section */
+            text-align: center; /* Center align text */
+        }
+        .capabilities-columns {
+            display: flex; /* Flex layout for two columns */
+            justify-content: space-between; /* Space between columns */
+            margin-top: 20px; /* Space above the columns */
+        }
+        .capabilities-title {
+            flex: 1; /* Left column for title */
+            text-align: center; /* Center align text */
+            padding-right: 20px; /* Space between columns */
+            background-color: transparent; /* No background for title */
+        }
+        .capabilities-details {
+            flex: 1; /* Right column for details */
+            text-align: left; /* Left align text */
+            background-color: transparent; /* No background for details */
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-info-bar">
+        <div class="location-info">
+            <!-- Location Info -->
+            <span>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+        </div>
+        <div class="contact-info">
+            <!-- Contact Info -->
+            <span>dewantrading88@gmail.com</span>
+            <span class="divider">|</span>
+            <span>09175179396</span>
+        </div>
+    </div>
+
+    <!-- Navbar with Logo and Centered Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo/logo.png" alt="Dewan Trading Logo" class="logo">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="#">Products & Services</a></li> 
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Us Section -->
+    <section class="about-section">
+        <div class="about-details">
+            <h1>OUR HISTORY</h1>
+            <h3>and</h3>
+            <h1 class="cbackground">COMPANY BACKGROUND</h1>
+            <p>Established on July 2008, Dewan Trading was created to cater the
+                needs of institutions in terms of medical and industrial gases. The
+                company initiated extensive strategic and hard work marketing and
+                sales movement until it was able to locally compete with the other
+                players in the market. Within a year, it was able to introduce its name
+                to the Bicol Region.
+                
+            <p>Dewan Trading specializes in provision of quality products such as
+                Oxygen (Medical), Nitrogen, Argon, Hydrogen, and many more to our
+                valued customers in the field of health care and engineering. Within
+                its few years of operation, Dewan has managed to earn the trust and
+                loyalty of various institutions and its people, managing to get a wide
+                variety of customers all over Bicol Region.</p>
+            </p>
+        </div>
+        <div class="about-image">
+            <img src="gas-tank.jpg" alt="Gas Tank"> <!-- Substitute image -->
+        </div>
+    </section>
+
+    <!-- History Timeline Section -->
+    <div class="history-container">
+        <div class="history-title">OUR HISTORY</div>
+        <div class="history-columns">
+            <div class="history-column">
+                <h2>2010</h2>
+                <p>From CIGI, Legaspi now LINDE, Phil. the franchise was acquired to operate a gas dealership and marketing within the area coverage of the whole BICOL - Region V.</p>
+            </div>
+            <div class="history-column">
+                <h2>2011</h2>
+                <p>To serve the customers promptly and to attain precision on the deliveries, a LIQUID OXYGEN PUMPING STATION was renovated, a facility that can cater sufficiency of supply to all its customers for the whole Bicol Region, including Northern Samar.</p>
+            </div>
+            <div class="history-column">
+                <h2>2012</h2>
+                <p>Opening of branches and outlets at Sorsogon, Camarines Sur and Albay.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="mission-section">
+        <h1>OUR MISSION</h1>
+        <div class="mission-columns">
+            <div class="mission-details">
+                <p>To be a recognized firm throughout the industry for delivering value as well as competitive, innovative and customer-focused performance.</p>
+                <p>Also, we aspire to be acknowledged by our customers and associates as an integral part of their success.</p>
+                <p>To take part in nation building in the field of engineering and health care services.</p>
+            </div>
+            <div class="mission-image">
+                <img src="gas-tank.jpg" alt="Gas Tank"> <!-- Substitute image -->
+            </div>
+        </div>
+        <div>
+            <p style="text-align: center; margin-top: 50px; margin-bottom: 50px;">Dewan Trading Corporatio aims to provide products and services which conform to the <br> specified requirements of ISO 9001:2015.</p>
+        </div>
+        <h1>OUR MISSION</h1>
+        <div class="mission-columns">
+            <div class="mission-image">
+                <img src="gas-tank.jpg" alt="Gas Tank"> <!-- Substitute image -->
+            </div>
+            <div class="mission-details">
+                <p>To be a recognized firm throughout the industry for delivering value as well as competitive, innovative and customer-focused performance.</p>
+                <p>Also, we aspire to be acknowledged by our customers and associates as an integral part of their success.</p>
+                <p>To take part in nation building in the field of engineering and health care services.</p>
+            </div>
+        </div>
+        <h2 style="margin-top: 50px;">CAPABILITIES AND LOGISICS</h2>
+        <div>
+            <p style="text-align: center; margin-top: 50px; margin-bottom: 50px;">At our company, we ensure efficient and timely delivery of industrial gases to <br> 
+                meet the demands of our clients. Our logistics team is equipped with a fleet of <br> 
+                trucks that guarantee safe and reliable transportation of gases to various <br> 
+                industries, including healthcare, manufacturing, and construction.</p>
+        </div>
+    </div>
+
+    <!-- Capabilities Section -->
+    <div class="capabilities-section">
+        <h1 style="background-color: transparent; padding: 10px; border-radius: 10px; margin: 5px; text-align: center; margin-top: -20px;">CAPABILITIES AND LOGISTICS</h1>
+        <div class="capabilities-columns">
+            <div class="capabilities-title" style="background-color: whitesmoke;">
+                <h2>Fleet and Transportation</h2>
+                <ul>
+                    <li>1 unit - MITSUBISHI FORWARD (6-wheeler) - Built for medium to large-scale deliveries.</li>
+                    <li>1 unit - FUSO FORWARD (6-wheeler) - Designed for heavy-duty transport.</li>
+                    <li>1 unit - ELF ISUZU TRUCK (6-wheeler) - Ensuring flexibility in urban and rural deliveries.</li>
+                    <li>1 unit - FOTON (6-wheeler) - Reliable for high-capacity transportation.</li>
+                    <li>2 units - CANTER TRUCK - Ideal for smaller, quicker deliveries.</li>
+                </ul>
+            </div>
+            <div class="capabilities-details">
+                <p>At our company, we ensure efficient and timely delivery of industrial gases to meet the demands of our clients. Our logistics team is equipped with a fleet of trucks that guarantee safe and reliable transportation of gases to various industries, including healthcare, manufacturing, and construction.</p>
+            </div>
+        </div>
+        <div class="capabilities-columns">
+            <div class="capabilities-details">
+                <p>At our company, we ensure efficient and timely delivery of industrial gases to meet the demands of our clients. Our logistics team is equipped with a fleet of trucks that guarantee safe and reliable transportation of gases to various industries, including healthcare, manufacturing, and construction.</p>
+            </div>
+            <div class="capabilities-title" style="background-color: whitesmoke;">
+                <h2>Plant and Storage Capacity</h2>
+                <ul>
+                    <li>VIE Tank: 6,000 Gals - Large-scale storage for industrial
+                        and medical gases.</li>
+                    <li>Conversion: 1,800 compressed gas oxygen cylinders -
+                        Ready for distribution across industries.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Footer with Contact Information -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-icons">
+                <!-- Social Media Icons -->
+                <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                        <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                        <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-heading">MAIN OFFICE ADDRESS</h3>
+                <p>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</p>
+                <h3 class="footer-heading">PLANT ADDRESS</h3>
+                <ul class="contact-list">
+                    <li>Legaspi Plant</li>
+                    <li>Palo Plant</li>
+                    <li>Dumaguete Plant</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">CONTACT INFO</h3>
+                <ul class="contact-list">
+                    <li>Contact No. : 09175179396</li>
+                    <li>E-mail : dewantrading88@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Footer -->
+    <footer class="copyright-footer">
+        <p>©2025 DEWAN TRADING CORP.</p>
+        <p style="margin-top: -10px;">All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
