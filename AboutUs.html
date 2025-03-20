@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Dewan Trading Corp</title>
+    <!-- Add Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="contact.css">
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mint': '#2ed573',
+                        'light-mint': '#e0f7fa',
+                        'purple': '#6f2c91',
+                        'dark-green': '#00796b'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .history-container {
             display: flex;
@@ -178,53 +195,55 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="#">Products & Services</a></li> 
+                <li><a href="Products&Services.html">Products & Services</a></li> 
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- About Us Section -->
-    <section class="about-section">
-        <div class="about-details">
-            <h1>OUR HISTORY</h1>
-            <h3>and</h3>
-            <h1 class="cbackground">COMPANY BACKGROUND</h1>
-            <p>Established on July 2008, Dewan Trading was created to cater the
+    <section class="flex flex-row p-10 mx-5 my-5 rounded-lg">
+        <div class="flex-1 pr-5">
+            <h1 class="text-4xl text-purple text-center mb-[-30px]">OUR HISTORY</h1>
+            <h3 class="text-2xl text-black text-center">and</h3>
+            <h1 class="text-4xl text-dark-green text-center mt-[-30px] mb-10">COMPANY BACKGROUND</h1>
+            <p class="text-lg text-black mb-5">
+                Established on July 2008, Dewan Trading was created to cater the
                 needs of institutions in terms of medical and industrial gases. The
                 company initiated extensive strategic and hard work marketing and
                 sales movement until it was able to locally compete with the other
                 players in the market. Within a year, it was able to introduce its name
                 to the Bicol Region.
-                
-            <p>Dewan Trading specializes in provision of quality products such as
+            </p>
+            <p class="text-lg text-black">
+                Dewan Trading specializes in provision of quality products such as
                 Oxygen (Medical), Nitrogen, Argon, Hydrogen, and many more to our
                 valued customers in the field of health care and engineering. Within
                 its few years of operation, Dewan has managed to earn the trust and
                 loyalty of various institutions and its people, managing to get a wide
-                variety of customers all over Bicol Region.</p>
+                variety of customers all over Bicol Region.
             </p>
         </div>
-        <div class="about-image">
-            <img src="gas-tank.jpg" alt="Gas Tank"> <!-- Substitute image -->
+        <div class="flex-1 flex justify-center items-center">
+            <img src="gas-tank.jpg" alt="Gas Tank" class="w-[500px] h-[500px] object-cover">
         </div>
     </section>
 
     <!-- History Timeline Section -->
-    <div class="history-container">
-        <div class="history-title">OUR HISTORY</div>
-        <div class="history-columns">
-            <div class="history-column">
-                <h2>2010</h2>
-                <p>From CIGI, Legaspi now LINDE, Phil. the franchise was acquired to operate a gas dealership and marketing within the area coverage of the whole BICOL - Region V.</p>
+    <div class="flex flex-col items-center mt-5 bg-mint p-5">
+        <div class="text-2xl text-purple text-center mb-5">OUR HISTORY</div>
+        <div class="flex justify-between w-[980px]">
+            <div class="flex-1 bg-white p-5 mx-5 mr-7 rounded-3xl shadow">
+                <h2 class="text-xl text-black text-center">2010</h2>
+                <p class="text-center">From CIGI, Legaspi now LINDE, Phil. The franchise was acquired to operate a gas dealership and marketing within the area coverage of the whole BICOL - Region V.</p>
             </div>
-            <div class="history-column">
-                <h2>2011</h2>
-                <p>To serve the customers promptly and to attain precision on the deliveries, a LIQUID OXYGEN PUMPING STATION was renovated, a facility that can cater sufficiency of supply to all its customers for the whole Bicol Region, including Northern Samar.</p>
+            <div class="flex-1 bg-white p-5 mx-5 mr-7 rounded-3xl shadow">
+                <h2 class="text-xl text-black text-center">2011</h2>
+                <p class="text-center">To serve the customers promptly and to attain precision on the deliveries, a LIQUID OXYGEN PUMPING STATION was renovated, a facility that can cater sufficiency of supply to all its customers for the whole Bicol Region, including Northern Samar.</p>
             </div>
-            <div class="history-column">
-                <h2>2012</h2>
-                <p>Opening of branches and outlets at Sorsogon, Camarines Sur and Albay.</p>
+            <div class="flex-1 bg-white p-5 mx-5 mr-7 rounded-3xl shadow">
+                <h2 class="text-xl text-black text-center">2012</h2>
+                <p class="text-center">Opening of branches and outlets at Sorsogon, Camarines Sur and Albay.</p>
             </div>
         </div>
     </div>
@@ -266,12 +285,12 @@
     </div>
 
     <!-- Capabilities Section -->
-    <div class="capabilities-section">
-        <h1 style="background-color: transparent; padding: 10px; border-radius: 10px; margin: 5px; text-align: center; margin-top: -20px;">CAPABILITIES AND LOGISTICS</h1>
-        <div class="capabilities-columns">
-            <div class="capabilities-title" style="background-color: whitesmoke;">
-                <h2>Fleet and Transportation</h2>
-                <ul>
+    <div class="p-10 mx-5 my-5 text-center">
+        <h1 class="text-4xl text-purple text-center mb-5">CAPABILITIES AND LOGISTICS</h1>
+        <div class="flex justify-between mt-5">
+            <div class="flex-1 bg-gray-50 p-5 mr-5 text-center">
+                <h2 class="text-2xl mb-4">Fleet and Transportation</h2>
+                <ul class="text-left list-disc pl-5">
                     <li>1 unit - MITSUBISHI FORWARD (6-wheeler) - Built for medium to large-scale deliveries.</li>
                     <li>1 unit - FUSO FORWARD (6-wheeler) - Designed for heavy-duty transport.</li>
                     <li>1 unit - ELF ISUZU TRUCK (6-wheeler) - Ensuring flexibility in urban and rural deliveries.</li>
@@ -279,22 +298,10 @@
                     <li>2 units - CANTER TRUCK - Ideal for smaller, quicker deliveries.</li>
                 </ul>
             </div>
-            <div class="capabilities-details">
-                <p>At our company, we ensure efficient and timely delivery of industrial gases to meet the demands of our clients. Our logistics team is equipped with a fleet of trucks that guarantee safe and reliable transportation of gases to various industries, including healthcare, manufacturing, and construction.</p>
-            </div>
-        </div>
-        <div class="capabilities-columns">
-            <div class="capabilities-details">
-                <p>At our company, we ensure efficient and timely delivery of industrial gases to meet the demands of our clients. Our logistics team is equipped with a fleet of trucks that guarantee safe and reliable transportation of gases to various industries, including healthcare, manufacturing, and construction.</p>
-            </div>
-            <div class="capabilities-title" style="background-color: whitesmoke;">
-                <h2>Plant and Storage Capacity</h2>
-                <ul>
-                    <li>VIE Tank: 6,000 Gals - Large-scale storage for industrial
-                        and medical gases.</li>
-                    <li>Conversion: 1,800 compressed gas oxygen cylinders -
-                        Ready for distribution across industries.</li>
-                </ul>
+            <div class="flex-1 p-5 text-left">
+                <p class="text-lg">
+                    At our company, we ensure efficient and timely delivery of industrial gases to meet the demands of our clients. Our logistics team is equipped with a fleet of trucks that guarantee safe and reliable transportation of gases to various industries, including healthcare, manufacturing, and construction.
+                </p>
             </div>
         </div>
     </div>
