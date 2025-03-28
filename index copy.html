@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Dewan Trading Corporation</title>
+    <style>
+        body {
+            max-width: 1440px;
+            min-height: 100vh;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+        
+        .wave-container {
+            position: relative;
+        }
+        
+        .wave-container::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23f0fdf4' d='M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-overlay {
+            background-color: rgba(0, 200, 170, 0.85);
+        }
+        
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #00c8aa;
+        }
+    </style>
+</head>
+<body class="bg-green-50">
+    <!-- Top info bar -->
+    <header class="bg-[#369686] shadow-md text-white py-2 px-5">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="material-icons text-sm">location_on</span>
+                <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:underline text-xs">
+                    <span class="material-icons text-sm mr-1">email</span>
+                    dewantrading88@gmail.com
+                </a>
+                <a href="tel:09175179396" class="flex items-center hover:underline text-xs">
+                    <span class="material-icons text-sm mr-1">phone</span>
+                    09175179396
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Logo and Navigation -->
+    <nav class="bg-white py-4 px-5">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo -->
+            <div class="mb-4 md:mb-0">
+                <img src="LOGO\dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
+            </div>
+            
+            <!-- Centered Navigation Menu -->
+            <div class="flex space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Wave -->
+    <main>
+        <section class="wave-container relative">
+            <div class="hero-overlay bg-cover bg-center text-white py-16 px-5" style="background-image: url('gas-tank.jpg');">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-3xl md:text-4xl font-medium leading-relaxed">
+                        "Quality is partnership with the customer,<br>
+                        realizing requirements, commitments,<br>
+                        and continuous development."
+                    </h1>
+                    <div class="mt-8">
+                        <a href="#learn-more" class="bg-white text-[#00c8aa] font-bold py-2 px-8 rounded-md hover:bg-gray-100 transition-colors uppercase">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-5">
+            <section id="about" class="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-bold text-[#369686] mb-4">About Us</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Established in July 2008, Dewan Trading was created to cater to the needs of institutions 
+                    in terms of medical and industrial gases...
+                </p>
+            </section>
+
+            <section id="qualifications" class="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-bold text-[#369686] mb-4">Qualifications / Accreditation</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <img src="LOGO\DTI.png" alt=DTI Logo" class="w-full object-contain">
+                    <img src="LOGO\Food_and_Drug_Administration_(FDA)_Philippines.svg.png" alt="FDA Logo" class="w-full object-contain">
+                    <img src="LOGO\GMP.png" alt="GMP Logo" class="w-full object-contain">
+                </div>
+            </section>
+        </div>
+
+        <section id="valued-customers" class="p-5 m-5 bg-white rounded shadow">
+            <h2 class="text-2xl font-bold">Our Valued Customers</h2>
+            <p>We take pride in being a trusted supplier of high-quality industrial gases...</p>
+            <div class="flex space-x-4">
+                <img src="Major Customers\MIESCOR.jpg" alt="Customer 1" class="w-24">
+                <img src="Major Customers\MAYON DOCKS INC.jpg" alt="Customer 2" class="w-24">
+                <img src="Major Customers\ABOITIZ-POWER-CORP.jpg" alt="Customer 3" class="w-24">
+            </div>
+        </section>
+
+        <section id="contact" class="p-5 m-5 bg-white rounded shadow">
+            <h2 class="text-2xl font-bold">Contact Info</h2>
+            <p>Main Office Address: Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</p>
+            <p>Contact No: 09175773986</p>
+            <p>Email: dewantrading88@gmail.com</p>
+        </section>
+    </main>
+
+    <footer class="bg-teal-700 text-white py-8 px-5">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm">&copy; 2025 DEWAN TRADING CORP. All Rights Reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4 text-sm">
+                <a href="#privacy" class="hover:underline">Privacy Policy</a>
+                <a href="#terms" class="hover:underline">Terms of Service</a>
+                <a href="#contact" class="hover:underline">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
