@@ -176,36 +176,36 @@
     <div class="fixed-header">
         <header class="bg-white text-gray-900 py-2 px-5">
             <div class="flex justify-between items-center max-w-7xl mx-auto">
-                <div class="flex items-center">
+            <div class="flex items-center">
                     <span class="material-icons text-gray-900 text-sm">location_on</span>
-                    <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
-                </div>
-                <div class="flex items-center space-x-6">
+                <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+            </div>
+            <div class="flex items-center space-x-6">
                     <a href="mailto:dewantrading88@gmail.com" class="flex items-center text-xs group">
                         <span class="material-icons text-gray-900 text-sm mr-1">email</span>
-                        dewantrading88@gmail.com
-                    </a>
+                    dewantrading88@gmail.com
+                </a>
                     <a href="tel:09175179396" class="flex items-center text-xs group">
                         <span class="material-icons text-gray-900 text-sm mr-1">phone</span>
-                        09175179396
-                    </a>
-                </div>
+                    09175179396
+                </a>
             </div>
-        </header>
+        </div>
+    </header>
 
         <nav class="main-nav">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
                 <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
                     <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
-                </div>
-                <div class="flex space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="AboutUs.html" class="nav-link">About Us</a>
-                    <a href="Products&Services.html" class="nav-link">Products & Services</a>
-                    <a href="contact.html" class="nav-link">Contact Us</a>
-                </div>
             </div>
-        </nav>
+            <div class="flex space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
     </div>
 
     <!-- Update main padding -->
@@ -214,19 +214,19 @@
         <section class="relative min-h-screen overflow-hidden">
             <!-- Background with overlay and animated gradient -->
             <div class="absolute inset-0">
-                <div class="absolute inset-0 bg-[url('./gas-tank.jpg')] bg-cover bg-center opacity-90"></div>
-                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/70 to-teal-800/70 backdrop-blur-sm"></div>
-                <div class="absolute inset-0 bg-black/30"></div>
+                <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-90"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-teal-800/10 backdrop-blur-sm"></div>
+                <div class="absolute inset-0 bg-black/5"></div>
             </div>
 
             <!-- Animated particles with reduced opacity -->
-            <div id="particles-js" class="absolute inset-0 z-0 opacity-40"></div>
+            <div id="particles-js" class="absolute inset-0 z-0 opacity-20"></div>
 
             <!-- Content -->
             <div class="relative z-10 container mx-auto px-4 h-screen flex flex-col justify-center items-center text-center">
                 <!-- Animated text reveal -->
                 <div class="overflow-hidden mb-12 transform hover:scale-105 transition-all duration-500">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight opacity-0 transform translate-y-8 transition-all duration-1000 ease-out drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" id="hero-title">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight opacity-0 transform translate-y-8 transition-all duration-1000 ease-out drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]" id="hero-title">
                         <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">"Quality is partnership</span>
                         <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">with the customer,</span>
                         <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">realizing requirements,</span>
@@ -237,7 +237,7 @@
 
                 <!-- Animated button with enhanced hover effects -->
                 <a href="#learn-more" 
-                   class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl opacity-0 translate-y-8 hover:rotate-1" 
+                   class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-medium text-black bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl opacity-0 translate-y-8 hover:rotate-1" 
                    id="hero-button">
                     <span class="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-300"></span>
                     <span class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -417,7 +417,7 @@
                     if (!ticking) {
                         window.requestAnimationFrame(() => {
                             const scrolled = window.pageYOffset;
-                            const background = document.querySelector('.bg-[url(\'./gas-tank.jpg\')]');
+                            const background = document.querySelector('.bg-[url(\'./gas-tank-green.jpg\')]');
                             if (background) {
                                 background.style.transform = `scale(1.05) translateY(${scrolled * 0.3}px)`;
                             }
@@ -648,7 +648,7 @@
                                                  class="w-48 h-auto object-contain transform transition-all duration-500 
                                                         group-hover:scale-110 group-hover:-rotate-3">
                                         </div>
-                                    </div>
+        </div>
 
                                     <!-- Bottom row logos -->
                                     <div class="flex flex-wrap justify-center gap-16">
@@ -667,8 +667,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
             <!-- Hospital Customers Section -->
             <div class="container mx-auto px-4 py-16 md:py-20">
