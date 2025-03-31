@@ -104,45 +104,108 @@
                 display: block;
             }
         }
+        
+        .wave-container {
+            position: relative;
+        }
+        
+        .wave-container::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23f0fdf4' d='M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        /* Enhanced wave animation */
+        .waves {
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .wave-parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+        .wave-parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .wave-parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .wave-parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .wave-parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for navigation */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-green-50">
-    <!-- Fixed header wrapper -->
     <div class="fixed-header">
-    <!-- Top info bar -->
-        <header class="top-info-bar text-gray-800">
+        <header class="bg-white text-gray-900 py-2 px-5">
             <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="flex items-center">
-                    <span class="material-icons text-emerald-600 text-sm">location_on</span>
-                    <span class="ml-2 text-xs hover:text-emerald-600 transition-colors duration-300">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+                <div class="flex items-center">
+                    <span class="material-icons text-gray-900 text-sm">location_on</span>
+                    <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center text-xs group">
+                        <span class="material-icons text-gray-900 text-sm mr-1">email</span>
+                        dewantrading88@gmail.com
+                    </a>
+                    <a href="tel:09175179396" class="flex items-center text-xs group">
+                        <span class="material-icons text-gray-900 text-sm mr-1">phone</span>
+                        09175179396
+                    </a>
+                </div>
             </div>
-            <div class="flex items-center space-x-6">
-                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
-                    dewantrading88@gmail.com
-                </a>
-                    <a href="tel:09175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
-                    09175179396
-                </a>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Logo and Navigation -->
         <nav class="main-nav">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
                 <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
                     <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                </div>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="AboutUs.html" class="nav-link">About Us</a>
+                    <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </div>
             </div>
-            <div class="flex space-x-8">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="AboutUs.html" class="nav-link">About Us</a>
-                <a href="Products&Services.html" class="nav-link">Products & Services</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 
     <!-- Update main padding -->
@@ -151,7 +214,7 @@
         <section class="relative min-h-screen overflow-hidden">
             <!-- Background with overlay and animated gradient -->
             <div class="absolute inset-0">
-                <div class="absolute inset-0 bg-[url('./gas-tank.jpg')] bg-cover bg-center opacity-90 transform scale-105 transition-transform duration-1000"></div>
+                <div class="absolute inset-0 bg-[url('./gas-tank.jpg')] bg-cover bg-center opacity-90"></div>
                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/70 to-teal-800/70 backdrop-blur-sm"></div>
                 <div class="absolute inset-0 bg-black/30"></div>
             </div>
@@ -204,10 +267,10 @@
                         <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>
                     <g class="wave-parallax">
-                        <use xlink:href="#wave" x="48" y="0" fill="rgba(190, 240, 203, 0.7)" />
-                        <use xlink:href="#wave" x="48" y="3" fill="rgba(190, 240, 203, 0.5)" />
-                        <use xlink:href="#wave" x="48" y="5" fill="rgba(190, 240, 203, 0.3)" />
-                        <use xlink:href="#wave" x="48" y="7" fill="#BEF0CB" />
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
                     </g>
                 </svg>
             </div>
@@ -585,7 +648,7 @@
                                                  class="w-48 h-auto object-contain transform transition-all duration-500 
                                                         group-hover:scale-110 group-hover:-rotate-3">
                                         </div>
-        </div>
+                                    </div>
 
                                     <!-- Bottom row logos -->
                                     <div class="flex flex-wrap justify-center gap-16">
@@ -604,8 +667,8 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </section>
+                </div>
+            </section>
 
             <!-- Hospital Customers Section -->
             <div class="container mx-auto px-4 py-16 md:py-20">
@@ -707,15 +770,40 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Add scroll behavior for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.fixed-header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.menu-button');
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const navLinks = document.querySelector('.nav-links');
-            
-            menuButton.addEventListener('click', function() {
-                navLinks.classList.toggle('hidden');
-                navLinks.classList.toggle('active');
-            });
+
+            if (mobileMenuButton && navLinks) {
+                mobileMenuButton.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+
+                // Close menu on window resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
         });
     </script>
 
@@ -811,18 +899,13 @@
                     this.style.transform = 'scale(1)';
                 });
             });
-        });
-    </script>
 
-    <script>
-        // Add scroll behavior for header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.fixed-header');
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            // Initialize hero animations
+            setTimeout(() => {
+                document.getElementById('hero-title').classList.remove('opacity-0', 'translate-y-8');
+                document.getElementById('hero-button').classList.remove('opacity-0', 'translate-y-8');
+                document.getElementById('scroll-indicator').classList.remove('opacity-0');
+            }, 500);
         });
     </script>
 </body>
