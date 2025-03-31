@@ -7,133 +7,573 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Dewan Trading Corporation</title>
     <link rel="stylesheet" href="contact.css">
+    <style>
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #00c8aa;
+        }
+
+        body {
+            max-width: 1440px;
+            min-height: 100vh;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-button {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body class="bg-green-50">
     <!-- Add a wrapper div for the fixed headers -->
-    <div class="fixed top-0 left-0 right-0 z-50 bg-white">
-        <!-- Top info bar -->
-        <header class="bg-green-200 text-black py-2 px-5">
-            <div class="flex justify-between items-center max-w-7xl mx-auto">
-                <div class="flex items-center">
-                    <span class="material-icons text-sm">location_on</span>
-                    <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:underline text-xs">
-                        <span class="material-icons text-sm mr-1">email</span>
-                        dewantrading88@gmail.com
-                    </a>
-                    <a href="tel:09175179396" class="flex items-center hover:underline text-xs">
-                        <span class="material-icons text-sm mr-1">phone</span>
-                        09175179396
-                    </a>
+    <div class="fixed top-0 left-0 right-0 z-50 w-full">
+    <!-- Top info bar -->
+        <header class="bg-green-200 shadow-md text-black py-2 px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+                <div class="flex items-center mb-2 md:mb-0">
+                <span class="material-icons text-sm">location_on</span>
+                <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+            </div>
+                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:underline text-xs">
+                    <span class="material-icons text-sm mr-1">email</span>
+                    dewantrading88@gmail.com
+                </a>
+                <a href="tel:09175179396" class="flex items-center hover:underline text-xs">
+                    <span class="material-icons text-sm mr-1">phone</span>
+                    09175179396
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Logo and Navigation -->
+        <nav class="bg-white py-1 px-4">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
+                        <button class="menu-button md:hidden text-gray-600 focus:outline-none">
+                            <span class="material-icons">menu</span>
+                        </button>
+                    </div>
+                    <div class="nav-links hidden md:flex md:space-x-8">
+                        <a href="index.html" class="nav-link block py-2">Home</a>
+                        <a href="AboutUs.html" class="nav-link block py-2">About Us</a>
+                        <a href="Products&Services.html" class="nav-link block py-2">Products & Services</a>
+                        <a href="contact.html" class="nav-link block py-2">Contact Us</a>
+                    </div>
                 </div>
             </div>
-        </header>
-
-        <!-- Logo and Navigation -->
-        <nav class="bg-white py-1 px-5">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-                <div class="mb-4 md:mb-0">
-                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
-                </div>
-                <div class="flex space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="AboutUs.html" class="nav-link">About Us</a>
-                    <a href="Products&Services.html" class="nav-link">Products & Services</a>
-                    <a href="contact.html" class="nav-link">Contact Us</a>
-                </div>
-            </div>  
         </nav>
-    </div>
-
+            </div>
+            
     <!-- Add padding to main content to prevent it from being hidden behind fixed header -->
     <main class="pt-36">
         <!-- Hero Section with Wave -->
-        <section class="wave-container relative">
-            <div class="hero-overlay bg-cover bg-center text-white py-16 px-5" style="background-image: url('gas-tank.jpg');">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h1 class="hero-title">
-                        "Quality is partnership with the customer,<br>
-                        realizing requirements, commitments,<br>
-                        and continuous development."
+        <section class="relative min-h-screen overflow-hidden">
+            <!-- Background with overlay and animated gradient -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-[url('./gas-tank.jpg')] bg-cover bg-center opacity-90 transform scale-105 transition-transform duration-1000"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/70 to-teal-800/70 backdrop-blur-sm"></div>
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+
+            <!-- Animated particles with reduced opacity -->
+            <div id="particles-js" class="absolute inset-0 z-0 opacity-40"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 container mx-auto px-4 h-screen flex flex-col justify-center items-center text-center">
+                <!-- Animated text reveal -->
+                <div class="overflow-hidden mb-12 transform hover:scale-105 transition-all duration-500">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight opacity-0 transform translate-y-8 transition-all duration-1000 ease-out drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" id="hero-title">
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">"Quality is partnership</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">with the customer,</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">realizing requirements,</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">commitments,</span>
+                        <span class="block hover:text-emerald-300 transition-colors duration-300">and continuous development."</span>
                     </h1>
-                    <a href="#learn-more" class="learn-more-btn">LEARN MORE</a>
                 </div>
+
+                <!-- Animated button with enhanced hover effects -->
+                <a href="#learn-more" 
+                   class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl opacity-0 translate-y-8 hover:rotate-1" 
+                   id="hero-button">
+                    <span class="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-300"></span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative flex items-center">
+                        LEARN MORE
+                        <svg class="w-6 h-6 ml-3 -mr-1 transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Enhanced scroll indicator -->
+                <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 transition-all duration-500 hover:scale-110" id="scroll-indicator">
+                    <div class="animate-bounce">
+                        <svg class="w-8 h-8 text-white filter drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                    <p class="text-white text-sm mt-2 font-medium tracking-wider">Scroll Down</p>
+                </div>
+            </div>
+
+            <!-- Enhanced animated wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <defs>
+                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(190, 240, 203, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(190, 240, 203, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(190, 240, 203, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#BEF0CB" />
+                    </g>
+                </svg>
             </div>
         </section>
 
+        <style>
+            .waves {
+                width: 100%;
+                height: 120px;
+                min-height: 120px;
+                max-height: 180px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform: translateY(2px);
+            }
+
+            .wave-parallax > use {
+                animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+                filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+            }
+            .wave-parallax > use:nth-child(1) {
+                animation-delay: -2s;
+                animation-duration: 7s;
+            }
+            .wave-parallax > use:nth-child(2) {
+                animation-delay: -3s;
+                animation-duration: 10s;
+            }
+            .wave-parallax > use:nth-child(3) {
+                animation-delay: -4s;
+                animation-duration: 13s;
+            }
+            .wave-parallax > use:nth-child(4) {
+                animation-delay: -5s;
+                animation-duration: 20s;
+            }
+
+            @keyframes move-forever {
+                0% { transform: translate3d(-90px,0,0); }
+                100% { transform: translate3d(85px,0,0); }
+            }
+
+            /* Add smooth scroll behavior */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Add hover effect to navigation links */
+            .nav-link {
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 50%;
+                background-color: #00c8aa;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+                left: 0;
+            }
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Enhanced particle.js configuration
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 100, density: { enable: true, value_area: 1000 } },
+                        color: { value: '#ffffff' },
+                        shape: { type: 'circle' },
+                        opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+                        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: '#ffffff',
+                            opacity: 0.3,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: 'none',
+                            random: true,
+                            straight: false,
+                            out_mode: 'out',
+                            bounce: false,
+                            attract: { enable: true, rotateX: 600, rotateY: 1200 }
+                        }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: {
+                            onhover: { enable: true, mode: 'bubble' },
+                            onclick: { enable: true, mode: 'push' },
+                            resize: true
+                        },
+                        modes: {
+                            bubble: { distance: 200, size: 4, duration: 2, opacity: 0.8, speed: 3 },
+                            push: { particles_nb: 4 }
+                        }
+                    },
+                    retina_detect: true
+                });
+
+                // Enhanced animations on load
+                setTimeout(() => {
+                    document.getElementById('hero-title').classList.remove('opacity-0', 'translate-y-8');
+                    document.getElementById('hero-button').classList.remove('opacity-0', 'translate-y-8');
+                    document.getElementById('scroll-indicator').classList.remove('opacity-0');
+                }, 500);
+
+                // Smooth scroll with offset for fixed header
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        const headerOffset = 80;
+                        if (target) {
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition - headerOffset;
+
+                            window.scrollBy({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Enhanced parallax effect on scroll
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const scrolled = window.pageYOffset;
+                            const background = document.querySelector('.bg-[url(\'./gas-tank.jpg\')]');
+                            if (background) {
+                                background.style.transform = `scale(1.05) translateY(${scrolled * 0.3}px)`;
+                            }
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                // Add scroll-based animations
+                const animateOnScroll = () => {
+                    const elements = document.querySelectorAll('.animate-on-scroll');
+                    elements.forEach(element => {
+                        const elementTop = element.getBoundingClientRect().top;
+                        const elementBottom = element.getBoundingClientRect().bottom;
+                        const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
+                        
+                        if (isVisible) {
+                            element.classList.add('animate-in');
+                        }
+                    });
+                };
+
+                window.addEventListener('scroll', animateOnScroll);
+                animateOnScroll(); // Initial check
+            });
+        </script>
+
         <!-- Light green section -->
-        <div class="light-green-section">
+        <div class="bg-[#BEF0CB] relative">
             <!-- About Section -->
-            <section class="container mx-auto p-8">
-                <div class="about-section">
-                    <img src="logo/logo.png" alt="Dewan Trading Logo" class="logo-image">
-                    <div class="about-content">
-                        <p>Established on July 2008, Dewan Trading was created to cater to the needs of institutions in terms of medical and industrial gases. The company initiated extensive strategic and hard work marketing and sales movement until it was able to locally compete with the other players in the market. Within a year, it was able to introduce its name to the Bicol Region.</p>
-                        <p>Dewan Trading specializes in provision of quality products such as Oxygen (Medical), Nitrogen, Argon, Hydrogen, and many more to our valued customers in the field of health care and engineering. Within its few years of operation, Dewan has managed to earn the trust and loyalty of various institutions and its people, managing to get a wide variety of customers all over Bicol Region.</p>
+            <section class="container mx-auto px-4 py-16 md:py-20">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-full md:w-1/3">
+                        <img src="logo/logo.png" alt="Dewan Trading Logo" class="w-full max-w-[290px] mx-auto transform hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="w-full md:w-2/3 bg-white rounded-xl shadow-lg p-6 md:p-8 transform hover:shadow-xl transition-shadow duration-300">
+                        <p class="text-gray-800 text-base md:text-lg leading-relaxed mb-6 text-justify">
+                            Established on July 2008, Dewan Trading was created to cater to the needs of institutions in terms of medical and industrial gases. The company initiated extensive strategic and hard work marketing and sales movement until it was able to locally compete with the other players in the market. Within a year, it was able to introduce its name to the Bicol Region.
+                        </p>
+                        <p class="text-gray-800 text-base md:text-lg leading-relaxed text-justify">
+                            Dewan Trading specializes in provision of quality products such as Oxygen (Medical), Nitrogen, Argon, Hydrogen, and many more to our valued customers in the field of health care and engineering. Within its few years of operation, Dewan has managed to earn the trust and loyalty of various institutions and its people, managing to get a wide variety of customers all over Bicol Region.
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- Qualifications Section -->
-            <section class="qualifications-section">
-                <h2>QUALIFICATIONS / ACCREDITATION</h2>
-                <div class="qualifications-grid">
-                    <div class="qualification-card">
-                        <img src="LOGO/DTI.png" alt="DTI Logo">
+            <section class="relative py-16 md:py-24 overflow-hidden">
+                <!-- Enhanced background with parallax effect -->
+                <div class="absolute inset-0">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/90 to-teal-700/90">
+                        <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-fixed bg-center opacity-20 mix-blend-overlay"></div>
                     </div>
-                    <div class="qualification-card">
-                        <img src="LOGO/Food_and_Drug_Administration_(FDA)_Philippines.svg.png" alt="FDA Logo">
+                    <!-- Animated background patterns -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_white_1px,_transparent_0)] bg-[length:40px_40px]"></div>
                     </div>
-                    <div class="qualification-card">
-                        <img src="LOGO/GMP.png" alt="GMP Logo">
+                </div>
+
+                <div class="container mx-auto px-4 relative z-10">
+                    <!-- Enhanced header section -->
+                    <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+                            QUALIFICATIONS / ACCREDITATION
+                        </h2>
+                        <div class="w-32 h-1 bg-gradient-to-r from-emerald-300 to-teal-300 mx-auto rounded-full mb-8 transform hover:scale-x-110 transition-transform duration-300"></div>
+                        <p class="text-white/90 text-xl leading-relaxed max-w-3xl mx-auto">
+                            Our commitment to excellence is backed by prestigious certifications and accreditations
+                        </p>
                     </div>
-                    <div class="qualification-card">
-                        <img src="LOGO/image-removebg-preview (2).png" alt="DOT Logo">
+
+                    <!-- Enhanced logo grid with improved card design -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-6xl mx-auto">
+                        <!-- DTI Logo Card -->
+                        <div class="group animate-on-scroll" data-aos-delay="100">
+                            <a href="https://bnrs.dti.gov.ph/search" target="_blank" rel="noopener" 
+                               class="block transform transition-all duration-300 hover:scale-105">
+                                <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+                                           transition-all duration-300 group-hover:bg-white/100 h-full
+                                           border border-white/20 group-hover:border-emerald-200">
+                                    <div class="flex items-center justify-center h-48">
+                                        <img src="LOGO/DTI.png" alt="DTI Logo" 
+                                             class="w-full h-auto object-contain transition-transform duration-500 
+                                                    group-hover:-rotate-3 group-hover:scale-110">
+                                    </div>
+                                    <div class="mt-6 text-center">
+                                        <h3 class="text-gray-800 font-semibold text-lg mb-2">Department of Trade and Industry</h3>
+                                        <p class="text-emerald-600 text-sm">Click to verify certification</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- FDA Logo Card -->
+                        <div class="group animate-on-scroll" data-aos-delay="200">
+                            <a href="https://verification.fda.gov.ph/Home.php" target="_blank" rel="noopener" 
+                               class="block transform transition-all duration-300 hover:scale-105">
+                                <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+                                           transition-all duration-300 group-hover:bg-white/100 h-full
+                                           border border-white/20 group-hover:border-emerald-200">
+                                    <div class="flex items-center justify-center h-48">
+                                        <img src="LOGO/Food_and_Drug_Administration_(FDA)_Philippines.svg.png" alt="FDA Logo" 
+                                             class="w-full h-auto object-contain transition-transform duration-500 
+                                                    group-hover:-rotate-3 group-hover:scale-110">
+                                    </div>
+                                    <div class="mt-6 text-center">
+                                        <h3 class="text-gray-800 font-semibold text-lg mb-2">Food and Drug Administration</h3>
+                                        <p class="text-emerald-600 text-sm">Click to verify certification</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- DBM Logo Card -->
+                        <div class="group animate-on-scroll" data-aos-delay="300">
+                            <a href="https://www.ps-philgeps.gov.ph/home/" target="_blank" rel="noopener">
+                                <div class="block transform transition-all duration-300 hover:scale-105">
+                                    <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+                                               transition-all duration-300 group-hover:bg-white/100 h-full
+                                               border border-white/20 group-hover:border-emerald-200">
+                                        <div class="flex items-center justify-center h-48">
+                                            <img src="LOGO/image-removebg-preview (2).png" alt="DOT Logo" 
+                                                 class="w-full h-auto object-contain transition-transform duration-500 
+                                                        group-hover:-rotate-3 group-hover:scale-110">
+                                        </div>
+                                        <div class="mt-6 text-center">
+                                            <h3 class="text-gray-800 font-semibold text-lg mb-2">Procurement Service - DBM</h3>
+                                            <p class="text-emerald-600 text-sm">Government Certified</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- GMP Logo Card -->
+                        <div class="group animate-on-scroll" data-aos-delay="400">
+                            <a href="https://www.ps-philgeps.gov.ph/welcome/" target="_blank" rel="noopener" 
+                               class="block transform transition-all duration-300 hover:scale-105">
+                                <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+                                           transition-all duration-300 group-hover:bg-white/100 h-full
+                                           border border-white/20 group-hover:border-emerald-200">
+                                    <div class="flex items-center justify-center h-48">
+                                        <img src="LOGO/GMP(1).png" alt="GMP Logo" 
+                                             class="w-[120%] h-auto object-contain transition-transform duration-500 
+                                                    group-hover:-rotate-3 group-hover:scale-110">
+                                    </div>
+                                    <div class="mt-6 text-center">
+                                        <h3 class="text-gray-800 font-semibold text-lg mb-2">Good Manufacturing Practice</h3>
+                                        <p class="text-emerald-600 text-sm">Click to verify certification</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced description with animation -->
+                    <div class="max-w-3xl mx-auto mt-16 text-center animate-on-scroll">
+                        <p class="text-white text-lg md:text-xl leading-relaxed">
+                            These certifications demonstrate our dedication to maintaining the highest standards of quality, 
+                            safety, and regulatory compliance in the medical and industrial gas industry.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Enhanced decorative elements -->
+                <div class="absolute left-0 top-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl -translate-x-16 -translate-y-16"></div>
+                <div class="absolute right-0 bottom-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl translate-x-24 translate-y-24"></div>
+            </section>
+
+            <!-- Our Valued Customers Section -->
+            <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
+                <!-- Decorative background elements -->
+                <div class="absolute inset-0">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_#10B981_1px,_transparent_0)] bg-[length:20px_20px] opacity-5"></div>
+                </div>
+
+                <div class="container mx-auto px-4 relative z-10">
+                    <!-- Enhanced header -->
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-[#6f2c91] mb-6 tracking-tight animate-on-scroll">
+                            OUR VALUED CUSTOMERS
+                        </h2>
+                        <div class="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full mb-8 transform hover:scale-x-110 transition-transform duration-300"></div>
+                    </div>
+
+                    <!-- Main content grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                        <!-- Left column - Description -->
+                        <div class="animate-on-scroll" data-aos-delay="100">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 transform hover:scale-[1.02] transition-all duration-300
+                                        border border-emerald-100 hover:border-emerald-200 group">
+                                <div class="relative">
+                                    <!-- Decorative corner elements -->
+                                    <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    
+                                    <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+                                        We take pride in being a trusted supplier of high-quality industrial gases to some of the most prominent companies in the industry. Our commitment to reliability, innovation, and customer satisfaction has made us the preferred partner for businesses across power generation, construction, manufacturing, and healthcare sectors.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right column - Industrial Gas Customers -->
+                        <div class="animate-on-scroll" data-aos-delay="200">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+                                <h3 class="text-2xl md:text-3xl font-bold text-center mb-10 text-[#6f2c91]">
+                                    MAJOR CUSTOMER FOR INDUSTRIAL GAS
+                                </h3>
+                                
+                                <!-- Logo grid with enhanced layout -->
+                                <div class="space-y-12">
+                                    <!-- Top row logos -->
+                                    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                                        <div class="customer-logo-card group">
+                                            <img src="Major Customers/miescor-nobg.png" alt="MIESCOR" 
+                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
+                                                        group-hover:scale-110 group-hover:-rotate-3">
+                                        </div>
+                                        <div class="customer-logo-card group">
+                                            <img src="Major Customers/mayondocks-nobg.png" alt="MAYON DOCKS INC" 
+                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
+                                                        group-hover:scale-110 group-hover:rotate-3">
+                                        </div>
+                                        <div class="customer-logo-card group">
+                                            <img src="Major Customers/aboitizpower-nobg.png" alt="ABOITIZ POWER" 
+                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
+                                                        group-hover:scale-110 group-hover:-rotate-3">
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom row logos -->
+                                    <div class="flex flex-wrap justify-center gap-16">
+                                        <div class="customer-logo-card group">
+                                            <img src="Major Customers/edc-nobg.png" alt="Energy Development Corporation" 
+                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
+                                                        group-hover:scale-110 group-hover:rotate-3">
+                                        </div>
+                                        <div class="customer-logo-card group">
+                                            <img src="Major Customers/goodfound-nobg.png" alt="G Logo" 
+                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
+                                                        group-hover:scale-110 group-hover:-rotate-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Our Valued Customers Section -->
-            <h2 class="valued-customers-heading">OUR VALUED CUSTOMERS</h2>
-            <div class="valued-customers-container">
-                <div class="customers-text-container">
-                    <div class="customers-text-content">
-                        <p>We take pride in being a trusted supplier of high-quality industrial gases to some of the most prominent companies in the industry. Our commitment to reliability, innovation, and customer satisfaction has made us the preferred partner for businesses across power generation, construction, manufacturing, and healthcare sectors.</p>
-                    </div>
-                </div>
-                <div class="customers-logos-container">
-                    <h3 class="major-customer-heading">MAJOR CUSTOMER FOR INDUSTRIAL GAS</h3>
-                    <div class="industrial-logos-grid">
-                        <img src="Major Customers/MIESCOR.jpg" alt="MIESCOR">
-                        <img src="Major Customers/MAYON DOCKS INC.jpg" alt="MAYON DOCKS INC">
-                        <img src="Major Customers/ABOITIZ-POWER-CORP.jpg" alt="ABOITIZ POWER">
-                        <img src="Major Customers/EDC-BACMAN.png" alt="Energy Development Corporation">
-                        <img src="Major Customers/GOODFOUND-CEMENT-CORP.png" alt="G Logo">
-                    </div>
-                </div>
-            </div>
-
             <!-- Hospital Customers Section -->
-            <div class="hospital-section-container">
-                <div class="hospital-logos-container">
-                    <h3 class="hospital-heading">OUR HOSPITAL CUSTOMERS</h3>
-                    <div class="hospital-logos-grid">
-                        <img src="Hospital Customers/LEGAZPI CITY HOSPITAL.jpg" alt="LEGAZPI CITY HOSPITAL">
-                        <img src="Hospital Customers/TANCHULING HOSPITAL.jpg" alt="TANCHULING HOSPITAL">
-                        <img src="Hospital Customers/BICOL REGIONAL TRAINING AND TEACHING HOSPITAL.png" alt="BICOL REGIONAL TRAINING AND TEACHING HOSPITAL">
-                        <img src="Hospital Customers/AGO GENERAL HOSPITAL.jpg" alt="AGO GENERAL HOSPITAL">
-                        <img src="Hospital Customers/AQUINAS UNIVERSITY HOSPITAL.jpg" alt="AQUINAS UNIVERSITY HOSPITAL">
-                        <img src="Hospital Customers/BMC.png" alt="BICOL MEDICAL CENTER">
-                        <img src="Hospital Customers/DR. AMANDO D. COPE MEMORIAL HOSPITAL.jpg" alt="DR. AMANDO D. COPE MEMORIAL HOSPITAL">
-                        <img src="Hospital Customers/MOTHER SETON HOSPITAL.png" alt="MOTHER SETON HOSPITAL">
-                        <img src="Hospital Customers/SORSOGON PROVINCIAL HOSPITAL.jpg" alt="SORSOGON PROVINCIAL HOSPITAL">
+            <div class="container mx-auto px-4 py-16 md:py-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-[#6f2c91]">OUR HOSPITAL CUSTOMERS</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                            <img src="Hospital Customers/BMC.png" alt="BICOL MEDICAL CENTER" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\LegazpiCityHospital-nobg.png" alt="LEGAZPI CITY HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\brhmc-nobg.png" alt="BICOL REGIONAL TRAINING AND TEACHING HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\agh-nobg.png" alt="AGO GENERAL HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers/AQUINAS UNIVERSITY HOSPITAL.jpg" alt="AQUINAS UNIVERSITY HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\tanchuling-nobg.png" alt="TANCHULING HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers/MOTHER SETON HOSPITAL.png" alt="MOTHER SETON HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\adc-nobg.png" alt="DR. AMANDO D. COPE MEMORIAL HOSPITAL" class="w-full h-auto object-contain">
+                            <img src="Hospital Customers\sorsogonph-nobg.png" alt="SORSOGON PROVINCIAL HOSPITAL" class="w-full h-auto object-contain">
+                        </div>
                     </div>
-                </div>
-                <div class="hospital-text-container">
-                    <div class="hospital-text-content">
-                        <p>We are committed to supporting the healthcare industry by providing high-purity medical gases essential for patient care, laboratory use, and hospital operations. Our reliable supply chain ensures that hospitals and medical institutions receive the highest quality gases for life-saving treatments and critical applications.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <div class="text-center">
+                            <p class="text-gray-800 text-base md:text-lg leading-relaxed text-justify">
+                                We are committed to supporting the healthcare industry by providing high-purity medical gases essential for patient care, laboratory use, and hospital operations. Our reliable supply chain ensures that hospitals and medical institutions receive the highest quality gases for life-saving treatments and critical applications.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,11 +581,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-teal-700 text-black mt-20 px-5" style="width: 100%;">
-        <div class="max-w-8xl mx-auto bg-green-100 p-10">
-            <div class="grid grid-cols-12 gap-8">
+    <footer class="bg-teal-700 text-black mt-20 px-4 md:px-5" style="width: 100%;">
+        <div class="max-w-8xl mx-auto bg-green-100 p-6 md:p-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
                 <!-- Social Icons Column -->
-                <div class="col-span-3 flex items-start">
+                <div class="col-span-1 md:col-span-3 flex justify-center md:justify-start">
                     <div class="flex items-center space-x-6">
                         <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link hover:opacity-75 transition-opacity text-black" target="_blank" rel="noopener">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
@@ -166,18 +606,18 @@
                 </div>
 
                 <!-- Our Address Column -->
-                <div class="col-span-6">
-                    <h3 class="text-xl font-bold mb-4 text-black">OUR ADDRESS</h3>
+                <div class="col-span-1 md:col-span-6">
+                    <h3 class="text-xl font-bold mb-4 text-black text-center md:text-left">OUR ADDRESS</h3>
                     <div class="space-y-4 text-black">
                         <div>
-                            <h4 class="font-semibold">MAIN OFFICE ADDRESS</h4>
-                            <ul class="text-left list-disc pl-5">
+                            <h4 class="font-semibold text-center md:text-left">MAIN OFFICE ADDRESS</h4>
+                            <ul class="text-center md:text-left list-none md:list-disc md:pl-5">
                                 <li>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</li>
                             </ul>
                         </div>
                         <div>
-                            <h4 class="font-semibold">PLANT ADDRESS</h4>
-                            <ul class="text-left list-disc pl-5">
+                            <h4 class="font-semibold text-center md:text-left">PLANT ADDRESS</h4>
+                            <ul class="text-center md:text-left list-none md:list-disc md:pl-5">
                                 <li>LEGASPI PLANT - Diversion Road, Bogtong, Legaspi City</li>
                                 <li>PALO PLANT - Brgy. Campetic, Palo, Leyte</li>
                                 <li>DUMAGUETE PLANT - Brgy. Bagacay, Dumaguete City, Negros Oriental</li>
@@ -187,14 +627,14 @@
                 </div>
 
                 <!-- Contact Info Column -->
-                <div class="col-span-3">
-                    <h3 class="text-xl font-bold mb-4 text-black">CONTACT INFO</h3>
-                    <ul class="space-y-2 text-black text-left list-disc pl-5">
-                        <li class="flex items-center">
+                <div class="col-span-1 md:col-span-3">
+                    <h3 class="text-xl font-bold mb-4 text-black text-center md:text-left">CONTACT INFO</h3>
+                    <ul class="space-y-2 text-black text-center md:text-left list-none md:list-disc md:pl-5">
+                        <li class="flex items-center justify-center md:justify-start">
                             <span class="material-icons mr-2">phone</span>
                             <span>09175179396</span>
                         </li>
-                        <li class="flex items-center">
+                        <li class="flex items-center justify-center md:justify-start">
                             <span class="material-icons mr-2">email</span>
                             <span>dewantrading88@gmail.com</span>
                         </li>
@@ -210,6 +650,112 @@
         </div>
     </footer>
 
-    <script src="contact.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.menu-button');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuButton.addEventListener('click', function() {
+                navLinks.classList.toggle('hidden');
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <style>
+        /* Add animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Add hover effect for certification cards */
+        .certification-card {
+            transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .customer-logo-card {
+            @apply relative p-6 rounded-xl bg-white/80 backdrop-blur-sm
+                   shadow-md hover:shadow-xl transition-all duration-300
+                   flex items-center justify-center
+                   hover:bg-white/100;
+        }
+
+        .customer-logo-card::before {
+            content: '';
+            @apply absolute inset-0 rounded-xl bg-gradient-to-br
+                   from-emerald-500/5 to-teal-500/5
+                   opacity-0 transition-opacity duration-300;
+        }
+
+        .customer-logo-card:hover::before {
+            @apply opacity-100;
+        }
+
+        /* Enhanced animation for logos */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .customer-logo-card:hover img {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        // Enhanced scroll animations with intersection observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        
+                        // Add stagger effect based on data-aos-delay
+                        const delay = entry.target.getAttribute('data-aos-delay');
+                        if (delay) {
+                            entry.target.style.transitionDelay = `${delay}ms`;
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px'
+            });
+
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease-out';
+                observer.observe(element);
+            });
+
+            // Add hover effect for customer logos
+            const customerLogos = document.querySelectorAll('.customer-logo-card');
+            customerLogos.forEach(logo => {
+                logo.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                logo.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

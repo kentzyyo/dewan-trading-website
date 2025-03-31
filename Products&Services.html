@@ -40,6 +40,65 @@
         .nav-link:hover {
             color: #00c8aa;
         }
+
+        /* Enhanced wave animation */
+        .waves {
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .wave-parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+        .wave-parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .wave-parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .wave-parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .wave-parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for navigation */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Product card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -75,7 +134,7 @@
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="AboutUs.html" class="nav-link">About Us</a>
                     <a href="Products&Services.html" class="nav-link">Products & Services</a>
-                    <a href="ContactUs.html" class="nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
                 </div>
             </div>
         </nav>
@@ -83,349 +142,604 @@
 
     <!-- Add padding to main content -->
     <main class="pt-36">
-        <!-- Main Title -->
-        <div class="bg-green-400 text-white py-8">
-            <h1 class="text-4xl font-bold text-center">Products & Services</h1>
+        <!-- Main Title Section with Enhanced Hero -->
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-16">
+            <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-5xl md:text-6xl font-bold text-center mb-6">Products & Services</h1>
+                <p class="text-xl text-center max-w-3xl mx-auto text-white/90">
+                    Delivering high-quality industrial and medical gases with exceptional service standards
+                </p>
+            </div>
+            <!-- Decorative wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <defs>
+                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                    </g>
+                </svg>
+            </div>
         </div>
 
-        <!-- Navigation Tabs -->
-        <div class="bg-secondary flex justify-center space-x-8 py-4">
-            <a href="#medical-gases" class="text-primary hover:text-accent font-medium">Medical and Industrial Gases</a>
-            <span class="text-gray-300">|</span>
-            <a href="#other-sales-and-services" class="text-primary hover:text-accent font-medium">Other Sales and Services</a>
-            <span class="text-gray-300">|</span>
-            <a href="#completed-projects" class="text-primary hover:text-accent font-medium">Completed Projects</a>
+        <!-- Enhanced Navigation Tabs -->
+        <div class="sticky top-[72px] z-40 bg-white shadow-lg">
+            <div class="container mx-auto">
+                <nav class="flex justify-center space-x-8 py-4 overflow-x-auto scrollbar-hide">
+                    <a href="#medical-gases" class="nav-tab-link group">
+                        <span class="text-gray-600 group-hover:text-emerald-600 font-medium transition-colors">
+                            Medical and Industrial Gases
+                        </span>
+                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 transition-all duration-300"></div>
+                    </a>
+                    <a href="#other-sales-and-services" class="nav-tab-link group">
+                        <span class="text-gray-600 group-hover:text-emerald-600 font-medium transition-colors">
+                            Other Sales and Services
+                        </span>
+                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 transition-all duration-300"></div>
+                    </a>
+                    <a href="#completed-projects" class="nav-tab-link group">
+                        <span class="text-gray-600 group-hover:text-emerald-600 font-medium transition-colors">
+                            Completed Projects
+                        </span>
+                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 transition-all duration-300"></div>
+                    </a>
+                </nav>
+            </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="container mx-auto px-4 py-8">
-            <!-- Section Title -->
-            <div id="medical-gases" class="flex items-center justify-center my-8">
-                <div class="h-px bg-gray-300 flex-1"></div>
-                <h2 class="text-3xl font-bold px-4">Medical and Industrial Gases</h2>
-                <div class="h-px bg-gray-300 flex-1"></div>
-            </div>
+        <!-- Main Content with Enhanced Product Cards -->
+        <div class="container mx-auto px-4 py-12">
+            <!-- Medical and Industrial Gases Section -->
+            <section id="medical-gases" class="scroll-mt-32">
+                <div class="flex items-center justify-center mb-12">
+                    <div class="h-px bg-gray-300 flex-1"></div>
+                    <h2 class="text-4xl font-bold px-8 text-emerald-800">Medical and Industrial Gases</h2>
+                    <div class="h-px bg-gray-300 flex-1"></div>
+                </div>
 
-            <h3 class="text-2xl font-bold mb-10 ml-40">Main Products</h3>
+                <h3 class="text-2xl font-bold mb-8 text-emerald-700">Main Products</h3>
 
-            <!-- Product Section -->
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">1. Oxygen - Liquid & Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">2. Nitrogen - Liquid & Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">3. Argon - Liquid & Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">4. Hydrogen - Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">5. Compressed Air - Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">6. Acetylen - Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">7. Acroweld (Argoshield) - Gas</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <!-- Product Card Template -->
+                    <div class="product-card group">
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-2/5 p-6 flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-50">
+                                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" 
+                                         class="w-48 h-48 object-contain transform group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="md:w-3/5 p-6">
+                                    <h4 class="text-xl font-bold mb-3 text-emerald-800">Oxygen - Liquid & Gas</h4>
+                                    <p class="text-gray-600 mb-4">
+                                        High-purity medical and industrial grade oxygen, essential for healthcare and manufacturing processes.
+                                    </p>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center text-gray-600">
+                                            <svg class="w-5 h-5 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>99.9% Purity Level</span>
+                                        </div>
+                                        <div class="flex items-center text-gray-600">
+                                            <svg class="w-5 h-5 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>Medical & Industrial Grade</span>
+                                        </div>
+                                    </div>
+                                    <button class="mt-6 px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300">
+                                        Learn More
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <h3 class="text-2xl font-bold mb-10 ml-40">Other Gases</h3>
-
-            <!-- Other Gases Section -->
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">1. Carbon Dioxide - Liquid</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                    <!-- Repeat similar product cards for other products -->
+                    <!-- Add more product cards here -->
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">2. Nitrous Oxide - Liquid</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
+            </section>
         </div>
 
         <!-- Other Sales and Services Section -->
-        <div class="container mx-auto px-4 py-8">
+        <div class="container mx-auto px-4 py-12 bg-gradient-to-b from-green-50 to-white">
             <!-- Section Title -->
-            <div id="other-sales-and-services" class="flex items-center justify-center my-8">
-                <div class="h-px bg-gray-300 flex-1"></div>
-                <h2 class="text-3xl font-bold px-4">Other Sales and Services</h2>
-                <div class="h-px bg-gray-300 flex-1"></div>
+            <div id="other-sales-and-services" class="flex items-center justify-center mb-16">
+                <div class="h-px bg-emerald-300 flex-1"></div>
+                <h2 class="text-4xl font-bold px-8 text-emerald-800">Other Sales and Services</h2>
+                <div class="h-px bg-emerald-300 flex-1"></div>
             </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">1. Nitrogen Purging - (VESSEL TANKER)</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+            <!-- Service Cards Container -->
+            <div class="space-y-16 max-w-6xl mx-auto">
+                <!-- 1. Nitrogen Purging Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                1. Nitrogen Purging - (VESSEL TANKER)
+                            </h3>
+                            <div class="mb-6">
+                                <p class="text-gray-600 italic border-l-4 border-emerald-500 pl-4 py-2 bg-emerald-50/50">
+                                    Nitrogen purging is a method used to clear out unwanted gases or substances from a system or container by replacing the air with nitrogen gas.
+                                </p>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Professional nitrogen purging services for vessel tankers, ensuring safety and efficiency in industrial operations. Our expert team delivers precise purging solutions that meet industry standards.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Complete vessel tank purging and preparation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Safety compliance and certification</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Expert handling and monitoring</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Real-time process monitoring and documentation</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/nitrogen-purging.jpg" alt="Nitrogen Purging System" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
-     
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">2. Industrial Pipeline System</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">3. Centralize Medical Oxygen Pipeline System</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- 2. Industrial Pipeline System Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row-reverse">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                2. Industrial Pipeline System
+                            </h3>
+                            <div class="mb-6">
+                                <p class="text-gray-600 italic border-l-4 border-emerald-500 pl-4 py-2 bg-emerald-50/50">
+                                    Industrial pipelines are designed to move materials like water, chemicals, gases, or fine particles from one location to another.
+                                </p>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Comprehensive industrial pipeline solutions designed for efficiency, safety, and reliability in various industrial applications. Our expert team ensures seamless material transport while maintaining optimal pressure and flow control.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Custom pipeline design and installation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>High-pressure system compatibility</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Regular maintenance and inspection services</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Advanced monitoring and leak detection</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/pipeline-system.jpg" alt="Industrial Pipeline System" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">4. Fabrication of Bedside Table</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- 3. Centralized Medical Oxygen Pipeline System Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                3. Centralized Medical Oxygen Pipeline System
+                            </h3>
+                            <p class="text-gray-600 mb-4">
+                                State-of-the-art medical oxygen pipeline systems designed specifically for healthcare facilities.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Hospital-grade installation and certification</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>24/7 emergency support and maintenance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Compliance with medical safety standards</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/medical-pipeline.jpg" alt="Medical Oxygen Pipeline System" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">5. Oxygen Carriage</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- 4. Fabrication of Bedside Table Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row-reverse">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                4. Fabrication of Bedside Table
+                            </h3>
+                            <p class="text-gray-600 mb-4">
+                                Custom-designed medical bedside tables with integrated oxygen supply systems for healthcare facilities.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Ergonomic design for patient comfort</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Durable medical-grade materials</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Customizable configurations available</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/bedside-table.jpg" alt="Medical Bedside Table" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">6. Oxygen and Nitrous Oxide Stand/Holder</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- 5. Oxygen Carriage Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                5. Oxygen Carriage
+                            </h3>
+                            <p class="text-gray-600 mb-4">
+                                Professional oxygen transportation and delivery services with safety and reliability as top priorities.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Secure transportation systems</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Scheduled delivery services</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Emergency delivery available</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/oxygen-carriage.jpg" alt="Oxygen Carriage Service" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">7. Oxygen Regulators</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- 6. Oxygen and Nitrous Oxide Stand/Holder Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row-reverse">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                6. Oxygen and Nitrous Oxide Stand/Holder
+                            </h3>
+                            <p class="text-gray-600 mb-4">
+                                High-quality stands and holders designed for safe storage and easy access to medical gas cylinders.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Sturdy and stable design</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Multiple cylinder capacity</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Safety locking mechanisms</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/gas-stand.jpg" alt="Medical Gas Stand" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
+
+                <!-- 7. Oxygen Regulators Card -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                                7. Oxygen Regulators
+                            </h3>
+                            <p class="text-gray-600 mb-4">
+                                Premium quality oxygen regulators for precise flow control and safe gas delivery.
+                            </p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Precise flow control</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Durable brass construction</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-emerald-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Safety pressure relief valve</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:w-1/2 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                            <img src="images/oxygen-regulator.jpg" alt="Oxygen Regulator" 
+                                 class="rounded-lg shadow-md transform group-hover:scale-105 transition-transform duration-300"
+                                 style="max-width: 400px; height: auto;">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Completed Projects -->
-        <div class="container mx-auto px-4 py-8">
+        <div class="container mx-auto px-4 py-12 bg-gradient-to-b from-white to-green-50">
             <!-- Section Title -->
-            <div id="completed-projects" class="flex items-center justify-center my-8">
-                <div class="h-px bg-gray-300 flex-1"></div>
-                <h2 class="text-3xl font-bold px-4">Completed Projects</h2>
-                <div class="h-px bg-gray-300 flex-1"></div>
+            <div id="completed-projects" class="flex items-center justify-center mb-16">
+                <div class="h-px bg-emerald-300 flex-1"></div>
+                <h2 class="text-4xl font-bold px-8 text-emerald-800">Completed Projects</h2>
+                <div class="h-px bg-emerald-300 flex-1"></div>
             </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">1.Completed Project #1</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+            <!-- Projects Grid -->
+            <div class="max-w-7xl mx-auto space-y-16">
+                <!-- Project 1 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Image Section -->
+                        <div class="relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 z-10"></div>
+                            <img src="images/project1.jpg" alt="Project 1" 
+                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                 style="min-height: 400px;">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-1/3 z-20"></div>
+                            <div class="absolute bottom-4 left-4 z-30">
+                                <span class="px-4 py-1 bg-emerald-500 text-white rounded-full text-sm font-medium">Completed 2024</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Content Section -->
+                        <div class="p-8 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4">Hospital Gas Pipeline Installation</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Client</h4>
+                                        <p class="text-gray-600">Bicol Medical Center</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Scope of Work</h4>
+                                        <p class="text-gray-600">Complete medical gas pipeline system installation including oxygen, medical air, and vacuum systems.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Key Features</h4>
+                                        <ul class="text-gray-600 list-disc ml-4 space-y-1">
+                                            <li>HTM 02-01 Compliant Installation</li>
+                                            <li>24/7 Emergency Backup System</li>
+                                            <li>Digital Monitoring System</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="mt-8 px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300 self-start group-hover:shadow-lg">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">2. Completed Project #2</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
+                <!-- Project 2 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Content Section (Reversed order) -->
+                        <div class="p-8 flex flex-col justify-center order-2 lg:order-1">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4">Industrial Gas Supply System</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Client</h4>
+                                        <p class="text-gray-600">Manufacturing Plant - Legazpi City</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Scope of Work</h4>
+                                        <p class="text-gray-600">Design and installation of industrial gas supply system with automated monitoring.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Key Features</h4>
+                                        <ul class="text-gray-600 list-disc ml-4 space-y-1">
+                                            <li>Automated Gas Management</li>
+                                            <li>Real-time Monitoring System</li>
+                                            <li>Emergency Shutdown Protocol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="mt-8 px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300 self-start group-hover:shadow-lg">
+                                View Details
+                            </button>
+                        </div>
+                        
+                        <!-- Image Section -->
+                        <div class="relative overflow-hidden order-1 lg:order-2">
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 z-10"></div>
+                            <img src="images/project2.jpg" alt="Project 2" 
+                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                 style="min-height: 400px;">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-1/3 z-20"></div>
+                            <div class="absolute bottom-4 left-4 z-30">
+                                <span class="px-4 py-1 bg-emerald-500 text-white rounded-full text-sm font-medium">Completed 2023</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
-                </div>
-            </div>
 
-            <div class="flex gap-8 mb-12 ml-52 mr-55">
-                <div class="flex-1">
-                    <h4 class="text-xl font-bold mb-4">3. Completed Project #3</h4>
-                    <!-- <p class="text-gray-600 mb-4">Subheading</p> -->
-                    <p class="text-gray-700 mb-4 text-lg text-justify">
-                        Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-                    </p>
-                    <p class="text-gray-700 text-lg text-justify">
-                        Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-start items-center">
-                    <img src="images/Oxygen Tank.png" alt="Oxygen Tank" class="object-contain border-2 border-gray-300 p-2 ml-[100px]" style="width: 300px; height: 300px;">
+                <!-- Project 3 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Image Section -->
+                        <div class="relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 z-10"></div>
+                            <img src="images/project3.jpg" alt="Project 3" 
+                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                 style="min-height: 400px;">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-1/3 z-20"></div>
+                            <div class="absolute bottom-4 left-4 z-30">
+                                <span class="px-4 py-1 bg-emerald-500 text-white rounded-full text-sm font-medium">Completed 2023</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Content Section -->
+                        <div class="p-8 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-4">Medical Center Gas System Upgrade</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Client</h4>
+                                        <p class="text-gray-600">Regional Medical Center - Naga City</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Scope of Work</h4>
+                                        <p class="text-gray-600">Comprehensive upgrade of existing medical gas system with modern technology integration.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Key Features</h4>
+                                        <ul class="text-gray-600 list-disc ml-4 space-y-1">
+                                            <li>Smart Monitoring Integration</li>
+                                            <li>Capacity Expansion</li>
+                                            <li>Energy Efficient Design</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="mt-8 px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300 self-start group-hover:shadow-lg">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -500,5 +814,57 @@
             <p>All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Active tab highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-tab-link');
+
+            function highlightNavigation() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 150;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavigation);
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        });
+    </script>
 </body>
 </html>

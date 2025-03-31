@@ -101,15 +101,78 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add smooth scrolling for anchor links
+// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
-                behavior: 'smooth'
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+    });
+}, observerOptions);
+
+// Add animation classes to elements
+document.querySelectorAll('.about-section, .qualifications-section, .valued-customers-container').forEach(el => {
+    el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+    observer.observe(el);
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero-section');
+    if (hero) {
+        const scrolled = window.pageYOffset;
+        hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+    }
+});
+
+// Mobile menu toggle
+const mobileMenuButton = document.querySelector('.mobile-menu-button');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuButton && navLinks) {
+    mobileMenuButton.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (navLinks && mobileMenuButton && 
+        !navLinks.contains(e.target) && 
+        !mobileMenuButton.contains(e.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
+// Add scroll progress indicator
+const progressBar = document.createElement('div');
+progressBar.className = 'fixed top-0 left-0 h-1 bg-green-600 z-50 transition-all duration-300';
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
 }); 

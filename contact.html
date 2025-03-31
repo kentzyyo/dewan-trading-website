@@ -4,262 +4,552 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Dewan Trading Corp</title>
-    <link rel="stylesheet" href="contact.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            max-width: 1440px;
+            min-height: 100vh;
+            margin: 0 auto;
+            overflow-x: hidden;
+            padding-top: 120px; /* Add padding to account for fixed header */
+        }
+        
+        /* Fixed header styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: white;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .top-info-bar {
+            background: linear-gradient(to right, #ecfdf5, #d1fae5);
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Add scroll behavior */
+        .scrolled .top-info-bar {
+            padding: 0.25rem 1rem;
+        }
+
+        .scrolled .main-nav {
+            padding: 0.5rem 0;
+        }
+
+        .nav-logo {
+            height: 64px;
+            transition: height 0.3s ease;
+        }
+
+        .scrolled .nav-logo {
+            height: 48px;
+        }
+        
+        .wave-container {
+            position: relative;
+        }
+        
+        .wave-container::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23f0fdf4' d='M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 200, 170, 0.95), rgba(16, 185, 129, 0.85));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            opacity: 0.1;
+            animation: moveBackground 20s linear infinite;
+        }
+        
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+        
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(to right, #10b981, #059669);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover {
+            color: #059669;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+    </style>
 </head>
-<body>
-    <!-- Top Info Bar -->
-    <div class="top-info-bar">
-        <div class="location-info">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
-        </div>
-        <div class="contact-info">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span>dewantrading88@gmail.com</span>
-            <span class="divider">|</span>
-            <span>09175179396</span>
-        </div>
+<body class="bg-green-50">
+    <!-- Replace the fixed header wrapper div with this updated version -->
+    <div class="fixed-header">
+        <!-- Top info bar -->
+        <header class="top-info-bar text-gray-800">
+            <div class="flex justify-between items-center max-w-7xl mx-auto">
+                <div class="flex items-center">
+                    <span class="material-icons text-emerald-600 text-sm">location_on</span>
+                    <span class="ml-2 text-xs hover:text-emerald-600 transition-colors duration-300">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
+                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
+                        dewantrading88@gmail.com
+                    </a>
+                    <a href="tel:09175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
+                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
+                        09175179396
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Logo and Navigation -->
+        <nav class="main-nav">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
+                <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
+                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                </div>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="AboutUs.html" class="nav-link">About Us</a>
+                    <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </div>
+            </div>  
+        </nav>
     </div>
 
-    <!-- Navbar with Logo and Centered Navigation -->
-    <nav class="navbar">
-        <!-- Logo in the corner -->
-        <div class="logo-container">
-            <img src="logo/logo.png" alt="Dewan Trading Logo" class="logo">
-        </div>
-        
-        <!-- Centered navigation items with bullet separators -->
-        <div class="nav-links">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Products&Services.html">Products & Services</a></li> 
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('gas-tank.jpg');">
-        <div class="hero-overlay"></div>
-        
-        <!-- Text content -->
-        <div class="hero-content">
-            <h1 class="hero-title">Get in touch</h1>
-            <p class="hero-text">Want to get in touch? We'd love to hear from you. Here's how you can reach us.</p>
-        </div>
-        
-        <!-- Absolutely positioned image -->
-        <div class="hero-image">
-            <img src="../images/call-center.jpg" alt="Call Center Representative" class="shadow-lg">
-        </div>
-        
-        <!-- Contact Cards - positioned to overlap with the background -->
-        <div class="contact-cards">
-            <div class="contact-card">
-                <img src="icons/telephone.png" alt="Telephone" class="card-icon">
-                <h2 class="card-title">Talk to Sales</h2>
-                <p class="card-text">+63 917 517 9396</p>
-            </div>
-            <div class="contact-card">
-                <img src="icons/mail.png" alt="mail" class="card-icon">
-                <h2 class="card-title">Contact via Email</h2>
-                <a href="mailto:dewantrading88@gmail.com" class="contact-button">Email Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Light green section -->
-    <div class="light-green-section">
-        <!-- Heading for global offices -->
-        <h2 class="global-offices-title">Connect with our global offices</h2>
-        
-        <div class="map-and-address-container">
-            <!-- Map Section -->
-            <div class="map-container">
-                <div class="mapouter">
-                    <div class="gmap_canvas">
-                        <iframe class="gmap_iframe" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dewan trading&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;maptype=roadmap"></iframe>
-                    </div>
-                    <div class="map-controls">
-                        <a href="https://maps.google.com/maps?q=dewan+trading&amp;t=&amp;z=7" target="_blank" class="view-larger-map">View larger map</a>
-                    </div>
+    <!-- Update main padding -->
+    <main class="relative">
+        <!-- Hero Section with Wave -->
+        <section class="wave-container relative overflow-hidden">
+            <div class="hero-overlay bg-cover bg-center text-white py-24 px-5 relative" style="background-image: url('gas-tank.jpg');">
+                <div class="max-w-4xl mx-auto text-center relative z-10">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in opacity-0" style="animation-delay: 0.3s">CONTACT US</h1>
+                    <p class="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in opacity-0" style="animation-delay: 0.6s">
+                        Get in touch with us for all your industrial and medical gas needs
+                    </p>
                 </div>
             </div>
+        </section>
 
-            <!-- Plant Address Information -->
-            <div class="plant-address-container">
-                <h3 class="plant-address-title">PLANT ADDRESS:</h3>
-                <p class="plant-address">LEGAZPI PLANT: Diversion Road, Bogtong, Legaspi City</p>
-                <p class="plant-address">PALO PLANT : Bgry. Campetic, Palo, Leyte</p>
-                <p class="plant-address">DUMAGUETE PLANT : Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
-                
-                <p class="general-manager">General Manager: Dominic T. Papin</p>
-                <p class="email-address">E-mail Address: <a href="mailto:dewantrading88@gmail.com">dewantrading88@gmail.com</a></p>
-                <p class="phone-number">Telephone/Cellphone Number: 09175179396</p>
-                <p class="contact-person">Contact Person: SHELBY R. BELARDO</p>
-                <p class="officer-title">ADMINISTRATIVE OFFICER</p>
-            </div>
-        </div>
-
-        <!-- Office Locations -->
-        <section class="locations-section">
-            <h2 class="locations-title" onclick="toggleImages()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 18l6-6-6-6"/>
-                </svg>
-                How to find us
-            </h2>
-            <div class="locations-grid">
-                <!-- Palo Plant Display (Left Image) -->
-                <div class="plant-display">
-                    <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" target="_blank" class="plant-image">
-                        <img src="branch/palo-plant.png" alt="Palo Plant">
-                    </a>
-                    <div class="plant-details">
-                        <h3 class="plant-name">PALO PLANT</h3>
-                        <div class="detail-row">
-                            <span class="plant-label">Address</span>
-                            <p class="plant-value">Bgry. Campetic, Palo, Leyte</p>
+        <!-- Contact Cards Section -->
+        <section class="container mx-auto px-5 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Phone Card -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-emerald-100 p-3 rounded-full group-hover:bg-emerald-200 transition-colors duration-300">
+                            <span class="material-icons text-3xl text-emerald-600">phone</span>
                         </div>
-                        <div class="detail-row">
-                            <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
-                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Talk to Sales</h2>
                     </div>
-                </div>
-                
-                <!-- Dumaguete Plant Display (Right Image) -->
-                <div class="plant-display reverse">
-                    <div class="plant-details">
-                        <h3 class="plant-name">DUMAGUETE PLANT</h3>
-                        <div class="detail-row">
-                            <span class="plant-label">Address</span>
-                            <p class="plant-value">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
-                        </div>
-                        <div class="detail-row">
-                            <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
-                        </div>
-                    </div>
-                    <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" target="_blank" class="plant-image">
-                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant">
+                    <p class="text-gray-600 mb-6">Call us directly for immediate assistance with your inquiries.</p>
+                    <a href="tel:09175179396" class="inline-flex items-center text-emerald-600 hover:text-emerald-700 transition-colors duration-300">
+                        <span class="text-2xl font-bold">09175179396</span>
+                        <span class="material-icons ml-2">arrow_forward</span>
                     </a>
                 </div>
-                
-                <!-- Legazpi Plant Display (Left Image) -->
-                <div class="plant-display">
-                    <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" target="_blank" class="plant-image">
-                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant">
+
+                <!-- Email Card -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-emerald-100 p-3 rounded-full group-hover:bg-emerald-200 transition-colors duration-300">
+                            <span class="material-icons text-3xl text-emerald-600">email</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Contact via Email</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6">Send us an email for detailed information about our products and services.</p>
+                    <a href="mailto:dewantrading88@gmail.com" class="inline-flex items-center text-emerald-600 hover:text-emerald-700 transition-colors duration-300">
+                        <span class="text-lg">dewantrading88@gmail.com</span>
+                        <span class="material-icons ml-2">arrow_forward</span>
                     </a>
-                    <div class="plant-details">
-                        <h3 class="plant-name">LEGAZPI PLANT</h3>
-                        <div class="detail-row">
-                            <span class="plant-label">Address</span>
-                            <p class="plant-value">Diversion Road, Bogtong, Legazpi City</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map and Address Section -->
+        <section class="container mx-auto px-5 py-16">
+            <h2 class="text-4xl text-purple-700 text-center font-bold mb-12 animate-fade-in opacity-0" style="animation-delay: 0.3s">Our Locations</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Map Container -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative h-[400px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2003130.4757738032!2d123.45818700173129!3d11.308067584503204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdewan%20trading!5e0!3m2!1sen!2sph!4v1743403438226!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="absolute top-4 right-4 bg-white rounded-lg shadow-md p-4 max-w-xs">
+                            <div class="text-sm font-medium text-gray-700 mb-2">Plant Locations:</div>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span>
+                                    <span>Legazpi Plant</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
+                                    <span>Palo Plant</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
+                                    <span>Dumaguete Plant</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="detail-row">
-                            <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
+                    </div>
+                </div>
+
+                <!-- Address Information -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="material-icons text-emerald-600 mr-2">location_on</span>
+                        Plant Addresses
+                    </h3>
+                    <div class="space-y-6">
+                        <!-- Legazpi Plant -->
+                        <div class="transform hover:-translate-y-1 transition-all duration-300 bg-gradient-to-r from-red-50 to-white p-4 rounded-lg border-l-4 border-red-500">
+                            <h4 class="font-semibold text-emerald-700 mb-2 flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span>
+                                LEGAZPI PLANT
+                            </h4>
+                            <p class="text-gray-600">Diversion Road, Bogtong, Legazpi City</p>
+                            <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" 
+                               target="_blank"
+                               rel="noopener noreferrer" 
+                               class="inline-flex items-center mt-2 text-sm text-red-600 hover:text-red-700">
+                                <span class="material-icons text-sm mr-1">directions</span>
+                                Get Directions
+                            </a>
+                        </div>
+
+                        <!-- Palo Plant -->
+                        <div class="transform hover:-translate-y-1 transition-all duration-300 bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-emerald-700 mb-2 flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
+                                PALO PLANT
+                            </h4>
+                            <p class="text-gray-600">Brgy. Campetic, Palo, Leyte</p>
+                            <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" 
+                               target="_blank"
+                               rel="noopener noreferrer" 
+                               class="inline-flex items-center mt-2 text-sm text-blue-600 hover:text-blue-700">
+                                <span class="material-icons text-sm mr-1">directions</span>
+                                Get Directions
+                            </a>
+                        </div>
+
+                        <!-- Dumaguete Plant -->
+                        <div class="transform hover:-translate-y-1 transition-all duration-300 bg-gradient-to-r from-green-50 to-white p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-semibold text-emerald-700 mb-2 flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
+                                DUMAGUETE PLANT
+                            </h4>
+                            <p class="text-gray-600">Brgy. Bagacay, Dumaguete City, Negros Oriental</p>
+                            <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" 
+                               target="_blank"
+                               rel="noopener noreferrer" 
+                               class="inline-flex items-center mt-2 text-sm text-green-600 hover:text-green-700">
+                                <span class="material-icons text-sm mr-1">directions</span>
+                                Get Directions
+                            </a>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Keep old rows for script compatibility but they'll be hidden via CSS -->
-                <div class="location-row">
-                    <div class="location-image-container">
-                        <img src="branch/palo-plant.png" alt="Palo Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">PALO PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Bgry. Campetic, Palo, Leyte</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
-                    </div>
-                </div>
-                
-                <div class="location-row reverse">
-                    <div class="location-image-container">
-                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">DUMAGUETE PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
-                    </div>
-                </div>
-                
-                <div class="location-row">
-                    <div class="location-image-container">
-                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">LEGAZPI PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Diversion Road, Bogtong, Legazpi City</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                            <span class="material-icons text-emerald-600 mr-2">person</span>
+                            Contact Person
+                        </h4>
+                        <div class="bg-emerald-50 p-4 rounded-lg">
+                            <p class="text-gray-700 font-semibold">SHELBY R. BELARDO</p>
+                            <p class="text-gray-600">ADMINISTRATIVE OFFICER</p>
+                            <div class="mt-2 flex items-center text-sm text-emerald-600">
+                                <span class="material-icons text-sm mr-1">phone</span>
+                                <a href="tel:+639175179396" class="hover:text-emerald-700">+63 917 517 9396</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
 
-    <!-- Footer Divider -->
-    <div class="footer-divider"></div>
+        <!-- Plant Locations Section -->
+        <section class="container mx-auto px-5 py-16">
+            <h2 class="text-4xl text-purple-700 text-center font-bold mb-12">Our Facilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Palo Plant -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                    <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="block relative group">
+                        <img src="images\dewan-trading-palo-plant.png" alt="Palo Plant" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">PALO PLANT</h3>
+                        <div class="space-y-2">
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Address:</span> Brgy. Campetic, Palo, Leyte
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Phone:</span> +63 917 517 9396
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Footer with Contact Information -->
-    <footer class="footer">
-        <div class="footer-content">
-            <!-- Social Media Icons -->
-            <div class="social-icons">
-                <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
-                        <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
-                    </svg>
-                </a>
+                <!-- Dumaguete Plant -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                    <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="block relative group">
+                        <img src="images\dewan-dumaguete-plant.png" alt="Dumaguete Plant" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">DUMAGUETE PLANT</h3>
+                        <div class="space-y-2">
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Address:</span> Brgy. Bagacay, Dumaguete City, Negros Oriental
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Phone:</span> +63 917 517 9396
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legazpi Plant -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                    <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="block relative group">
+                        <img src="images\dewan-legazpi-plant.png" alt="Legazpi Plant" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">LEGAZPI PLANT</h3>
+                        <div class="space-y-2">
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Address:</span> Diversion Road, Bogtong, Legazpi City
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-semibold">Phone:</span> +63 917 517 9396
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Address Information -->
-            <div>
-                <h3 class="footer-heading">OUR ADDRESS</h3>
-                <p class="font-bold"><strong>MAIN OFFICE ADDRESS:</strong></p>
-                <ul class="address-list">
-                    <li>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</li>
-                </ul>
-                
-                <p class="font-bold"><strong>PLANT ADDRESS:</strong></p>
-                <ul class="address-list">
-                    <li>LEGASPI PLANT: Diversion Road, Bogtong, Legaspi City</li>
-                    <li>PALO PLANT : Bgry. Campetic, Palo, Leyte</li>
-                    <li>DUMAGUETE PLANT : Bgry. Bagacay, Dumaguete City, Negros Oriental</li>
-                </ul>
-            </div>
+    <!-- Footer -->
+    <footer class="bg-teal-700 text-black mt-20 px-5" style="width: 100%;">
+        <div class="max-w-8xl mx-auto bg-gradient-to-br from-green-50 to-emerald-100 rounded-t-3xl p-10 shadow-lg">
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Social Icons Column -->
+                <div class="col-span-3 flex items-start">
+                    <div class="flex items-center space-x-6">
+                        <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" 
+                           class="social-link hover:opacity-75 transition-all duration-300 transform hover:scale-110" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                                <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
+                            </svg>
+                        </a>
+                        <a href="#" 
+                           class="social-link hover:opacity-75 transition-all duration-300 transform hover:scale-110" 
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                                <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"/>
+                            </svg>
+                        </a>
+                        <a href="#" 
+                           class="social-link hover:opacity-75 transition-all duration-300 transform hover:scale-110" 
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Contact Information -->
-            <div>
-                <h3 class="footer-heading">CONTACT INFO</h3>
-                <ul class="contact-list">
-                    <li>Contact No. : 09175179396</li>
-                    <li>E-mail : dewantrading88@gmail.com</li>
-                </ul>
+                <!-- Our Address Column -->
+                <div class="col-span-6">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
+                        <span class="material-icons text-emerald-600 mr-2">location_on</span>
+                        OUR ADDRESS
+                    </h3>
+                    <div class="space-y-6 text-gray-700">
+                        <div class="transform hover:-translate-y-1 transition-all duration-300">
+                            <h4 class="font-semibold text-emerald-700 mb-2">MAIN OFFICE ADDRESS</h4>
+                            <ul class="text-left list-disc pl-5 space-y-1">
+                                <li>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</li>
+                            </ul>
+                        </div>
+                        <div class="transform hover:-translate-y-1 transition-all duration-300">
+                            <h4 class="font-semibold text-emerald-700 mb-2">PLANT ADDRESS</h4>
+                            <ul class="text-left list-disc pl-5 space-y-1">
+                                <li>LEGASPI PLANT - Diversion Road, Bogtong, Legaspi City</li>
+                                <li>PALO PLANT - Brgy. Camptec, Palo, Leyte</li>
+                                <li>DUMAGUETE PLANT - Brgy. Bagacay, Dumaguete City, Negros Oriental</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info Column -->
+                <div class="col-span-3">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
+                        <span class="material-icons text-emerald-600 mr-2">contact_mail</span>
+                        CONTACT INFO
+                    </h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
+                            <span class="material-icons text-emerald-600 mr-2">phone</span>
+                            <span>09175179396</span>
+                        </li>
+                        <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
+                            <span class="material-icons text-emerald-600 mr-2">email</span>
+                            <span>dewantrading88@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="text-center bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white">
+            <p>&copy; 2025 DEWAN TRADING CORP.</p>
+            <p>All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Copyright Footer -->
-    <footer class="copyright-footer">
-        <p>©2025 DEWAN TRADING CORP. All Rights Reserved.</p>
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-    <script src="contact.js"></script>
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        entry.target.style.opacity = '1';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                observer.observe(section);
+            });
+
+            // Add hover effect to cards
+            document.querySelectorAll('.bg-white').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Add scroll progress indicator
+            const progressBar = document.createElement('div');
+            progressBar.className = 'fixed top-0 left-0 h-1 bg-emerald-600 z-50 transition-all duration-300';
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        });
+
+        // Add scroll behavior for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.fixed-header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
