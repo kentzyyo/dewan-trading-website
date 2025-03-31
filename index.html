@@ -8,22 +8,83 @@
     <title>Dewan Trading Corporation</title>
     <link rel="stylesheet" href="contact.css">
     <style>
-        .nav-link {
-            color: #333;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: #00c8aa;
-        }
-
         body {
             max-width: 1440px;
             min-height: 100vh;
             margin: 0 auto;
             overflow-x: hidden;
+            padding-top: 120px; /* Add padding to account for fixed header */
+        }
+        
+        /* Fixed header styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: white;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .top-info-bar {
+            background: linear-gradient(to right, #ecfdf5, #d1fae5);
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Add scroll behavior */
+        .scrolled .top-info-bar {
+            padding: 0.25rem 1rem;
+        }
+
+        .scrolled .main-nav {
+            padding: 0.5rem 0;
+        }
+
+        .nav-logo {
+            height: 64px;
+            transition: height 0.3s ease;
+        }
+
+        .scrolled .nav-logo {
+            height: 48px;
+        }
+        
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(to right, #10b981, #059669);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover {
+            color: #059669;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -46,22 +107,22 @@
     </style>
 </head>
 <body class="bg-green-50">
-    <!-- Add a wrapper div for the fixed headers -->
-    <div class="fixed top-0 left-0 right-0 z-50 w-full">
+    <!-- Fixed header wrapper -->
+    <div class="fixed-header">
     <!-- Top info bar -->
-        <header class="bg-green-200 shadow-md text-black py-2 px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
-                <div class="flex items-center mb-2 md:mb-0">
-                <span class="material-icons text-sm">location_on</span>
-                <span class="ml-2 text-xs">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+        <header class="top-info-bar text-gray-800">
+            <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center">
+                    <span class="material-icons text-emerald-600 text-sm">location_on</span>
+                    <span class="ml-2 text-xs hover:text-emerald-600 transition-colors duration-300">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
             </div>
-                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-                <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:underline text-xs">
-                    <span class="material-icons text-sm mr-1">email</span>
+            <div class="flex items-center space-x-6">
+                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
+                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
                     dewantrading88@gmail.com
                 </a>
-                <a href="tel:09175179396" class="flex items-center hover:underline text-xs">
-                    <span class="material-icons text-sm mr-1">phone</span>
+                    <a href="tel:09175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
+                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
                     09175179396
                 </a>
             </div>
@@ -69,29 +130,24 @@
     </header>
 
     <!-- Logo and Navigation -->
-        <nav class="bg-white py-1 px-4">
-            <div class="container mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
-                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
-                        <button class="menu-button md:hidden text-gray-600 focus:outline-none">
-                            <span class="material-icons">menu</span>
-                        </button>
-                    </div>
-                    <div class="nav-links hidden md:flex md:space-x-8">
-                        <a href="index.html" class="nav-link block py-2">Home</a>
-                        <a href="AboutUs.html" class="nav-link block py-2">About Us</a>
-                        <a href="Products&Services.html" class="nav-link block py-2">Products & Services</a>
-                        <a href="contact.html" class="nav-link block py-2">Contact Us</a>
-                    </div>
-                </div>
+        <nav class="main-nav">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
+                <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
+                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
             </div>
-        </nav>
+            <div class="flex space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
             </div>
-            
-    <!-- Add padding to main content to prevent it from being hidden behind fixed header -->
-    <main class="pt-36">
-        <!-- Hero Section with Wave -->
+        </div>
+    </nav>
+    </div>
+
+    <!-- Update main padding -->
+    <main class="relative">
+    <!-- Hero Section with Wave -->
         <section class="relative min-h-screen overflow-hidden">
             <!-- Background with overlay and animated gradient -->
             <div class="absolute inset-0">
@@ -529,7 +585,7 @@
                                                  class="w-48 h-auto object-contain transform transition-all duration-500 
                                                         group-hover:scale-110 group-hover:-rotate-3">
                                         </div>
-                                    </div>
+        </div>
 
                                     <!-- Bottom row logos -->
                                     <div class="flex flex-wrap justify-center gap-16">
@@ -548,8 +604,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
             <!-- Hospital Customers Section -->
             <div class="container mx-auto px-4 py-16 md:py-20">
@@ -755,6 +811,18 @@
                     this.style.transform = 'scale(1)';
                 });
             });
+        });
+    </script>
+
+    <script>
+        // Add scroll behavior for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.fixed-header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
