@@ -5,24 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Dewan Trading Corp</title>
     <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Top Info Bar -->
     <div class="top-info-bar">
         <div class="location-info">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+            Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines
         </div>
         <div class="contact-info">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span>dewantrading88@gmail.com</span>
-            <span class="divider">|</span>
-            <span>09175179396</span>
+            <a href="mailto:dewantrading88@gmail.com" class="email-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                dewantrading88@gmail.com
+            </a>
+            <a href="tel:09175179396" class="phone-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                09175179396
+            </a>
         </div>
     </div>
 
@@ -33,19 +41,26 @@
             <img src="logo/logo.png" alt="Dewan Trading Logo" class="logo">
         </div>
         
-        <!-- Centered navigation items with bullet separators -->
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+        
+        <!-- Centered navigation items -->
         <div class="nav-links">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="AboutUs.html">About Us</a></li>
                 <li><a href="Products&Services.html">Products & Services</a></li> 
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('gas-tank.jpg');">
+    <section class="hero-section">
         <div class="hero-overlay"></div>
         
         <!-- Text content -->
@@ -54,21 +69,18 @@
             <p class="hero-text">Want to get in touch? We'd love to hear from you. Here's how you can reach us.</p>
         </div>
         
-        <!-- Absolutely positioned image -->
-        <div class="hero-image">
-            <img src="../images/call-center.jpg" alt="Call Center Representative" class="shadow-lg">
-        </div>
-        
-        <!-- Contact Cards - positioned to overlap with the background -->
+        <!-- Contact Cards -->
         <div class="contact-cards">
             <div class="contact-card">
                 <img src="icons/telephone.png" alt="Telephone" class="card-icon">
                 <h2 class="card-title">Talk to Sales</h2>
                 <p class="card-text">+63 917 517 9396</p>
+                <a href="tel:+639175179396" class="contact-button">Call Now</a>
             </div>
             <div class="contact-card">
                 <img src="icons/mail.png" alt="mail" class="card-icon">
                 <h2 class="card-title">Contact via Email</h2>
+                <p class="card-text">dewantrading88@gmail.com</p>
                 <a href="mailto:dewantrading88@gmail.com" class="contact-button">Email Us</a>
             </div>
         </div>
@@ -84,7 +96,7 @@
             <div class="map-container">
                 <div class="mapouter">
                     <div class="gmap_canvas">
-                        <iframe class="gmap_iframe" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dewan trading&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;maptype=roadmap"></iframe>
+                        <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dewan trading&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;maptype=roadmap"></iframe>
                     </div>
                     <div class="map-controls">
                         <a href="https://maps.google.com/maps?q=dewan+trading&amp;t=&amp;z=7" target="_blank" class="view-larger-map">View larger map</a>
@@ -101,7 +113,7 @@
                 
                 <p class="general-manager">General Manager: Dominic T. Papin</p>
                 <p class="email-address">E-mail Address: <a href="mailto:dewantrading88@gmail.com">dewantrading88@gmail.com</a></p>
-                <p class="phone-number">Telephone/Cellphone Number: 09175179396</p>
+                <p class="phone-number">Telephone/Cellphone Number: <a href="tel:+639175179396">09175179396</a></p>
                 <p class="contact-person">Contact Person: SHELBY R. BELARDO</p>
                 <p class="officer-title">ADMINISTRATIVE OFFICER</p>
             </div>
@@ -116,10 +128,10 @@
                 How to find us
             </h2>
             <div class="locations-grid">
-                <!-- Palo Plant Display (Left Image) -->
+                <!-- Palo Plant Display -->
                 <div class="plant-display">
                     <a href="https://maps.app.goo.gl/5CnnvCaeZtSUusZN9" target="_blank" class="plant-image">
-                        <img src="branch/palo-plant.png" alt="Palo Plant">
+                        <img src="branch/palo-plant.png" alt="Palo Plant" loading="lazy">
                     </a>
                     <div class="plant-details">
                         <h3 class="plant-name">PALO PLANT</h3>
@@ -129,12 +141,12 @@
                         </div>
                         <div class="detail-row">
                             <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
+                            <p class="plant-value"><a href="tel:+639175179396">+63 917 517 9396</a></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Dumaguete Plant Display (Right Image) -->
+                <!-- Dumaguete Plant Display -->
                 <div class="plant-display reverse">
                     <div class="plant-details">
                         <h3 class="plant-name">DUMAGUETE PLANT</h3>
@@ -144,18 +156,18 @@
                         </div>
                         <div class="detail-row">
                             <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
+                            <p class="plant-value"><a href="tel:+639175179396">+63 917 517 9396</a></p>
                         </div>
                     </div>
                     <a href="https://maps.app.goo.gl/EJsykhGaghw2tNfp7" target="_blank" class="plant-image">
-                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant">
+                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant" loading="lazy">
                     </a>
                 </div>
                 
-                <!-- Legazpi Plant Display (Left Image) -->
+                <!-- Legazpi Plant Display -->
                 <div class="plant-display">
                     <a href="https://maps.app.goo.gl/ct955wKo8tiaFRto9" target="_blank" class="plant-image">
-                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant">
+                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant" loading="lazy">
                     </a>
                     <div class="plant-details">
                         <h3 class="plant-name">LEGAZPI PLANT</h3>
@@ -165,52 +177,32 @@
                         </div>
                         <div class="detail-row">
                             <span class="plant-label">Phone</span>
-                            <p class="plant-value">+63 917 517 9396</p>
+                            <p class="plant-value"><a href="tel:+639175179396">+63 917 517 9396</a></p>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Keep old rows for script compatibility but they'll be hidden via CSS -->
-                <div class="location-row">
-                    <div class="location-image-container">
-                        <img src="branch/palo-plant.png" alt="Palo Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">PALO PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Bgry. Campetic, Palo, Leyte</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
-                    </div>
-                </div>
-                
-                <div class="location-row reverse">
-                    <div class="location-image-container">
-                        <img src="branch/dumaguete-plant.png" alt="Dumaguete Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">DUMAGUETE PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Bgry. Bagacay, Dumaguete City, Negros Oriental</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
-                    </div>
-                </div>
-                
-                <div class="location-row">
-                    <div class="location-image-container">
-                        <img src="branch/legazpi-plant.png" alt="Legazpi Plant" class="location-image">
-                    </div>
-                    <div class="location-info">
-                        <h3 class="location-title">LEGAZPI PLANT</h3>
-                        <p class="location-address-label">Address</p>
-                        <p class="location-address">Diversion Road, Bogtong, Legazpi City</p>
-                        <p class="location-phone-label">Phone</p>
-                        <p class="location-phone">+63 917 517 9396</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2 class="form-title">Send us a message</h2>
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
     </div>
 
     <!-- Footer Divider -->
@@ -221,8 +213,8 @@
         <div class="footer-content">
             <!-- Social Media Icons -->
             <div class="social-icons">
-                <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" class="social-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
                     </svg>
                 </a>
@@ -248,8 +240,8 @@
             <div>
                 <h3 class="footer-heading">CONTACT INFO</h3>
                 <ul class="contact-list">
-                    <li>Contact No. : 09175179396</li>
-                    <li>E-mail : dewantrading88@gmail.com</li>
+                    <li>Contact No. : <a href="tel:+639175179396">09175179396</a></li>
+                    <li>E-mail : <a href="mailto:dewantrading88@gmail.com">dewantrading88@gmail.com</a></li>
                 </ul>
             </div>
         </div>
@@ -261,5 +253,21 @@
     </footer>
 
     <script src="contact.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', data);
+            
+            // For now, just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            event.target.reset();
+            return false;
+        }
+    </script>
 </body>
 </html>
+

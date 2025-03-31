@@ -32,7 +32,7 @@ function toggleImages() {
         plantDisplays.forEach((display, index) => {
             setTimeout(() => {
                 display.classList.add('show');
-            }, 300 + (index * 500)); // 0.5 second delay between each one
+            }, 300 + (index * 200)); // Reduced delay between each one
         });
     }
 }
@@ -42,28 +42,23 @@ function setupImageHoverEffects() {
     const plantImages = document.querySelectorAll('.plant-image');
     
     plantImages.forEach(image => {
-        // Add initial transition class to ensure smooth hover effect
         image.addEventListener('mouseover', function() {
             if (image.parentElement.classList.contains('show')) {
-                image.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                image.style.transform = 'scale(1.05)';
+                image.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
             }
         });
         
-        // Reset transform on reverse ordered images
         image.addEventListener('mouseout', function() {
-            setTimeout(() => {
-                if (image.parentElement.classList.contains('reverse') && 
-                    image.parentElement.classList.contains('show')) {
-                    image.style.transform = 'translateX(0)';
-                } else if (image.parentElement.classList.contains('show')) {
-                    image.style.transform = 'translateX(0)';
-                }
-            }, 50);
+            if (image.parentElement.classList.contains('show')) {
+                image.style.transform = 'scale(1)';
+                image.style.boxShadow = 'none';
+            }
         });
     });
 }
 
-// Initialize with hidden content
+// Initialize with hidden content and setup animations
 document.addEventListener('DOMContentLoaded', function() {
     const plantsContainer = document.querySelector('.locations-grid');
     
@@ -75,21 +70,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup hover effects
     setupImageHoverEffects();
+    
+    // Add scroll animations
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.fade-in-up');
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (elementTop < windowHeight * 0.8) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
 });
 
 // Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const navLinks = document.querySelector('.nav-links');
+    const navbar = document.querySelector('.navbar');
 
     mobileMenuButton.addEventListener('click', function() {
         navLinks.classList.toggle('active');
+        navbar.classList.toggle('menu-open');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.navbar')) {
             navLinks.classList.remove('active');
+            navbar.classList.remove('menu-open');
         }
     });
 
@@ -97,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth > 992) {
             navLinks.classList.remove('active');
+            navbar.classList.remove('menu-open');
         }
     });
 });
@@ -108,8 +123,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
-                behavior: 'smooth'
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
+});
+
+// Form validation and submission
+document.getElementById('contactForm')?.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (!data.name || !data.email || !data.message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    
+    // Here you would typically send the data to your server
+    console.log('Form submitted:', data);
+    
+    // Show success message
+    alert('Thank you for your message! We will get back to you soon.');
+    this.reset();
 }); 
