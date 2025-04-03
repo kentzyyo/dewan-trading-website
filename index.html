@@ -85,6 +85,14 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        .nav-link-active {
+            color: #059669;
+        }
+        
+        .nav-link-active::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -117,7 +125,7 @@
                     <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
             </div>
             <div class="flex space-x-8">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link nav-link-active">Home</a>
                     <a href="about.html" class="nav-link">About Us</a>
                     <a href="products.html" class="nav-link">Products & Services</a>
                 <a href="contact.html" class="nav-link">Contact Us</a>
@@ -586,27 +594,6 @@
         /* Add smooth scroll behavior */
         html {
             scroll-behavior: smooth;
-        }
-
-        /* Add hover effect to navigation links */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #00c8aa;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-            left: 0;
         }
 
         .customer-logo-card {
