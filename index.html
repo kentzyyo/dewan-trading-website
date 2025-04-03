@@ -6,15 +6,146 @@
     <title>Home - Dewan Trading Corporation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Add AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Add custom fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             max-width: 1440px;
             min-height: 100vh;
             margin: 0 auto;
             overflow-x: hidden;
-            padding-top: 120px; /* Add padding to account for fixed header */
+            padding-top: 120px;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
+        /* Mobile-first responsive styles */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .text-4xl {
+                font-size: 2rem;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .top-info-bar {
+                display: none;
+            }
+
+            .nav-logo {
+                height: 48px;
+            }
+
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Enhanced responsive navigation */
+        @media (max-width: 768px) {
+            .main-nav .container {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Responsive grid layouts */
+        @media (max-width: 1024px) {
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .lg\:col-span-2 {
+                grid-column: span 1;
+            }
+
+            .lg\:sticky {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        /* Responsive spacing */
+        @media (max-width: 768px) {
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .py-16 {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            .gap-8 {
+                gap: 1rem;
+            }
+
+            .p-8 {
+                padding: 1rem;
+            }
+        }
+
+        /* Responsive images */
+        @media (max-width: 768px) {
+            .object-contain {
+                max-height: 150px;
+            }
+        }
+
+        /* Responsive text */
+        @media (max-width: 768px) {
+            .text-lg {
+                font-size: 1rem;
+            }
+
+            .mb-16 {
+                margin-bottom: 2rem;
+            }
+
+            .mb-12 {
+                margin-bottom: 1.5rem;
+            }
+
+            .mb-8 {
+                margin-bottom: 1rem;
+            }
+        }
+
         /* Fixed header styles */
         .fixed-header {
             position: fixed;
@@ -25,6 +156,9 @@
             background-color: white;
             transform: translateZ(0);
             will-change: transform;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
         .top-info-bar {
@@ -34,24 +168,30 @@
         }
 
         .main-nav {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
-        /* Add scroll behavior */
+        /* Enhanced scroll behavior */
+        .scrolled .fixed-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
         .scrolled .top-info-bar {
             padding: 0.25rem 1rem;
+            transform: translateY(-100%);
         }
 
         .scrolled .main-nav {
             padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .nav-logo {
             height: 64px;
-            transition: height 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .scrolled .nav-logo {
@@ -64,6 +204,7 @@
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
         
         .nav-link::after {
@@ -85,9 +226,251 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Enhanced animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #10b981, #059669);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(to right, #10b981, #059669);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #10b981;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Card hover effects */
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Image hover effects */
+        .image-hover {
+            transition: all 0.5s ease;
+            filter: brightness(1);
+        }
+
+        .image-hover:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* Text gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Gradient animation */
+        @keyframes gradient-x {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-gradient-x {
+            background-size: 200% 200%;
+            animation: gradient-x 15s ease infinite;
+        }
+
+        /* Text reveal animation */
+        @keyframes text-reveal {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .text-reveal {
+            animation: text-reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Enhanced hover effects */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Shine effect */
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .shine:hover::after {
+            transform: rotate(45deg) translate(100%, 100%);
+        }
+
+        /* Glow effect */
+        .glow {
+            transition: all 0.3s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Pulse animation */
+        @keyframes soft-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-soft-pulse {
+            animation: soft-pulse 2s ease-in-out infinite;
+        }
+
+        /* Enhanced backdrop blur */
+        .backdrop-blur-enhanced {
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Text gradient animation */
+        .animate-text-gradient {
+            background: linear-gradient(
+                to right,
+                #047857,
+                #0d9488,
+                #047857
+            );
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-gradient 3s linear infinite;
+        }
+
+        @keyframes text-gradient {
+            to { background-position: 200% center; }
+        }
     </style>
 </head>
 <body class="bg-green-50">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" style="width: 0%"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <span class="material-icons">arrow_upward</span>
+    </button>
+
     <!-- Fixed header wrapper -->
     <div class="fixed-header">
     <!-- Top info bar -->
@@ -102,9 +485,9 @@
                         <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
                     dewantrading88@gmail.com
                 </a>
-                    <a href="tel:09175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
+                    <a href="tel:+639175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
                         <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
-                    09175179396
+                    +639175179396
                 </a>
             </div>
         </div>
@@ -113,84 +496,269 @@
     <!-- Logo and Navigation -->
         <nav class="main-nav">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
-                <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
-                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                    </div>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none" aria-label="Toggle mobile menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8 w-full md:w-auto">
+                    <a href="index.html" class="nav-link block py-2">Home</a>
+                    <a href="about.html" class="nav-link block py-2">About Us</a>
+                    <a href="products.html" class="nav-link block py-2">Products & Services</a>
+                    <a href="contact.html" class="nav-link block py-2">Contact Us</a>
+                </div>
             </div>
-            <div class="flex space-x-8">
-                <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link">About Us</a>
-                    <a href="products.html" class="nav-link">Products & Services</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 
-    <!-- Main content here -->
-    <main class="relative">
-    <!-- Hero Section with Wave -->
-        <section class="relative min-h-screen overflow-hidden">
-            <!-- Background with overlay and animated gradient -->
-            <div class="absolute inset-0">
-                <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-90"></div>
-                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-teal-800/10 backdrop-blur-sm"></div>
-                <div class="absolute inset-0 bg-black/5"></div>
+    <!-- Floating Notification -->
+    <div id="notification" class="fixed bottom-4 left-4 bg-white rounded-lg shadow-xl p-4 transform translate-y-full opacity-0 transition-all duration-500 z-50 max-w-md">
+        <div class="flex items-start">
+            <div class="flex-shrink-0">
+                <svg class="h-6 w-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
             </div>
+            <div class="ml-3 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-gray-900">Welcome to Dewan Trading!</p>
+                <p class="mt-1 text-sm text-gray-500">Discover our wide range of industrial and medical gases.</p>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+                <button id="closeNotification" class="inline-flex text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Close</span>
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
-            <!-- Animated particles with reduced opacity -->
-            <div id="particles-js" class="absolute inset-0 z-0 opacity-20"></div>
+    <!-- Main content -->
+    <main class="relative">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
+            <!-- Background with enhanced overlay -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-90 transform scale-105 transition-transform duration-1000 bg-fixed"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/30 to-teal-800/30 backdrop-blur-sm"></div>
+                <!-- Animated gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-teal-500/10 animate-gradient-x"></div>
+                <!-- Animated dots pattern -->
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_white_1px,_transparent_0)] bg-[length:40px_40px]"></div>
+                </div>
+            </div>
 
             <!-- Content -->
             <div class="relative z-10 container mx-auto px-4 h-screen flex flex-col justify-center items-center text-center">
-                <!-- Animated text reveal -->
-                <div class="overflow-hidden mb-12 transform hover:scale-105 transition-all duration-500">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight opacity-0 transform translate-y-8 transition-all duration-1000 ease-out drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]" id="hero-title">
-                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">"Quality is partnership</span>
-                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">with the customer,</span>
-                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">realizing requirements,</span>
-                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300">commitments,</span>
-                        <span class="block hover:text-emerald-300 transition-colors duration-300">and continuous development."</span>
+                <!-- Quote mark decoration -->
+                <div class="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 opacity-10">
+                    <svg class="w-32 h-32 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                </div>
+
+                <!-- Main text with enhanced styling -->
+                <div class="overflow-hidden mb-12 transform hover:scale-105 transition-all duration-500 max-w-5xl" data-aos="fade-up">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight opacity-0 transform translate-y-8 transition-all duration-1000 ease-out drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]" id="hero-title">
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300 bg-gradient-to-r from-black to-black/90 bg-clip-text text-transparent">"Quality is partnership</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300 bg-gradient-to-r from-black/90 to-black/80 bg-clip-text text-transparent">with the customer,</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300 bg-gradient-to-r from-black/80 to-black/90 bg-clip-text text-transparent">realizing requirements,</span>
+                        <span class="block mb-3 hover:text-emerald-300 transition-colors duration-300 bg-gradient-to-r from-black/90 to-black bg-clip-text text-transparent">commitments,</span>
+                        <span class="block hover:text-emerald-300 transition-colors duration-300 bg-gradient-to-r from-black to-black/90 bg-clip-text text-transparent">and continuous development."</span>
                     </h1>
                 </div>
 
-                <!-- Animated button with enhanced hover effects -->
-                <a href="#learn-more" 
-                   class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-medium text-black bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl opacity-0 translate-y-8 hover:rotate-1" 
-                   id="hero-button">
-                    <span class="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-300"></span>
-                    <span class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span class="relative flex items-center">
-                        LEARN MORE
-                        <svg class="w-6 h-6 ml-3 -mr-1 transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </span>
-                </a>
+                <!-- Enhanced CTA section -->
+                <div class="space-y-8" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Primary CTA -->
+                    <a href="#learn-more" 
+                       class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl opacity-0 translate-y-8" 
+                       id="hero-button">
+                        <!-- Button shine effect -->
+                        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                        <span class="relative flex items-center font-semibold tracking-wide">
+                            LEARN MORE
+                            <svg class="w-6 h-6 ml-3 transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Secondary actions -->
+                    <div class="flex items-center justify-center space-x-6">
+                        <a href="contact.html" class="flex items-center text-white/80 hover:text-white transition-colors duration-300">
+                            <span class="material-icons text-sm mr-2">phone</span>
+                            <span class="text-sm font-medium">Contact Us</span>
+                        </a>
+                        <span class="text-white/30">|</span>
+                        <a href="products.html" class="flex items-center text-white/80 hover:text-white transition-colors duration-300">
+                            <span class="material-icons text-sm mr-2">inventory_2</span>
+                            <span class="text-sm font-medium">View Products</span>
+                        </a>
+                    </div>
+                </div>
 
                 <!-- Enhanced scroll indicator -->
-                <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 transition-all duration-500 hover:scale-110" id="scroll-indicator">
-                    <div class="animate-bounce">
-                        <svg class="w-8 h-8 text-white filter drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
+                <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 transition-all duration-500 hover:scale-110 cursor-pointer group" id="scroll-indicator">
+                    <div class="relative">
+                        <div class="animate-bounce">
+                            <svg class="w-8 h-8 text-white/80 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </div>
+                        <!-- Pulse effect -->
+                        <div class="absolute top-0 left-0 w-full h-full animate-ping opacity-30">
+                            <svg class="w-8 h-8 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <p class="text-white text-sm mt-2 font-medium tracking-wider">Scroll Down</p>
+                    <p class="text-white/80 group-hover:text-white text-sm mt-2 font-medium tracking-wider transition-colors duration-300">Scroll Down</p>
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute top-1/4 left-10 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute bottom-1/4 right-10 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute top-1/3 right-1/4 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="py-20 bg-gradient-to-b from-green-50 to-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Featured Products</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our range of high-quality industrial and medical gases, trusted by leading institutions across the Philippines.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Medical Oxygen -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="relative h-64">
+                            <img src="products/medical-oxygen-nobg.png" alt="Medical Oxygen" class="absolute inset-0 w-full h-full object-contain p-6">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Medical Oxygen</h3>
+                            <p class="text-gray-600 mb-4">High-purity oxygen for medical applications, meeting strict healthcare standards.</p>
+                            <a href="products.html" class="inline-flex items-center text-emerald-600 hover:text-emerald-700">
+                                Learn More
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Industrial Gases -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="relative h-64">
+                            <img src="products/industrial-gas-nobg.png" alt="Industrial Gases" class="absolute inset-0 w-full h-full object-contain p-6">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Industrial Gases</h3>
+                            <p class="text-gray-600 mb-4">Complete range of industrial gases for manufacturing and engineering needs.</p>
+                            <a href="products.html" class="inline-flex items-center text-emerald-600 hover:text-emerald-700">
+                                Learn More
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Gas Equipment -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="relative h-64">
+                            <img src="products/gas-equipment-nobg.png" alt="Gas Equipment" class="absolute inset-0 w-full h-full object-contain p-6">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Gas Equipment</h3>
+                            <p class="text-gray-600 mb-4">Professional gas handling equipment and accessories for safe operations.</p>
+                            <a href="products.html" class="inline-flex items-center text-emerald-600 hover:text-emerald-700">
+                            Learn More
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Enhanced animated wave -->
-            <div class="absolute bottom-0 left-0 right-0">
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
-                    <defs>
-                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs>
-                    <g class="wave-parallax">
-                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
-                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
-                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
-                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
-                    </g>
-                </svg>
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-gradient-to-b from-white to-green-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose Us?</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Experience excellence in gas supply with our comprehensive solutions and dedicated service.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Quality -->
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="material-icons text-3xl text-emerald-600">verified</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Quality Assured</h3>
+                        <p class="text-gray-600">ISO certified processes ensuring highest quality standards</p>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="material-icons text-3xl text-emerald-600">history</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">15+ Years Experience</h3>
+                        <p class="text-gray-600">Serving the industry since 2008 with expertise</p>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="material-icons text-3xl text-emerald-600">support_agent</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">24/7 Support</h3>
+                        <p class="text-gray-600">Round-the-clock customer service and support</p>
+                    </div>
+
+                    <!-- Nationwide -->
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="material-icons text-3xl text-emerald-600">location_on</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Multiple Locations</h3>
+                        <p class="text-gray-600">Strategic plants across the Philippines</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-20 bg-gradient-to-r from-emerald-600 to-teal-700 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-10"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-6 text-black">Ready to Get Started?</h2>
+                    <p class="text-lg mb-8 text-black">Contact us today to discuss your industrial or medical gas requirements.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-lg font-semibold hover:bg-emerald-50 transition-colors duration-300">
+                            Contact Us
+                            <span class="material-icons ml-2 text-black">arrow_forward</span>
+                        </a>
+                        <a href="products.html" class="inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black rounded-lg font-semibold hover:bg-white/10 transition-colors duration-300">
+                            View Products
+                            <span class="material-icons ml-2 text-black">inventory_2</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -229,7 +797,7 @@
                 <div class="container mx-auto px-4 relative z-10">
                     <!-- Enhanced header section -->
                     <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight whitespace-nowrap">
                             QUALIFICATIONS / ACCREDITATION
                         </h2>
                         <div class="w-32 h-1 bg-gradient-to-r from-emerald-300 to-teal-300 mx-auto rounded-full mb-8 transform hover:scale-x-110 transition-transform duration-300"></div>
@@ -324,7 +892,7 @@
 
                     <!-- Enhanced description with animation -->
                     <div class="max-w-3xl mx-auto mt-16 text-center animate-on-scroll">
-                        <p class="text-white text-lg md:text-xl leading-relaxed">
+                        <p class="text-black text-lg md:text-xl leading-relaxed">
                             These certifications demonstrate our dedication to maintaining the highest standards of quality, 
                             safety, and regulatory compliance in the medical and industrial gas industry.
                         </p>
@@ -338,108 +906,321 @@
 
             <!-- Our Valued Customers Section -->
             <section class="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                <!-- Decorative background elements -->
-                <div class="absolute inset-0">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_#10B981_1px,_transparent_0)] bg-[length:20px_20px] opacity-5"></div>
-                </div>
-
-                <div class="container mx-auto px-4 relative z-10">
+                <div class="container mx-auto px-4">
                     <!-- Enhanced header -->
                     <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-[#6f2c91] mb-6 tracking-tight animate-on-scroll">
-                            OUR VALUED CUSTOMERS
-                        </h2>
-                        <div class="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full mb-8 transform hover:scale-x-110 transition-transform duration-300"></div>
+                        <h2 class="text-4xl font-bold text-[#6f2c91] mb-4">OUR VALUED CUSTOMERS</h2>
+                        <div class="w-32 h-1 bg-gradient-to-r from-purple-400 to-emerald-400 mx-auto rounded-full mb-8"></div>
                     </div>
 
                     <!-- Main content grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-                        <!-- Left column - Description -->
-                        <div class="animate-on-scroll" data-aos-delay="100">
-                            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 transform hover:scale-[1.02] transition-all duration-300
-                                        border border-emerald-100 hover:border-emerald-200 group">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start max-w-7xl mx-auto relative">
+                        <!-- Left Column - Description -->
+                        <div class="lg:sticky lg:top-24 h-fit">
+                            <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
                                 <div class="relative">
-                                    <!-- Decorative corner elements -->
-                                    <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    
-                                    <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+                                    <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-purple-400"></div>
+                                    <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-purple-400"></div>
+                                    <p class="text-gray-700 text-lg leading-relaxed">
                                         We take pride in being a trusted supplier of high-quality industrial gases to some of the most prominent companies in the industry. Our commitment to reliability, innovation, and customer satisfaction has made us the preferred partner for businesses across power generation, construction, manufacturing, and healthcare sectors.
                                     </p>
                                 </div>
                             </div>
+
+                            <!-- Industry Stats -->
+                            <div class="grid grid-cols-2 gap-4 mt-6">
+                                <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:-translate-y-1 transition-all duration-300">
+                                    <span class="text-3xl font-bold text-purple-600 block mb-2">15+</span>
+                                    <span class="text-gray-600 text-sm">Years Experience</span>
+                                </div>
+                                <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:-translate-y-1 transition-all duration-300">
+                                    <span class="text-3xl font-bold text-emerald-600 block mb-2">100%</span>
+                                    <span class="text-gray-600 text-sm">Quality Assured</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Right column - Industrial Gas Customers -->
-                        <div class="animate-on-scroll" data-aos-delay="200">
-                            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10">
-                                <h3 class="text-2xl md:text-3xl font-bold text-center mb-10 text-[#6f2c91]">
-                                    MAJOR CUSTOMER FOR INDUSTRIAL GAS
-                                </h3>
+                        <!-- Right Column - Industrial Customers -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-xl shadow-lg p-8">
+                                <h3 class="text-2xl font-bold text-center mb-8 text-[#6f2c91]">MAJOR CUSTOMER FOR INDUSTRIAL GAS</h3>
                                 
-                                <!-- Logo grid with enhanced layout -->
-                                <div class="space-y-12">
-                                    <!-- Top row logos -->
-                                    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-                                        <div class="customer-logo-card group">
-                                            <img src="Major Customers/miescor-nobg.png" alt="MIESCOR" 
-                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
-                                                        group-hover:scale-110 group-hover:-rotate-3">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    <!-- MIESCOR -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/miescor-nobg.png" alt="MIESCOR" class="w-full h-auto object-contain">
                                         </div>
-                                        <div class="customer-logo-card group">
-                                            <img src="Major Customers/mayondocks-nobg.png" alt="MAYON DOCKS INC" 
-                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
-                                                        group-hover:scale-110 group-hover:rotate-3">
-                                        </div>
-                                        <div class="customer-logo-card group">
-                                            <img src="Major Customers/aboitizpower-nobg.png" alt="ABOITIZ POWER" 
-                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
-                                                        group-hover:scale-110 group-hover:-rotate-3">
-                                        </div>
-        </div>
+                                    </div>
 
-                                    <!-- Bottom row logos -->
-                                    <div class="flex flex-wrap justify-center gap-16">
-                                        <div class="customer-logo-card group">
-                                            <img src="Major Customers/edc-nobg.png" alt="Energy Development Corporation" 
-                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
-                                                        group-hover:scale-110 group-hover:rotate-3">
+                                    <!-- Mayon Docks -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/mayondocks-nobg.png" alt="MAYON DOCKS INC" class="w-full h-auto object-contain">
                                         </div>
-                                        <div class="customer-logo-card group">
-                                            <img src="Major Customers/goodfound-nobg.png" alt="G Logo" 
-                                                 class="w-48 h-auto object-contain transform transition-all duration-500 
-                                                        group-hover:scale-110 group-hover:-rotate-3">
+                                    </div>
+
+                                    <!-- Aboitiz Power -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/aboitizpower-nobg.png" alt="ABOITIZ POWER" class="w-full h-auto object-contain">
                                         </div>
+                                    </div>
+
+                                    <!-- EDC -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/edc-nobg.png" alt="Energy Development Corporation" class="w-full h-auto object-contain">
+                                        </div>
+                                    </div>
+
+                                    <!-- Goodfound -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/goodfound-nobg.png" alt="G Logo" class="w-full h-auto object-contain">
+                                        </div>
+                                    </div>
+
+                                    <!-- Hi-Tone -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/hi-tone-nobg.png" alt="Hi-Tone" class="w-full h-auto object-contain">
+                                        </div>
+                                    </div>
+
+                                    <!-- Metro Gaisano -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/metro-gaisano-nobg.png" alt="Metro Gaisano" class="w-full h-auto object-contain">
+                                        </div>
+                                    </div>
+
+                                    <!-- EEI -->
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                        <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                                            <img src="Major Customers/eei-nobg.png" alt="EEI" class="w-full h-auto object-contain">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Info Cards -->
+                                <div class="grid grid-cols-2 gap-6 mt-8">
+                                    <div class="bg-gradient-to-r from-purple-50 to-emerald-50 rounded-lg p-6">
+                                        <div class="flex items-center mb-3">
+                                            <span class="material-icons text-purple-600 mr-2">engineering</span>
+                                            <h4 class="font-semibold text-gray-800">Industrial Expertise</h4>
+                                        </div>
+                                        <p class="text-gray-600 text-sm">Specialized solutions for diverse industrial applications</p>
+                                    </div>
+                                    <div class="bg-gradient-to-r from-purple-50 to-emerald-50 rounded-lg p-6">
+                                        <div class="flex items-center mb-3">
+                                            <span class="material-icons text-emerald-600 mr-2">support_agent</span>
+                                            <h4 class="font-semibold text-gray-800">24/7 Support</h4>
+                                        </div>
+                                        <p class="text-gray-600 text-sm">Round-the-clock technical assistance and delivery</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>
-        </section>
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute top-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl -translate-x-16 -translate-y-16"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl translate-x-24 translate-y-24"></div>
+            </section>
 
             <!-- Hospital Customers Section -->
             <div class="container mx-auto px-4 py-16 md:py-20">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                        <h3 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-[#6f2c91]">OUR HOSPITAL CUSTOMERS</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                            <img src="Hospital Customers/BMC.png" alt="BICOL MEDICAL CENTER" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\LegazpiCityHospital-nobg.png" alt="LEGAZPI CITY HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\brhmc-nobg.png" alt="BICOL REGIONAL TRAINING AND TEACHING HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\agh-nobg.png" alt="AGO GENERAL HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers/AQUINAS UNIVERSITY HOSPITAL.jpg" alt="AQUINAS UNIVERSITY HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\tanchuling-nobg.png" alt="TANCHULING HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers/MOTHER SETON HOSPITAL.png" alt="MOTHER SETON HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\adc-nobg.png" alt="DR. AMANDO D. COPE MEMORIAL HOSPITAL" class="w-full h-auto object-contain">
-                            <img src="Hospital Customers\sorsogonph-nobg.png" alt="SORSOGON PROVINCIAL HOSPITAL" class="w-full h-auto object-contain">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-[#6f2c91] mb-4">OUR HOSPITAL CUSTOMERS</h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-purple-400 to-emerald-400 mx-auto rounded-full mb-8"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start max-w-7xl mx-auto">
+                    <!-- Left Column - Description -->
+                    <div class="lg:sticky lg:top-24">
+                        <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
+                            <div class="relative">
+                                <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-purple-400"></div>
+                                <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-purple-400"></div>
+                                <p class="text-gray-700 text-lg leading-relaxed">
+                                    We are committed to supporting the healthcare industry by providing high-purity medical gases essential for patient care, laboratory use, and hospital operations. Our reliable supply chain ensures that hospitals and medical institutions receive the highest quality gases for life-saving treatments and critical applications.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Additional Stats or Info -->
+                        <div class="grid grid-cols-2 gap-4 mt-6">
+                            <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-3xl font-bold text-purple-600 block mb-2">15+</span>
+                                <span class="text-gray-600 text-sm">Partner Hospitals</span>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:-translate-y-1 transition-all duration-300">
+                                <span class="text-3xl font-bold text-emerald-600 block mb-2">24/7</span>
+                                <span class="text-gray-600 text-sm">Support Service</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                        <div class="text-center">
-                            <p class="text-gray-800 text-base md:text-lg leading-relaxed text-justify">
-                                We are committed to supporting the healthcare industry by providing high-purity medical gases essential for patient care, laboratory use, and hospital operations. Our reliable supply chain ensures that hospitals and medical institutions receive the highest quality gases for life-saving treatments and critical applications.
-                            </p>
+
+                    <!-- Right Column - Hospital Logos Grid -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                <!-- BMC -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/BMC.png" alt="BICOL MEDICAL CENTER" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Legazpi City Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/LegazpiCityHospital-nobg.png" alt="LEGAZPI CITY HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- BRHMC -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/brhmc-nobg.png" alt="BICOL REGIONAL TRAINING AND TEACHING HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- AGH -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/agh-nobg.png" alt="AGO GENERAL HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Aquinas -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/AQUINAS UNIVERSITY HOSPITAL.jpg" alt="AQUINAS UNIVERSITY HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Tanchuling -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/tanchuling-nobg.png" alt="TANCHULING HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Mother Seton -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/MOTHER SETON HOSPITAL.png" alt="MOTHER SETON HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- ADC -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/adc-nobg.png" alt="DR. AMANDO D. COPE MEMORIAL HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Sorsogon Provincial -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/sorsogonph-nobg.png" alt="SORSOGON PROVINCIAL HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Donsol District Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/donsol-nobg.png" alt="DONSOL DISTRICT HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Gubat District Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/gubat-nobg.png" alt="GUBAT DISTRICT HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Irosin District Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/irosin-nobg.png" alt="IROSIN DISTRICT HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Castilla District Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/castilla-nobg.png" alt="CASTILLA DISTRICT HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- MMGH Nabua -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/mmgh-nabua-nobg.png" alt="MMGH NABUA" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- MMGH Sorsogon -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/mmg-sorsogon-nobg.png" alt="MMGH SORSOGON" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+
+                                <!-- Zone Medical Hospital -->
+                                <div class="group relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-emerald-100 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
+                                    <div class="relative p-4 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-300">
+                                        <img src="Hospital Customers/zone-nobg.png" alt="ZONE MEDICAL HOSPITAL" class="w-full h-auto object-contain">
+                                    </div>
+                                </div>
+        </div>
+
+                            <!-- Additional Info Cards -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                                <div class="bg-gradient-to-r from-purple-50 to-emerald-50 rounded-lg p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="material-icons text-purple-600 mr-2">verified</span>
+                                        <h3 class="font-semibold text-gray-800">Quality Assurance</h3>
+                                    </div>
+                                    <p class="text-gray-600 text-sm">All our medical gas supplies meet strict healthcare standards and regulations</p>
+                                </div>
+                                <div class="bg-gradient-to-r from-purple-50 to-emerald-50 rounded-lg p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="material-icons text-emerald-600 mr-2">local_shipping</span>
+                                        <h3 class="font-semibold text-gray-800">Reliable Delivery</h3>
+                                    </div>
+                                    <p class="text-gray-600 text-sm">Timely and secure delivery service to all our hospital partners</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -447,9 +1228,31 @@
         </div>
     </main>
 
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg transform translate-y-full transition-transform duration-500 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex-1">
+                    <p class="text-gray-600">
+                        We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
+                        By clicking "Accept All", you consent to our use of cookies.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="cookie-accept" class="px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300">
+                        Accept All
+                    </button>
+                    <button id="cookie-decline" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-300">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-teal-700 text-black mt-20 px-5" style="width: 100%;">
-        <div class="max-w-8xl mx-auto bg-gradient-to-br from-green-50 to-emerald-100 rounded-t-3xl p-10 shadow-lg">
+        <div class="max-w-8xl mx-auto bg-gradient-to-br from-green-50 to-emerald-100 rounded-t-3xl p-10 shadow-lg transform hover:scale-[1.02] transition-all duration-300">
             <div class="grid grid-cols-12 gap-8">
                 <!-- Social Icons Column -->
                 <div class="col-span-3 flex items-start">
@@ -512,7 +1315,7 @@
                     <ul class="space-y-4 text-gray-700">
                         <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
                             <span class="material-icons text-emerald-600 mr-2">phone</span>
-                            <span>09175179396</span>
+                            <span>+639175179396</span>
                         </li>
                         <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
                             <span class="material-icons text-emerald-600 mr-2">email</span>
@@ -530,125 +1333,103 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add scroll behavior for header
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Loading screen
+            setTimeout(() => {
+                document.querySelector('.loading-screen').classList.add('hidden');
+            }, 1000);
+
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.querySelector('.progress-bar').style.width = scrolled + '%';
+            });
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Header scroll behavior
+            let lastScroll = 0;
             window.addEventListener('scroll', () => {
                 const header = document.querySelector('.fixed-header');
-                if (window.scrollY > 10) {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+
+                if (currentScroll > 10) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
+
+                lastScroll = currentScroll;
             });
-        });
-    </script>
 
-    <style>
-        .waves {
-            width: 100%;
-            height: 120px;
-            min-height: 120px;
-            max-height: 180px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform: translateY(2px);
-        }
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 100;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        .wave-parallax > use {
-            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-            filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
-        }
-        .wave-parallax > use:nth-child(1) {
-            animation-delay: -2s;
-            animation-duration: 7s;
-        }
-        .wave-parallax > use:nth-child(2) {
-            animation-delay: -3s;
-            animation-duration: 10s;
-        }
-        .wave-parallax > use:nth-child(3) {
-            animation-delay: -4s;
-            animation-duration: 13s;
-        }
-        .wave-parallax > use:nth-child(4) {
-            animation-delay: -5s;
-            animation-duration: 20s;
-        }
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
-        @keyframes move-forever {
-            0% { transform: translate3d(-90px,0,0); }
-            100% { transform: translate3d(85px,0,0); }
-        }
-
-        /* Add smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Add hover effect to navigation links */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #00c8aa;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        .customer-logo-card {
-            @apply relative p-6 rounded-xl bg-white/80 backdrop-blur-sm
-                   shadow-md hover:shadow-xl transition-all duration-300
-                   flex items-center justify-center
-                   hover:bg-white/100;
-        }
-
-        .customer-logo-card::before {
-            content: '';
-            @apply absolute inset-0 rounded-xl bg-gradient-to-br
-                   from-emerald-500/5 to-teal-500/5
-                   opacity-0 transition-opacity duration-300;
-        }
-
-        .customer-logo-card:hover::before {
-            @apply opacity-100;
-        }
-
-        /* Enhanced animation for logos */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .customer-logo-card:hover img {
-            animation: float 3s ease-in-out infinite;
-        }
-    </style>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced particle.js configuration
+            // Enhanced particles.js configuration
             particlesJS('particles-js', {
                 particles: {
                     number: { value: 100, density: { enable: true, value_area: 1000 } },
                     color: { value: '#ffffff' },
                     shape: { type: 'circle' },
-                    opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+                    opacity: {
+                        value: 0.6,
+                        random: true,
+                        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+                    },
                     line_linked: {
                         enable: true,
                         distance: 150,
@@ -682,47 +1463,115 @@
                 retina_detect: true
             });
 
-            // Enhanced animations on load
+            // Reveal animations
             setTimeout(() => {
                 document.getElementById('hero-title').classList.remove('opacity-0', 'translate-y-8');
                 document.getElementById('hero-button').classList.remove('opacity-0', 'translate-y-8');
                 document.getElementById('scroll-indicator').classList.remove('opacity-0');
             }, 500);
 
-            // Smooth scroll with offset for fixed header
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            // Welcome notification
+            setTimeout(() => {
+                const notification = document.getElementById('notification');
+                notification.classList.remove('translate-y-full', 'opacity-0');
+            }, 2000);
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+            // Close notification
+            document.getElementById('closeNotification').addEventListener('click', () => {
+                const notification = document.getElementById('notification');
+                notification.classList.add('translate-y-full', 'opacity-0');
+            });
+
+            // Cookie consent
+            const cookieConsent = document.getElementById('cookie-consent');
+            const hasConsent = localStorage.getItem('cookie-consent');
+
+            if (!hasConsent) {
+                setTimeout(() => {
+                    cookieConsent.classList.remove('translate-y-full');
+                }, 3000);
+            }
+
+            document.getElementById('cookie-accept').addEventListener('click', () => {
+                localStorage.setItem('cookie-consent', 'accepted');
+                cookieConsent.classList.add('translate-y-full');
+            });
+
+            document.getElementById('cookie-decline').addEventListener('click', () => {
+                localStorage.setItem('cookie-consent', 'declined');
+                cookieConsent.classList.add('translate-y-full');
+            });
+
+            // Image lazy loading
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+
+            // Add hover effects to cards
+            document.querySelectorAll('.hover-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
                 });
             });
 
-            // Add scroll-based animations
-            const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.animate-on-scroll');
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementBottom = element.getBoundingClientRect().bottom;
-                    const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
-                    
-                    if (isVisible) {
-                        element.classList.add('animate-in');
-                    }
-                });
-            };
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll(); // Initial check
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Close mobile menu when window is resized to desktop size
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Add additional mobile-specific styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 768px) {
+                    #mobile-menu {
+                        background: white;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        padding: 1rem;
+                        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                        z-index: 50;
+                    }
+
+                    #mobile-menu .nav-link {
+                        display: block;
+                        padding: 0.75rem;
+                        text-align: center;
+                        border-bottom: 1px solid #e5e7eb;
+                    }
+
+                    #mobile-menu .nav-link:last-child {
+                        border-bottom: none;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
