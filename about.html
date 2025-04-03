@@ -12,45 +12,50 @@
             min-height: 100vh;
             margin: 0 auto;
             overflow-x: hidden;
+            padding-top: 120px; /* Add padding to account for fixed header */
         }
         
-        .wave-container {
-            position: relative;
-        }
-        
-        .wave-container::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23f0fdf4' d='M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(0, 200, 170, 0.95), rgba(16, 185, 129, 0.85));
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-overlay::before {
-            content: '';
-            position: absolute;
+        /* Fixed header styles */
+        .fixed-header {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            opacity: 0.1;
-            animation: moveBackground 20s linear infinite;
+            z-index: 50;
+            background-color: white;
+            transform: translateZ(0);
+            will-change: transform;
         }
-        
-        @keyframes moveBackground {
-            from { background-position: 0 0; }
-            to { background-position: 100% 100%; }
+
+        .top-info-bar {
+            background: linear-gradient(to right, #ecfdf5, #d1fae5);
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Add scroll behavior */
+        .scrolled .top-info-bar {
+            padding: 0.25rem 1rem;
+        }
+
+        .scrolled .main-nav {
+            padding: 0.5rem 0;
+        }
+
+        .nav-logo {
+            height: 64px;
+            transition: height 0.3s ease;
+        }
+
+        .scrolled .nav-logo {
+            height: 48px;
         }
         
         .nav-link {
@@ -206,10 +211,10 @@
     </style>
 </head>
 <body class="bg-green-50">
-    <!-- Add a wrapper div for the fixed headers -->
-    <div class="fixed top-0 left-0 right-0 z-50">
+    <!-- Fixed header wrapper -->
+    <div class="fixed-header">
         <!-- Top info bar -->
-        <header class="bg-gradient-to-r from-emerald-100 to-green-100 shadow-md text-gray-800 py-2 px-5">
+        <header class="top-info-bar text-gray-800">
             <div class="flex justify-between items-center max-w-7xl mx-auto">
                 <div class="flex items-center">
                     <span class="material-icons text-emerald-600 text-sm">location_on</span>
@@ -229,18 +234,18 @@
         </header>
 
         <!-- Logo and Navigation -->
-        <nav class="bg-white py-1 px-5 shadow-md">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <nav class="main-nav">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
                 <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
-                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
+                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
                 </div>
                 <div class="flex space-x-8">
                     <a href="index.html" class="nav-link">Home</a>
-                    <a href="AboutUs.html" class="nav-link">About Us</a>
-                    <a href="Products&Services.html" class="nav-link">Products & Services</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="products.html" class="nav-link">Products & Services</a>
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </div>
-            </div>  
+            </div>
         </nav>
     </div>
 
