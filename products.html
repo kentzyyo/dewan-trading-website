@@ -253,6 +253,15 @@
         .product-card:hover {
             transform: translateY(-5px);
         }
+
+        /* Add this after the existing nav-link styles */
+        .nav-link-active {
+            color: #059669;
+        }
+        
+        .nav-link-active::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -300,7 +309,7 @@
                 <div class="flex space-x-8">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="about.html" class="nav-link">About Us</a>
-                    <a href="products.html" class="nav-link">Products & Services</a>
+                    <a href="products.html" class="nav-link nav-link-active">Products & Services</a>
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </div>
             </div>
