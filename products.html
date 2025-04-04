@@ -1224,71 +1224,87 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-teal-700 text-black mt-20 px-5" style="width: 100%;">
-        <div class="max-w-8xl mx-auto bg-gradient-to-br from-green-50 to-emerald-100 rounded-t-3xl p-10 shadow-lg">
-            <div class="grid grid-cols-12 gap-8">
-                <!-- Social Icons Column -->
-                <div class="col-span-3 flex items-start">
-                    <div class="flex items-center space-x-6">
+    <footer class="bg-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Company and Social -->
+                <div>
+                    <div class="mb-5">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
+                    </div>
+                    <p class="text-gray-600 text-sm mb-6">
+                        Delivering excellence in industrial and medical gases since 2008
+                    </p>
+                    <div class="flex space-x-4">
                         <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" 
-                           class="social-link hover:opacity-75 transition-all duration-300 transform hover:scale-110" 
+                           class="text-gray-600 hover:text-emerald-600 transition-colors" 
                            target="_blank" 
-                           rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+                           rel="noopener noreferrer" 
+                           aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Our Address Column -->
-                <div class="col-span-6">
-                    <h3 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span class="material-icons text-emerald-600 mr-2">location_on</span>
-                        OUR ADDRESS
-                    </h3>
-                    <div class="space-y-6 text-gray-700">
-                        <div class="transform hover:-translate-y-1 transition-all duration-300">
-                            <h4 class="font-semibold text-emerald-700 mb-2">MAIN OFFICE ADDRESS</h4>
-                            <ul class="text-left list-disc pl-5 space-y-1">
-                                <li>Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</li>
-                            </ul>
-                        </div>
-                        <div class="transform hover:-translate-y-1 transition-all duration-300">
-                            <h4 class="font-semibold text-emerald-700 mb-2">PLANT ADDRESS</h4>
-                            <ul class="text-left list-disc pl-5 space-y-1">
-                                <li>LEGASPI PLANT - Diversion Road, Bogtong, Legaspi City</li>
-                                <li>PALO PLANT - Brgy. Camptec, Palo, Leyte</li>
-                                <li>DUMAGUETE PLANT - Brgy. Bagacay, Dumaguete City, Negros Oriental</li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- Our Address -->
+                <div>
+                    <h3 class="text-base font-semibold text-gray-900 mb-4">MAIN OFFICE ADDRESS</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines
+                    </p>
+                    
+                    <h3 class="text-base font-semibold text-gray-900 mb-4 mt-8">PLANT ADDRESS</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>LEGASPI PLANT - Diversion Road, Bogtong, Legaspi City</li>
+                        <li>PALO PLANT - Brgy. Camptec, Palo, Leyte</li>
+                        <li>DUMAGUETE PLANT - Brgy. Bagacay, Dumaguete City, Negros Oriental</li>
+                    </ul>
                 </div>
 
-                <!-- Contact Info Column -->
-                <div class="col-span-3">
-                    <h3 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span class="material-icons text-emerald-600 mr-2">contact_mail</span>
-                        CONTACT INFO
-                    </h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
-                            <span class="material-icons text-emerald-600 mr-2">phone</span>
-                            <span>+639175179396</span>
+                <!-- Contact Us -->
+                <div>
+                    <h3 class="text-base font-semibold text-gray-900 mb-4">CONTACT INFO</h3>
+                    <ul class="text-gray-600 text-sm space-y-3">
+                        <li class="flex items-center">
+                            <span class="material-icons text-sm text-emerald-600 mr-2">phone</span>
+                            <a href="tel:+639175179396" class="hover:text-emerald-600 transition-colors">+63 917 517 9396</a>
                         </li>
-                        <li class="flex items-center transform hover:-translate-y-1 transition-all duration-300">
-                            <span class="material-icons text-emerald-600 mr-2">email</span>
-                            <span>dewantrading88@gmail.com</span>
+                        <li class="flex items-center">
+                            <span class="material-icons text-sm text-emerald-600 mr-2">email</span>
+                            <a href="mailto:dewantrading88@gmail.com" class="hover:text-emerald-600 transition-colors">dewantrading88@gmail.com</a>
                         </li>
+                    </ul>
+
+                    
+                </div>
+
+                <!-- Quick Links -->
+                <div class="hidden lg:block">
+                    <h3 class="text-base font-semibold text-gray-900 mb-4">QUICK LINKS</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li><a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-emerald-600 transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="hover:text-emerald-600 transition-colors">Products & Services</a></li>
+                        <li><a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-
+        
         <!-- Copyright Section -->
-        <div class="text-center bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white">
-            <p>&copy; 2025 DEWAN TRADING CORP.</p>
-            <p>All Rights Reserved.</p>
+        <div class="bg-gray-900 py-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white text-sm">© DEWAN TRADING CORPORATION</p>
+                <div class="mt-2 md:mt-0 flex space-x-6">
+                    <a href="index.html" class="text-gray-400 text-sm hover:text-white transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-400 text-sm hover:text-white transition-colors">About</a>
+                    <a href="products.html" class="text-gray-400 text-sm hover:text-white transition-colors">Products</a>
+                    <a href="contact.html" class="text-gray-400 text-sm hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 
