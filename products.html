@@ -97,36 +97,43 @@
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: white;
             transform: translateZ(0);
             will-change: transform;
+            transition: all 0.3s ease;
         }
 
         .top-info-bar {
-            background: linear-gradient(to right, #ecfdf5, #d1fae5);
+            background: linear-gradient(to right, #10b981, #059669);
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .main-nav {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            padding: 0.75rem 0;
         }
 
-        /* Add scroll behavior */
+        /* Enhanced scroll behavior */
+        .scrolled .fixed-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
         .scrolled .top-info-bar {
             padding: 0.25rem 1rem;
         }
 
         .scrolled .main-nav {
             padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .nav-logo {
-            height: 64px;
-            transition: height 0.3s ease;
+            height: 54px;
+            transition: all 0.3s ease;
         }
 
         .scrolled .nav-logo {
@@ -139,6 +146,9 @@
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
         }
         
         .nav-link::after {
@@ -165,9 +175,9 @@
              color: #059669;
          }
          
-         .nav-link-active::after {
+        .nav-link-active::after {
              width: 100%;
-         }
+        }
 
         /* Enhanced wave animation */
         .waves {
@@ -230,6 +240,191 @@
 
         /* Add this after the existing nav-link styles */
     
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.show {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f9fafb;
+            color: #059669;
+        }
+
+        .mobile-menu a.active {
+            color: #059669;
+            background-color: #f0fdf4;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-button {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-button:hover {
+            color: #059669;
+        }
+
+        /* Enhanced top info bar */
+        .top-info-item {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .top-info-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .top-info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-info-item:hover .top-info-icon {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Responsive styles for header */
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-info-bar {
+                padding: 0.3rem 1rem;
+            }
+
+            .top-info-location {
+                display: none;
+            }
+
+            .main-nav {
+                padding: 0.5rem 0;
+            }
+
+            .nav-logo {
+                height: 48px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .top-info-bar {
+                padding: 0.3rem 0.5rem;
+            }
+            
+            body {
+                padding-top: 80px;
+            }
+        }
+
+        /* Enhanced Navigation Tabs */
+        .sticky-nav {
+            position: sticky;
+            top: 72px;
+            z-index: 40;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab-link {
+            position: relative;
+            white-space: nowrap;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Hide scrollbar for tab navigation */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
+
+        @media (max-width: 768px) {
+            .nav-tab-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .sticky-nav {
+                top: 60px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-tab-link {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .sticky-nav {
+                top: 50px;
+            }
+            
+            /* Adjust layout for product cards on mobile */
+            .product-grid {
+                gap: 1rem;
+            }
+            
+            .product-card {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -244,50 +439,75 @@
     <!-- Fixed header wrapper -->
     <div class="fixed-header">
         <!-- Top info bar -->
-        <header class="top-info-bar text-gray-800">
-            <div class="flex justify-between items-center max-w-7xl mx-auto">
-                <div class="flex items-center">
-                    <span class="material-icons text-emerald-600 text-sm">location_on</span>
-                    <span class="ml-2 text-xs hover:text-emerald-600 transition-colors duration-300">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
-                        dewantrading88@gmail.com
-                    </a>
-                    <a href="tel:+639175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
-                        +639175179396
-                    </a>
+        <header class="top-info-bar">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center top-info-location">
+                        <div class="top-info-icon">
+                            <span class="material-icons text-sm">location_on</span>
+                        </div>
+                        <span class="text-xs font-medium">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <a href="mailto:dewantrading88@gmail.com" class="top-info-item">
+                            <div class="top-info-icon">
+                                <span class="material-icons text-sm">email</span>
+                            </div>
+                            <span class="text-xs font-medium">dewantrading88@gmail.com</span>
+                        </a>
+                        <a href="tel:+639175179396" class="top-info-item">
+                            <div class="top-info-icon">
+                                <span class="material-icons text-sm">phone</span>
+                            </div>
+                            <span class="text-xs font-medium">+639175179396</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Logo and Navigation -->
         <nav class="main-nav">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
-                <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
-                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between">
+                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                    </a>
+                    
+                    <!-- Desktop Navigation Links -->
+                    <div class="hidden lg:flex items-center space-x-6 nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <a href="products.html" class="nav-link nav-link-active">Products & Services</a>
+                        <a href="contact.html" class="nav-link">Contact Us</a>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Open mobile menu">
+                        <span class="material-icons text-2xl">menu</span>
+                    </button>
                 </div>
-                <div class="flex space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link">About Us</a>
-                    <a href="products.html" class="nav-link nav-link-active">Products & Services</a>
-                    <a href="contact.html" class="nav-link">Contact Us</a>
-                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="products.html" class="active">Products & Services</a>
+                <a href="contact.html">Contact Us</a>
             </div>
         </nav>
     </div>
 
     <!-- Add padding to main content -->
-    <main class="pt-36">
+    <main class="pt-24 md:pt-36">
         <!-- Main Title Section with Enhanced Hero -->
-        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-16">
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-8 md:py-16">
             <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
             <div class="absolute inset-0 bg-black/30"></div>
             <div class="container mx-auto px-4 relative z-10">
-                <h1 class="text-5xl md:text-6xl font-bold text-center mb-6 text-black">Products & Services</h1>
-                <p class="text-xl text-center max-w-3xl mx-auto text-black">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-3 md:mb-6 text-black">Products & Services</h1>
+                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-black">
                     Delivering high-quality industrial and medical gases with exceptional service standards
                 </p>
             </div>
@@ -305,12 +525,12 @@
                     </g>
                 </svg>
             </div>
-                </div>
+        </div>
 
         <!-- Enhanced Navigation Tabs -->
-        <div class="sticky top-[72px] z-40 bg-white shadow-lg">
+        <div class="sticky-nav">
             <div class="container mx-auto">
-                <nav class="flex justify-center space-x-8 py-4 overflow-x-auto scrollbar-hide">
+                <nav class="flex justify-center space-x-4 md:space-x-8 py-3 md:py-4 overflow-x-auto scrollbar-hide px-2">
                     <a href="#medical-gases" class="nav-tab-link group">
                         <span class="text-gray-600 group-hover:text-emerald-600 font-medium transition-colors">
                             Medical and Industrial Gases
@@ -331,39 +551,39 @@
                     </a>
                 </nav>
             </div>
-                </div>
+        </div>
 
         <!-- Main Content with Enhanced Product Cards -->
-        <div class="container mx-auto px-4 py-12">
+        <div class="container mx-auto px-3 md:px-4 py-8 md:py-12">
             <!-- Medical and Industrial Gases Section -->
-            <section id="medical-gases" class="scroll-mt-32 py-20 bg-gradient-to-b from-green-50 to-white">
-                <div class="container mx-auto px-4">
+            <section id="medical-gases" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white">
+                <div class="container mx-auto px-3 md:px-4">
                     <!-- Enhanced Section Header -->
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-bold text-emerald-800 mb-4">Medical and Industrial Gases</h2>
-                        <div class="w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-8"></div>
-                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <div class="text-center mb-8 md:mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-3 md:mb-4">Medical and Industrial Gases</h2>
+                        <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-4 md:mb-8"></div>
+                        <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-2">
                             Discover our comprehensive range of high-quality gases for medical and industrial applications, backed by industry-leading expertise and service.
                         </p>
                     </div>
 
                     <!-- Main Products Section -->
-                    <div class="mb-16">
-                        <h3 class="text-2xl font-bold text-emerald-700 mb-12 flex items-center justify-center">
-                            <span class="material-icons text-emerald-500 mr-3">inventory_2</span>
+                    <div class="mb-8 md:mb-16">
+                        <h3 class="text-xl md:text-2xl font-bold text-emerald-700 mb-6 md:mb-12 flex items-center justify-center">
+                            <span class="material-icons text-emerald-500 mr-2 md:mr-3">inventory_2</span>
                             Main Products
                         </h3>
 
                         <!-- Product Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto product-grid">
                             <!-- Oxygen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 product-card">
+                                <div class="relative h-36 md:h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products/medical-oxygen-nobg.png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products/medical-oxygen-nobg.png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-4 md:p-6 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
-                                <div class="p-6">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">OXYGEN</h4>
+                                <div class="p-4 md:p-6">
+                                    <h4 class="text-lg md:text-xl font-bold text-emerald-800 mb-2 md:mb-3 group-hover:text-emerald-600 transition-colors duration-300">OXYGEN</h4>
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-gray-600">
                                             <span>Type:</span>
@@ -568,246 +788,281 @@
             </section>
 
             <!-- Other Sales and Services Section -->
-            <div class="container mx-auto px-4 py-20 bg-gradient-to-b from-green-50 to-white">
-                <!-- Enhanced Section Title -->
-                <div id="other-sales-and-services" class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-emerald-800 mb-4">Other Sales and Services</h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mb-6"></div>
-                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                        Comprehensive solutions for industrial and medical gas applications, backed by expertise and cutting-edge technology.
-                    </p>
-                </div>
+            <section id="other-sales-and-services" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20">
+                <div class="container mx-auto px-3 md:px-4">
+                    <!-- Enhanced Section Title -->
+                    <div class="text-center mb-8 md:mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-3 md:mb-4">Other Sales and Services</h2>
+                        <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-4 md:mb-8"></div>
+                        <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-2">
+                            Beyond our core gas products, we offer a comprehensive range of medical equipment and complementary services.
+                        </p>
+                    </div>
 
-                <!-- Service Cards Container -->
-                <div class="space-y-24 max-w-7xl mx-auto">
-                    <!-- 1. Nitrogen Purging Card -->
-                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
-                        <div class="flex flex-col lg:flex-row">
-                            <div class="lg:w-1/2 p-8 lg:p-12">
-                                <div class="flex items-center mb-6">
-                                    <span class="text-4xl font-bold text-emerald-600/20 mr-4">01</span>
-                                    <h3 class="text-2xl font-bold text-emerald-800">
-                                        Nitrogen Purging
-                                        <span class="text-emerald-600 block text-sm font-normal mt-1">(VESSEL TANKER)</span>
-                                    </h3>
-                                </div>
-                                
-                                <div class="mb-8 bg-emerald-50/50 border-l-4 border-emerald-500 p-4 rounded-r-lg">
-                                    <p class="text-gray-600 italic">
-                                        Nitrogen purging is a method used to clear out unwanted gases or substances from a system or container by replacing the air with nitrogen gas.
+                    <!-- Service Cards Container -->
+                    <div class="space-y-24 max-w-7xl mx-auto">
+                        <!-- 1. Nitrogen Purging Card -->
+                        <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
+                            <div class="flex flex-col lg:flex-row">
+                                <div class="lg:w-1/2 p-8 lg:p-12">
+                                    <div class="flex items-center mb-6">
+                                        <span class="text-4xl font-bold text-emerald-600/20 mr-4">01</span>
+                                        <h3 class="text-2xl font-bold text-emerald-800">
+                                            Nitrogen Purging
+                                            <span class="text-emerald-600 block text-sm font-normal mt-1">(VESSEL TANKER)</span>
+                                        </h3>
+                                    </div>
+                                    
+                                    <div class="mb-8 bg-emerald-50/50 border-l-4 border-emerald-500 p-4 rounded-r-lg">
+                                        <p class="text-gray-600 italic">
+                                            Nitrogen purging is a method used to clear out unwanted gases or substances from a system or container by replacing the air with nitrogen gas.
+                                        </p>
+                                    </div>
+
+                                    <p class="text-gray-600 mb-8 leading-relaxed">
+                                        Professional nitrogen purging services for vessel tankers, ensuring safety and efficiency in industrial operations. Our expert team delivers precise purging solutions that meet industry standards.
                                     </p>
-                                </div>
 
-                                <p class="text-gray-600 mb-8 leading-relaxed">
-                                    Professional nitrogen purging services for vessel tankers, ensuring safety and efficiency in industrial operations. Our expert team delivers precise purging solutions that meet industry standards.
-                                </p>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Complete vessel tank purging and preparation</span>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Complete vessel tank purging and preparation</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Safety compliance and certification</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Safety compliance and certification</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Expert handling and monitoring</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Expert handling and monitoring</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Real-time process monitoring and documentation</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Real-time process monitoring and documentation</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="absolute inset-0 bg-[url('images/nitrogen-purging.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
-                                <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/nitrogen-purging.jpg" alt="Nitrogen Purging System" 
-                                         class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
-                                         style="max-height: 400px; object-fit: cover;">
+                                <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
+                                    <div class="absolute inset-0 bg-[url('images/nitrogen-purging.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
+                                    <div class="relative h-full flex items-center justify-center p-12">
+                                        <img src="images/nitrogen-purging.jpg" alt="Nitrogen Purging System" 
+                                             class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
+                                             style="max-height: 400px; object-fit: cover;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 2. Industrial Pipeline System Card -->
-                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
-                        <div class="flex flex-col lg:flex-row-reverse">
-                            <div class="lg:w-1/2 p-8 lg:p-12">
-                                <div class="flex items-center mb-6">
-                                    <h3 class="text-2xl font-bold text-emerald-800">
-                                        Industrial Pipeline System
-                                    </h3>
-                                    <span class="text-4xl font-bold text-emerald-600/20 ml-4">02</span>
-                                </div>
-                                
-                                <div class="mb-8 bg-emerald-50/50 border-l-4 border-emerald-500 p-4 rounded-r-lg">
-                                    <p class="text-gray-600 italic">
-                                        Industrial pipelines are designed to move materials like water, chemicals, gases, or fine particles from one location to another.
+                        <!-- 2. Industrial Pipeline System Card -->
+                        <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
+                            <div class="flex flex-col lg:flex-row-reverse">
+                                <div class="lg:w-1/2 p-8 lg:p-12">
+                                    <div class="flex items-center mb-6">
+                                        <h3 class="text-2xl font-bold text-emerald-800">
+                                            Industrial Pipeline System
+                                        </h3>
+                                        <span class="text-4xl font-bold text-emerald-600/20 ml-4">02</span>
+                                    </div>
+                                    
+                                    <div class="mb-8 bg-emerald-50/50 border-l-4 border-emerald-500 p-4 rounded-r-lg">
+                                        <p class="text-gray-600 italic">
+                                            Industrial pipelines are designed to move materials like water, chemicals, gases, or fine particles from one location to another.
+                                        </p>
+                                    </div>
+
+                                    <p class="text-gray-600 mb-8 leading-relaxed">
+                                        Comprehensive industrial pipeline solutions designed for efficiency, safety, and reliability in various industrial applications. Our expert team ensures seamless material transport while maintaining optimal pressure and flow control.
                                     </p>
-                                </div>
 
-                                <p class="text-gray-600 mb-8 leading-relaxed">
-                                    Comprehensive industrial pipeline solutions designed for efficiency, safety, and reliability in various industrial applications. Our expert team ensures seamless material transport while maintaining optimal pressure and flow control.
-                                </p>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Custom pipeline design and installation</span>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Custom pipeline design and installation</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">High-pressure system compatibility</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">High-pressure system compatibility</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Regular maintenance and inspection services</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Regular maintenance and inspection services</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Advanced monitoring and leak detection</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Advanced monitoring and leak detection</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="absolute inset-0 bg-[url('images/pipeline-system.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
-                                <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/pipeline-system.jpg" alt="Industrial Pipeline System" 
-                                         class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
-                                         style="max-height: 400px; object-fit: cover;">
+                                <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
+                                    <div class="absolute inset-0 bg-[url('images/pipeline-system.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
+                                    <div class="relative h-full flex items-center justify-center p-12">
+                                        <img src="images/pipeline-system.jpg" alt="Industrial Pipeline System" 
+                                             class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
+                                             style="max-height: 400px; object-fit: cover;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 3. Centralized Medical Oxygen Pipeline System Card -->
-                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
-                        <div class="flex flex-col lg:flex-row">
-                            <div class="lg:w-1/2 p-8 lg:p-12">
-                                <div class="flex items-center mb-6">
-                                    <span class="text-4xl font-bold text-emerald-600/20 mr-4">03</span>
-                                    <h3 class="text-2xl font-bold text-emerald-800">
-                                        Centralized Medical Oxygen Pipeline System
-                                    </h3>
-                                </div>
-                                
-                                <p class="text-gray-600 mb-8 leading-relaxed">
-                                    State-of-the-art medical oxygen pipeline systems designed specifically for healthcare facilities.
-                                </p>
+                        <!-- 3. Centralized Medical Oxygen Pipeline System Card -->
+                        <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
+                            <div class="flex flex-col lg:flex-row">
+                                <div class="lg:w-1/2 p-8 lg:p-12">
+                                    <div class="flex items-center mb-6">
+                                        <span class="text-4xl font-bold text-emerald-600/20 mr-4">03</span>
+                                        <h3 class="text-2xl font-bold text-emerald-800">
+                                            Centralized Medical Oxygen Pipeline System
+                                        </h3>
+                                    </div>
+                                    
+                                    <p class="text-gray-600 mb-8 leading-relaxed">
+                                        State-of-the-art medical oxygen pipeline systems designed specifically for healthcare facilities.
+                                    </p>
 
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Hospital-grade installation and certification</span>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Hospital-grade installation and certification</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">24/7 emergency support and maintenance</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">24/7 emergency support and maintenance</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Compliance with medical safety standards</span>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Compliance with medical safety standards</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="absolute inset-0 bg-[url('images/medical-pipeline.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
-                                <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/medical-pipeline.jpg" alt="Medical Oxygen Pipeline System" 
-                                         class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
-                                         style="max-height: 400px; object-fit: cover;">
+                                <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
+                                    <div class="absolute inset-0 bg-[url('images/medical-pipeline.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
+                                    <div class="relative h-full flex items-center justify-center p-12">
+                                        <img src="images/medical-pipeline.jpg" alt="Medical Oxygen Pipeline System" 
+                                             class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
+                                             style="max-height: 400px; object-fit: cover;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 4. Fabrication of Bedside Table Card -->
-                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
-                        <div class="flex flex-col lg:flex-row-reverse">
-                            <div class="lg:w-1/2 p-8 lg:p-12">
-                                <div class="flex items-center mb-6">
-                                    <h3 class="text-2xl font-bold text-emerald-800">
-                                        Fabrication of Bedside Table
-                                    </h3>
-                                    <span class="text-4xl font-bold text-emerald-600/20 ml-4">04</span>
+                        <!-- 4. Fabrication of Bedside Table Card -->
+                        <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
+                            <div class="flex flex-col lg:flex-row-reverse">
+                                <div class="lg:w-1/2 p-8 lg:p-12">
+                                    <div class="flex items-center mb-6">
+                                        <h3 class="text-2xl font-bold text-emerald-800">
+                                            Fabrication of Bedside Table
+                                        </h3>
+                                        <span class="text-4xl font-bold text-emerald-600/20 ml-4">04</span>
+                                    </div>
+                                    
+                                    <p class="text-gray-600 mb-8 leading-relaxed">
+                                        Custom-designed medical bedside tables with integrated oxygen supply systems for healthcare facilities.
+                                    </p>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Ergonomic design for patient comfort</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Durable medical-grade materials</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
+                                            <div class="flex items-start">
+                                                <span class="text-emerald-500 mr-3">
+                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-gray-700">Customizable configurations available</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                
-                                <p class="text-gray-600 mb-8 leading-relaxed">
-                                    Custom-designed medical bedside tables with integrated oxygen supply systems for healthcare facilities.
-                                </p>
-
+                                <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
                                         <div class="flex items-start">
@@ -1350,7 +1605,7 @@
                 const header = document.querySelector('.fixed-header');
                 const currentScroll = window.pageYOffset;
 
-                if (currentScroll > lastScroll && currentScroll > 100) {
+                if (currentScroll > lastScroll && currentScroll > 200) {
                     header.style.transform = 'translateY(-100%)';
                 } else {
                     header.style.transform = 'translateY(0)';
@@ -1364,6 +1619,42 @@
 
                 lastScroll = currentScroll;
             });
+
+            // Mobile menu toggle - new
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('show');
+                    
+                    // Change icon based on menu state
+                    const icon = mobileMenuButton.querySelector('.material-icons');
+                    if (mobileMenu.classList.contains('show')) {
+                        icon.textContent = 'close';
+                    } else {
+                        icon.textContent = 'menu';
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && 
+                        !mobileMenuButton.contains(e.target) && 
+                        mobileMenu.classList.contains('show')) {
+                        mobileMenu.classList.remove('show');
+                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
+                    }
+                });
+                
+                // Close mobile menu when window is resized above breakpoint
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 1024 && mobileMenu.classList.contains('show')) {
+                        mobileMenu.classList.remove('show');
+                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
+                    }
+                });
+            }
 
             // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

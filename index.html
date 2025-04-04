@@ -49,16 +49,16 @@
                 grid-template-columns: 1fr;
             }
 
-            .top-info-bar {
-                display: none;
-            }
-
             .nav-logo {
                 height: 48px;
             }
 
             .text-4xl {
                 font-size: 1.75rem;
+            }
+
+            body {
+                padding-top: 70px;
             }
         }
 
@@ -146,32 +146,105 @@
             }
         }
 
-        /* Fixed header styles */
+        /* Fixed header styles - updated */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: white;
             transform: translateZ(0);
             will-change: transform;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
+        /* Top info bar */
         .top-info-bar {
-            background: linear-gradient(to right, #ecfdf5, #d1fae5);
+            background: linear-gradient(to right, #10b981, #059669);
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Enhanced top info bar */
+        .top-info-item {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .top-info-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .top-info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-info-item:hover .top-info-icon {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Responsive styles for header */
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-info-bar {
+                padding: 0.3rem 1rem;
+            }
+
+            .top-info-location {
+                display: none;
+            }
+
+            .main-nav {
+                padding: 0.5rem 0;
+            }
+
+            .nav-logo {
+                height: 48px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .top-info-bar {
+                padding: 0.3rem 0.5rem;
+            }
+            
+            body {
+                padding-top: 80px;
+            }
         }
 
         .main-nav {
             background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            padding: 0.75rem 0;
         }
 
         /* Enhanced scroll behavior */
@@ -181,7 +254,6 @@
 
         .scrolled .top-info-bar {
             padding: 0.25rem 1rem;
-            transform: translateY(-100%);
         }
 
         .scrolled .main-nav {
@@ -190,7 +262,7 @@
         }
 
         .nav-logo {
-            height: 64px;
+            height: 54px;
             transition: all 0.3s ease;
         }
 
@@ -205,6 +277,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
         }
         
         .nav-link::after {
@@ -231,18 +305,86 @@
              color: #059669;
          }
          
-         .nav-link-active::after {
+        .nav-link-active::after {
              width: 100%;
-         }
-
-        /* Enhanced animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+        /* Mobile menu button */
+        .mobile-menu-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #333;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        @media (max-width: 1023px) {
+            .mobile-menu-button {
+                display: block !important;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none !important;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .mobile-menu-button:hover {
+            color: #059669;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none;
+            border-top: 3px solid #10b981;
+        }
+
+        .mobile-menu.show {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f0fdf4;
+            color: #059669;
+        }
+
+        .mobile-menu a.active {
+            color: #059669;
+            background-color: #f0fdf4;
+            border-left: 3px solid #059669;
         }
 
         /* Custom scrollbar */
@@ -463,9 +605,19 @@
         @keyframes text-gradient {
             to { background-position: 200% center; }
         }
+
+        /* Enhanced animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
     </style>
 </head>
-<body class="bg-green-50">
+<body class="bg-green-50" data-aos-easing="ease" data-aos-duration="800" data-aos-delay="0">
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -476,40 +628,65 @@
 
     <!-- Fixed header wrapper -->
     <div class="fixed-header">
-    <!-- Top info bar -->
-        <header class="top-info-bar text-gray-800">
-            <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="flex items-center">
-                    <span class="material-icons text-emerald-600 text-sm">location_on</span>
-                    <span class="ml-2 text-xs hover:text-emerald-600 transition-colors duration-300">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+        <!-- Top info bar -->
+        <header class="top-info-bar">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center top-info-location">
+                        <div class="top-info-icon">
+                            <span class="material-icons text-sm">location_on</span>
+                        </div>
+                        <span class="text-xs font-medium">Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines</span>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <a href="mailto:dewantrading88@gmail.com" class="top-info-item">
+                            <div class="top-info-icon">
+                                <span class="material-icons text-sm">email</span>
+                            </div>
+                            <span class="text-xs font-medium">dewantrading88@gmail.com</span>
+                        </a>
+                        <a href="tel:+639175179396" class="top-info-item">
+                            <div class="top-info-icon">
+                                <span class="material-icons text-sm">phone</span>
+                            </div>
+                            <span class="text-xs font-medium">+639175179396</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center space-x-6">
-                    <a href="mailto:dewantrading88@gmail.com" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">email</span>
-                    dewantrading88@gmail.com
-                </a>
-                    <a href="tel:+639175179396" class="flex items-center hover:text-emerald-600 transition-colors duration-300 text-xs group">
-                        <span class="material-icons text-sm mr-1 group-hover:scale-110 transition-transform duration-300">phone</span>
-                    +639175179396
-                </a>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Logo and Navigation -->
+        <!-- Logo and Navigation -->
         <nav class="main-nav">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-5">
-                <div class="mb-4 md:mb-0 transform hover:scale-105 transition-transform duration-300">
-                    <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between">
+                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                    </a>
+                    
+                    <!-- Desktop Navigation Links -->
+                    <div class="hidden lg:flex items-center space-x-6 nav-links">
+                        <a href="index.html" class="nav-link nav-link-active">Home</a>
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <a href="products.html" class="nav-link">Products & Services</a>
+                        <a href="contact.html" class="nav-link">Contact Us</a>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Open mobile menu">
+                        <span class="material-icons text-2xl">menu</span>
+                    </button>
+                </div>
             </div>
-            <div class="flex space-x-8">
-                <a href="index.html" class="nav-link nav-link-active">Home</a>
-                    <a href="about.html" class="nav-link">About Us</a>
-                    <a href="products.html" class="nav-link">Products & Services</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="products.html">Products & Services</a>
+                <a href="contact.html">Contact Us</a>
             </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 
     <!-- Floating Notification -->
@@ -1368,13 +1545,13 @@
                 });
             });
 
-            // Header scroll behavior
+            // Header scroll behavior - updated
             let lastScroll = 0;
             window.addEventListener('scroll', () => {
                 const header = document.querySelector('.fixed-header');
                 const currentScroll = window.pageYOffset;
 
-                if (currentScroll > lastScroll && currentScroll > 100) {
+                if (currentScroll > lastScroll && currentScroll > 200) {
                     header.style.transform = 'translateY(-100%)';
                 } else {
                     header.style.transform = 'translateY(0)';
@@ -1388,6 +1565,46 @@
 
                 lastScroll = currentScroll;
             });
+
+            // Mobile menu toggle - new
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Mobile menu button clicked');
+                    
+                    mobileMenu.classList.toggle('show');
+                    
+                    // Change icon based on menu state
+                    const icon = this.querySelector('.material-icons');
+                    if (mobileMenu.classList.contains('show')) {
+                        icon.textContent = 'close';
+                    } else {
+                        icon.textContent = 'menu';
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && 
+                        !mobileMenuButton.contains(e.target) && 
+                        mobileMenu.classList.contains('show')) {
+                        mobileMenu.classList.remove('show');
+                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
+                    }
+                });
+                
+                // Close mobile menu when window is resized above breakpoint
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth >= 1024 && mobileMenu.classList.contains('show')) {
+                        mobileMenu.classList.remove('show');
+                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
+                    }
+                });
+            }
 
             // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1510,7 +1727,7 @@
 
         /* Enhanced animation for logos */
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
@@ -1633,22 +1850,20 @@
             const mobileMenu = document.getElementById('mobile-menu');
 
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('show');
             });
 
             // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('show');
                 }
             });
 
             // Close mobile menu when window is resized to desktop size
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 768) {
-                    mobileMenu.classList.remove('hidden');
-                } else {
-                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('show');
                 }
             });
 
@@ -1680,6 +1895,22 @@
                 }
             `;
             document.head.appendChild(style);
+        });
+    </script>
+    
+    <!-- Test button to verify click events -->
+        
+    <script>
+        document.getElementById('test-button').addEventListener('click', function() {
+            console.log('Test button clicked');
+            alert('Test button works!');
+            
+            // Try to toggle mobile menu via code
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('show');
+                console.log('Mobile menu toggled programmatically:', mobileMenu.classList.contains('show'));
+            }
         });
     </script>
 </body>
