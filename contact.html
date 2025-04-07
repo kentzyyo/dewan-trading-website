@@ -292,6 +292,11 @@
             background: #059669;
         }
 
+        /* Static background white - won't receive hover effects */
+        .bg-white-static {
+            background-color: white;
+        }
+
         /* Card hover effects */
         .hover-card {
             transition: all 0.3s ease;
@@ -874,6 +879,9 @@
 
             // Add hover effect to cards
             document.querySelectorAll('.bg-white').forEach(card => {
+                // Skip footer elements and footer sections
+                if (card.closest('footer') || card.classList.contains('footer-section')) return;
+                
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-10px)';
                     this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';

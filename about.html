@@ -266,6 +266,111 @@
             background: #059669;
         }
 
+        /* Static background white - won't receive hover effects */
+        .bg-white-static {
+            background-color: white;
+        }
+
+        /* Timeline item styling */
+        .right-timeline .right-timeline-item,
+        .left-timeline .left-timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .right-timeline .right-timeline-item::before,
+        .left-timeline .left-timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: #e0e0e0;
+        }
+
+        .right-timeline .right-timeline-item::after,
+        .left-timeline .left-timeline-item::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: #e0e0e0;
+        }
+
+        .right-timeline .right-timeline-item .timeline-content,
+        .left-timeline .left-timeline-item .timeline-content {
+            position: relative;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-timeline .right-timeline-item .timeline-content::before,
+        .left-timeline .left-timeline-item .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0;
+        }
+
+        .right-timeline .right-timeline-item .timeline-content::after,
+        .left-timeline .left-timeline-item .timeline-content::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+        }
+
+        .right-timeline .right-timeline-item .timeline-content h3,
+        .left-timeline .left-timeline-item .timeline-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .right-timeline .right-timeline-item .timeline-content p,
+        .left-timeline .left-timeline-item .timeline-content p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .right-timeline .right-timeline-item .timeline-content::before {
+            left: -10px;
+        }
+
+        .left-timeline .left-timeline-item::before {
+            left: auto;
+            right: 0;
+        }
+
+        .left-timeline .left-timeline-item::after {
+            left: auto;
+            right: -20px;
+        }
+
+        .left-timeline .left-timeline-item .timeline-content::before {
+            left: auto;
+            right: -10px;
+        }
+
+        .left-timeline .left-timeline-item .timeline-content::after {
+            left: auto;
+            right: -10px;
+        }
+
         /* Progress bar */
         .progress-bar {
             position: fixed;
@@ -821,12 +926,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white mt-20">
+    <footer class="bg-white-static mt-20">
         <!-- Main Footer Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Company and Social -->
-                <div>
+                <div class="footer-section">
                     <div class="mb-5">
                         <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="h-16">
                     </div>
@@ -835,7 +940,7 @@
                     </p>
                     <div class="flex space-x-4">
                         <a href="https://www.facebook.com/p/DEWAN-Trading-100077906133928/" 
-                           class="text-gray-600 hover:text-emerald-600 transition-colors" 
+                           class="text-gray-600" 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            aria-label="Facebook">
@@ -847,7 +952,7 @@
                 </div>
 
                 <!-- Our Address -->
-                <div>
+                <div class="footer-section">
                     <h3 class="text-base font-semibold text-gray-900 mb-4">MAIN OFFICE ADDRESS</h3>
                     <p class="text-gray-600 text-sm mb-4">
                         Zone 6, Diversion Road, Concepcion Grande, Naga City, Philippines
@@ -862,30 +967,28 @@
                 </div>
 
                 <!-- Contact Us -->
-                <div>
+                <div class="footer-section">
                     <h3 class="text-base font-semibold text-gray-900 mb-4">CONTACT INFO</h3>
                     <ul class="text-gray-600 text-sm space-y-3">
                         <li class="flex items-center">
                             <span class="material-icons text-sm text-emerald-600 mr-2">phone</span>
-                            <a href="tel:+639175179396" class="hover:text-emerald-600 transition-colors">+63 917 517 9396</a>
+                            <a href="tel:+639175179396" class="text-gray-600">+63 917 517 9396</a>
                         </li>
                         <li class="flex items-center">
                             <span class="material-icons text-sm text-emerald-600 mr-2">email</span>
-                            <a href="mailto:dewantrading88@gmail.com" class="hover:text-emerald-600 transition-colors">dewantrading88@gmail.com</a>
+                            <a href="mailto:dewantrading88@gmail.com" class="text-gray-600">dewantrading88@gmail.com</a>
                         </li>
                     </ul>
-
-                    
                 </div>
 
                 <!-- Quick Links -->
-                <div class="hidden lg:block">
+                <div class="hidden lg:block footer-section">
                     <h3 class="text-base font-semibold text-gray-900 mb-4">QUICK LINKS</h3>
                     <ul class="text-gray-600 text-sm space-y-2">
-                        <li><a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a></li>
-                        <li><a href="about.html" class="hover:text-emerald-600 transition-colors">About Us</a></li>
-                        <li><a href="products.html" class="hover:text-emerald-600 transition-colors">Products & Services</a></li>
-                        <li><a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact Us</a></li>
+                        <li><a href="index.html" class="text-gray-600">Home</a></li>
+                        <li><a href="about.html" class="text-gray-600">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-600">Products & Services</a></li>
+                        <li><a href="contact.html" class="text-gray-600">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -896,10 +999,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-white text-sm">© DEWAN TRADING CORPORATION</p>
                 <div class="mt-2 md:mt-0 flex space-x-6">
-                    <a href="index.html" class="text-gray-400 text-sm hover:text-white transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-400 text-sm hover:text-white transition-colors">About</a>
-                    <a href="products.html" class="text-gray-400 text-sm hover:text-white transition-colors">Products</a>
-                    <a href="contact.html" class="text-gray-400 text-sm hover:text-white transition-colors">Contact</a>
+                    <a href="index.html" class="text-gray-400 text-sm">Home</a>
+                    <a href="about.html" class="text-gray-400 text-sm">About</a>
+                    <a href="products.html" class="text-gray-400 text-sm">Products</a>
+                    <a href="contact.html" class="text-gray-400 text-sm">Contact</a>
                 </div>
             </div>
         </div>
@@ -1004,6 +1107,9 @@
 
             // Add hover effect to cards
             document.querySelectorAll('.bg-white').forEach(card => {
+                // Skip footer elements and footer sections
+                if (card.closest('footer') || card.classList.contains('footer-section')) return;
+                
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-10px)';
                     this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
