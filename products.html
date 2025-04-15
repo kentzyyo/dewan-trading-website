@@ -12,12 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            max-width: 1440px;
-            min-height: 100vh;
-            margin: 0 auto;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
             padding-top: 120px;
             font-family: 'Poppins', sans-serif;
+            width: 100vw;
+            position: relative;
         }
 
         /* Progress bar */
@@ -97,16 +98,22 @@
             left: 0;
             right: 0;
             z-index: 50;
+            width: 100vw;
             transform: translateZ(0);
             will-change: transform;
             transition: all 0.3s ease;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         .top-info-bar {
-            background: linear-gradient(to right, #10b981, #059669);
+            background: linear-gradient(to right, #036d5f, #01312B);
             padding: 0.5rem 1rem;
             transition: all 0.3s ease;
             color: rgba(255, 255, 255, 0.9);
+            width: 100%;
+            left: 0;
+            right: 0;
         }
 
         .main-nav {
@@ -114,7 +121,14 @@
             border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            padding: 0.75rem 0;
+            padding: 0;
+            width: 100%;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            min-height: 52px;
+            overflow: hidden;
         }
 
         /* Enhanced scroll behavior */
@@ -127,17 +141,30 @@
         }
 
         .scrolled .main-nav {
-            padding: 0.5rem 0;
+            padding: 0;
+            min-height: 48px;
             background-color: rgba(255, 255, 255, 0.98);
         }
 
         .nav-logo {
-            height: 54px;
+            height: 51px;
             transition: all 0.3s ease;
+            object-fit: contain;
+            max-height: 100%;
+            margin-left: -0.5rem;
+            transform-origin: center;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.00);
         }
 
         .scrolled .nav-logo {
-            height: 48px;
+            height: 46px;
+        }
+
+        .scrolled .nav-logo:hover {
+            transform: scale(1.00);
         }
         
         .nav-link {
@@ -449,6 +476,65 @@
             .nav-tabs-container {
                 padding: 0.5rem;
             }
+        }
+
+        footer {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .footer-content {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .copyright-footer {
+            width: 100%;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Container overrides */
+        .container {
+            width: 100%;
+            max-width: 1280px; /* Add reasonable max-width */
+            margin: 0 auto; /* Center the container */
+            padding: 0 2rem;
+        }
+
+        .main-nav .container {
+            padding-left: 0.5rem;
+        }
+
+        /* Keep footer full width */
+        footer .container,
+        .fixed-header .container {
+            max-width: none;
+            margin: 0;
+        }
+
+        /* Center content sections */
+        .products-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .services-section {
+            max-width: 1280px;
+            margin: 20px auto;
+        }
+
+        .product-category {
+            max-width: 1280px;
+            margin: 20px auto;
         }
     </style>
 </head>
@@ -1524,9 +1610,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white mt-20">
+    <footer class="bg-white mt-20 w-full">
         <!-- Main Footer Content -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Company and Social -->
                 <div>
@@ -1561,12 +1647,17 @@
                         <li>LEGASPI PLANT - Diversion Road, Bogtong, Legaspi City</li>
                         <li>PALO PLANT - Brgy. Camptec, Palo, Leyte</li>
                         <li>DUMAGUETE PLANT - Brgy. Bagacay, Dumaguete City, Negros Oriental</li>
+                        <li>PANABO PLANT - Panabo City, Davao del Norte</li>
                     </ul>
                 </div>
 
                 <!-- Contact Us -->
                 <div>
                     <h3 class="text-base font-semibold text-gray-900 mb-4">CONTACT INFO</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        <span class="font-semibold block">SHELBY R. BELARDO</span>
+                        <span class="block mb-4">ADMINISTRATIVE OFFICER</span>
+                    </p>
                     <ul class="text-gray-600 text-sm space-y-3">
                         <li class="flex items-center">
                             <span class="material-icons text-sm text-emerald-600 mr-2">phone</span>
@@ -1577,8 +1668,6 @@
                             <a href="mailto:dewantrading88@gmail.com" class="hover:text-emerald-600 transition-colors">dewantrading88@gmail.com</a>
                         </li>
                     </ul>
-
-                    
                 </div>
 
                 <!-- Quick Links -->
@@ -1595,15 +1684,9 @@
         </div>
         
         <!-- Copyright Section -->
-        <div class="bg-gray-900 py-4">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-white text-sm">© DEWAN TRADING CORPORATION</p>
-                <div class="mt-2 md:mt-0 flex space-x-6">
-                    <a href="index.html" class="text-gray-400 text-sm hover:text-white transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-400 text-sm hover:text-white transition-colors">About</a>
-                    <a href="products.html" class="text-gray-400 text-sm hover:text-white transition-colors">Products</a>
-                    <a href="contact.html" class="text-gray-400 text-sm hover:text-white transition-colors">Contact</a>
-                </div>
+        <div class="bg-gray-900 py-4 w-full">
+            <div class="w-full px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-white text-sm">©2025 DEWAN TRADING CORP. <br> All Rights Reserved.</p>
             </div>
         </div>
     </footer>

@@ -3,13 +3,22 @@ body {
     margin: 0;
     padding: 0;
     background-color: #e0f7fa;
+    width: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
 }
 
 header {
     background-color: #00796b;
     color: white;
-    padding: 20px;
+    padding: 20px 0;
     text-align: center;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 
 nav ul {
@@ -51,9 +60,15 @@ section {
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 10px 0;
     background-color: #00796b;
     color: white;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 
 .history-container {
