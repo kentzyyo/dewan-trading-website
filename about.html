@@ -595,6 +595,7 @@
                         <a href="about.html" class="nav-link nav-link-active">About Us</a>
                         <a href="products.html" class="nav-link">Products & Services</a>
                         <a href="contact.html" class="nav-link">Contact Us</a>
+                        <a href="administrative.html" class="nav-link">Administrative</a>
                     </div>
                     
                     <!-- Mobile Menu Button -->
@@ -610,6 +611,7 @@
                 <a href="about.html" class="active">About Us</a>
                 <a href="products.html">Products & Services</a>
                 <a href="contact.html">Contact Us</a>
+                <a href="administrative.html">Administrative</a>
             </div>
         </nav>
     </div>
@@ -1139,11 +1141,8 @@
                 const header = document.querySelector('.fixed-header');
                 const currentScroll = window.pageYOffset;
 
-                if (currentScroll > lastScroll && currentScroll > 200) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
+                // Always keep the header visible
+                header.style.transform = 'translateY(0)';
 
                 if (currentScroll > 10) {
                     header.classList.add('scrolled');
