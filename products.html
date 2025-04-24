@@ -399,24 +399,36 @@
         /* Enhanced Navigation Tabs */
         .sticky-nav {
             position: sticky;
-            top: 72px;
-            z-index: 40;
+            top: 80px; /* Adjust to match the main header height */
+            z-index: 30;
             background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-nav {
+                top: 80px; /* Adjust for mobile header height */
+            }
         }
 
         .nav-tab-link {
             position: relative;
             white-space: nowrap;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
-            border-radius: 0.5rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
+
         .nav-tab-link.active {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #065f46;
+            color: #059669;
+            background-color: #f0fdf4;
+            border-radius: 0.5rem;
         }
         
         .nav-tab-link.active .nav-indicator {
@@ -440,7 +452,7 @@
             }
             
             .sticky-nav {
-                top: 60px;
+                top: 20px; /* Adjust for mobile header height */
             }
         }
 
@@ -461,7 +473,7 @@
             }
             
             .sticky-nav {
-                top: 50px;
+                top: 20px; /* Adjust for mobile header height */
             }
             
             /* Adjust layout for product cards on mobile */
@@ -536,9 +548,40 @@
             max-width: 1280px;
             margin: 20px auto;
         }
+
+        /* Add these transition styles to your existing style block */
+        #page-transition-overlay {
+            pointer-events: none;
+        }
+
+        .page-exit #page-transition-overlay {
+            transform: translateX(0);
+        }
+
+        /* Add these styles in your style block */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-green-50">
+    <!-- Add this right after opening <body> tag -->
+    <div id="page-transition-overlay" class="fixed inset-0 bg-emerald-600 z-[9999] transform translate-x-full transition-transform duration-500 ease-in-out pointer-events-none"></div>
+
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -580,7 +623,7 @@
         <!-- Logo and Navigation -->
         <nav class="main-nav">
             <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between w-full">
                     <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
                         <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
                     </a>
@@ -615,11 +658,11 @@
     <!-- Add padding to main content -->
     <main class="pt-0">
         <!-- Main Title Section with Enhanced Hero -->
-        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh;">
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
             <div class="absolute inset-0 bg-black/50"></div>
             <div class="container mx-auto px-4 relative z-10 flex flex-col justify-center h-full">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6 md:mb-8 text-white">Products & Services</h1>
-                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6 md:mb-8 text-white" data-aos="fade-up" data-aos-delay="300">Products & Services</h1>
+                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white" data-aos="fade-up" data-aos-delay="600">
                     Delivering high-quality industrial and medical gases with exceptional service standards
                 </p>
             </div>
@@ -641,28 +684,19 @@
 
         <!-- Enhanced Navigation Tabs -->
         <div class="sticky-nav">
-            <div class="container mx-auto nav-tabs-container">
-                <nav class="flex justify-center space-x-2 md:space-x-6 py-2 md:py-3 overflow-x-auto scrollbar-hide px-1 md:px-2">
+            <div class="container mx-auto">
+                <nav class="flex justify-center items-center space-x-4 py-3 px-4 overflow-x-auto scrollbar-hide bg-white">
                     <a href="#medical-gases" class="nav-tab-link group active" id="medical-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">medical_services</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Medical & Industrial
-                        </span>
-                        <div class="h-0.5 w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">medical_services</span>
+                        <span>Medical & Industrial</span>
                     </a>
                     <a href="#other-sales-and-services" class="nav-tab-link group" id="services-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">design_services</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Sales & Services
-                        </span>
-                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">design_services</span>
+                        <span>Sales & Services</span>
                     </a>
                     <a href="#completed-projects" class="nav-tab-link group" id="projects-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">engineering</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Projects
-                        </span>
-                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">engineering</span>
+                        <span>Projects</span>
                     </a>
                 </nav>
             </div>
@@ -671,7 +705,7 @@
         <!-- Main Content with Enhanced Product Cards -->
         <div class="container mx-auto px-3 md:px-4 py-8 md:py-12">
             <!-- Medical and Industrial Gases Section -->
-            <section id="medical-gases" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white">
+            <section id="medical-gases" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white" data-aos="fade-up">
                 <div class="container mx-auto px-3 md:px-4">
                     <!-- Enhanced Section Header -->
                     <div class="text-center mb-8 md:mb-16">
@@ -919,7 +953,7 @@
             </section>
 
             <!-- Other Sales and Services Section -->
-            <section id="other-sales-and-services" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20">
+            <section id="other-sales-and-services" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20" data-aos="fade-up">
                 <div class="container mx-auto px-3 md:px-4">
                     <!-- Enhanced Section Title -->
                     <div class="text-center mb-8 md:mb-16">
@@ -1389,7 +1423,7 @@
             </div>
 
             <!-- Completed Projects -->
-            <section id="completed-projects" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20">
+            <section id="completed-projects" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20" data-aos="fade-up">
                 <div class="container mx-auto px-4 py-6 bg-gradient-to-b from-white to-green-50">
                     <!-- Section Title -->
                     <div class="flex items-center justify-center mb-16">
@@ -1808,6 +1842,32 @@
             document.querySelectorAll('img').forEach(img => {
                 img.setAttribute('loading', 'lazy');
             });
+
+            // Initialize page with fade in
+            document.body.style.opacity = "0";
+            setTimeout(() => {
+                document.body.style.opacity = "1";
+                document.body.style.transition = "opacity 0.5s ease";
+            }, 0);
+
+            // Handle all internal navigation links
+            document.querySelectorAll('a').forEach(link => {
+                // Only add transition to internal links
+                if (link.href && link.href.startsWith(window.location.origin)) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        
+                        // Start transition
+                        document.getElementById('page-transition-overlay').style.transform = 'translateX(0)';
+                        
+                        // Wait for transition to complete
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 500);
+                    });
+                }
+            });
         });
 
         // Mobile menu toggle
@@ -1887,6 +1947,28 @@
                     }
                 });
             }
+        });
+
+        const navTabs = document.querySelectorAll('.nav-tab-link');
+        
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                // Remove active class from all tabs
+                navTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Smooth scroll to section
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            });
         });
     </script>
 </body>
