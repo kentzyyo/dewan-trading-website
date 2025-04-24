@@ -21,6 +21,41 @@
             position: relative;
         }
 
+        /* Page Transition Animations */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #10b981;
+            z-index: 9999;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+        }
+
+        .page-transition.enter {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+
+        .page-transition.exit {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .content-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .content-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Progress bar */
         .progress-bar {
             position: fixed;
@@ -579,9 +614,9 @@
     </style>
 </head>
 <body class="bg-green-50">
-    <!-- Add this right after opening <body> tag -->
-    <div id="page-transition-overlay" class="fixed inset-0 bg-emerald-600 z-[9999] transform translate-x-full transition-transform duration-500 ease-in-out pointer-events-none"></div>
-
+    <!-- Page Transition Element -->
+    <div class="page-transition"></div>
+    
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -726,7 +761,7 @@
                         <!-- Products Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <!-- Oxygen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\oxygen (gas and liquid).png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -747,7 +782,7 @@
                             </div>
                             
                             <!-- Nitrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="150" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Nitrogen Gas and Liquid.png" alt="Nitrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -768,7 +803,7 @@
                             </div>
 
                             <!-- Argon Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Argon Liquid and Gas.png" alt="Argon" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -789,7 +824,7 @@
                             </div>
 
                             <!-- Hydrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="250" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Hydrogen1.png" alt="Hydrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -810,7 +845,7 @@
                             </div>
 
                             <!-- Compressed Air Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Compressed Air.png" alt="Compressed Air" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -831,7 +866,7 @@
                             </div>
 
                             <!-- Acetylene Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="350" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Acytelyne.png" alt="Acetylene" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -852,7 +887,7 @@
                             </div>
 
                             <!-- Arcoweld Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="400" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     <img src="products\main-products-no-bg\Arcoweld.png" alt="Arcoweld" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -882,7 +917,7 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                                 <!-- Carbon Dioxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500">
+                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
                                     <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <img src="products\main-products-no-bg\Carbon.png" alt="Carbon Dioxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -899,7 +934,7 @@
                                 </div>
 
                                 <!-- Nitrous Oxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500">
+                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
                                     <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <img src="products\main-products-no-bg\Nitrous.png" alt="Nitrous Oxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
@@ -1702,11 +1737,55 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page transition for entrance
+            const pageTransition = document.querySelector('.page-transition');
+            const contentElements = document.querySelectorAll('main > section, main > div');
+            
+            // Add content transition class to all main sections
+            contentElements.forEach(element => {
+                element.classList.add('content-transition');
+            });
+            
+            // Simulate page loading transition
+            setTimeout(() => {
+                pageTransition.classList.add('exit');
+                // After transition is complete, show content with staggered delay
+                setTimeout(() => {
+                    contentElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.classList.add('content-visible');
+                        }, 100 * index);
+                    });
+                }, 500);
+            }, 300);
+            
+            // Handle navigation to other pages
+            document.querySelectorAll('a').forEach(link => {
+                // Only add transition to internal links that are not anchors
+                if (link.href && link.href.startsWith(window.location.origin) && 
+                    !link.href.includes('#') && !link.href.includes('javascript:')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        
+                        // Start transition animation
+                        pageTransition.classList.add('enter');
+                        
+                        // After animation completes, navigate to the target page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 500);
+                    });
+                }
+            });
+            
             // Initialize AOS
             AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100
+                duration: 1200,
+                once: false,
+                offset: 100,
+                mirror: true, // whether elements should animate out while scrolling past them
+                anchorPlacement: 'top-bottom' // defines which position of the element regarding to window should trigger the animation
             });
 
             // Progress bar
@@ -1740,8 +1819,7 @@
                 const header = document.querySelector('.fixed-header');
                 const currentScroll = window.pageYOffset;
 
-                // Remove the logic that hides the header on scroll down
-                // Always keep the header visible
+                // Keep header visible
                 header.style.transform = 'translateY(0)';
 
                 if (currentScroll > 10) {
@@ -1753,221 +1831,11 @@
                 lastScroll = currentScroll;
             });
 
-            // Mobile menu toggle - new
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('show');
-                    
-                    // Change icon based on menu state
-                    const icon = mobileMenuButton.querySelector('.material-icons');
-                    if (mobileMenu.classList.contains('show')) {
-                        icon.textContent = 'close';
-                    } else {
-                        icon.textContent = 'menu';
-                    }
-                });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!mobileMenu.contains(e.target) && 
-                        !mobileMenuButton.contains(e.target) && 
-                        mobileMenu.classList.contains('show')) {
-                        mobileMenu.classList.remove('show');
-                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
-                    }
-                });
-                
-                // Close mobile menu when window is resized above breakpoint
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 1024 && mobileMenu.classList.contains('show')) {
-                        mobileMenu.classList.remove('show');
-                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
-                    }
-                });
-            }
-
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Active tab highlighting
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-tab-link');
-
-            function highlightNavigation() {
-                const scrollY = window.pageYOffset;
-                
-                sections.forEach(section => {
-                    const sectionHeight = section.offsetHeight;
-                    const sectionTop = section.offsetTop - 150;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === sectionId) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', highlightNavigation);
-
-            // Add data-aos attributes to elements
-            document.querySelectorAll('.product-card').forEach((card, index) => {
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', (index * 100).toString());
-            });
-
-            // Image lazy loading
-            document.querySelectorAll('img').forEach(img => {
-                img.setAttribute('loading', 'lazy');
-            });
-
-            // Initialize page with fade in
-            document.body.style.opacity = "0";
-            setTimeout(() => {
-                document.body.style.opacity = "1";
-                document.body.style.transition = "opacity 0.5s ease";
-            }, 0);
-
-            // Handle all internal navigation links
-            document.querySelectorAll('a').forEach(link => {
-                // Only add transition to internal links
-                if (link.href && link.href.startsWith(window.location.origin)) {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const target = this.href;
-                        
-                        // Start transition
-                        document.getElementById('page-transition-overlay').style.transform = 'translateX(0)';
-                        
-                        // Wait for transition to complete
-                        setTimeout(() => {
-                            window.location.href = target;
-                        }, 500);
-                    });
-                }
-            });
-        });
-
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('active');
-            const icon = this.querySelector('.material-icons');
-            icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
-        });
-
-        // Progress bar
-        window.addEventListener('scroll', function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.progress-bar').style.width = scrolled + '%';
-            
-            // Show/hide back to top button
-            if (winScroll > 300) {
-                document.getElementById('backToTop').classList.add('active');
-            } else {
-                document.getElementById('backToTop').classList.remove('active');
-            }
-        });
-
-        // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Enhanced navigation tabs functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = ['medical-gases', 'other-sales-and-services', 'completed-projects'];
-            const tabs = ['medical-tab', 'services-tab', 'projects-tab'];
-            
-            // Smooth scrolling for tab links
-            tabs.forEach((tabId, index) => {
-                document.getElementById(tabId).addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetSection = document.getElementById(sections[index]);
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Set active tab
-                    setActiveTab(tabId);
-                });
-            });
-            
-            // Update active tab on scroll
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY + 150;
-                
-                sections.forEach((sectionId, index) => {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        const sectionTop = section.offsetTop;
-                        const sectionBottom = sectionTop + section.offsetHeight;
-                        
-                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                            setActiveTab(tabs[index]);
-                        }
-                    }
-                });
-            });
-            
-            function setActiveTab(activeTabId) {
-                tabs.forEach(tabId => {
-                    const tab = document.getElementById(tabId);
-                    if (tabId === activeTabId) {
-                        tab.classList.add('active');
-                    } else {
-                        tab.classList.remove('active');
-                    }
-                });
-            }
-        });
-
-        const navTabs = document.querySelectorAll('.nav-tab-link');
-        
-        navTabs.forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                // Remove active class from all tabs
-                navTabs.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Smooth scroll to section
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                    inline: 'nearest'
-                });
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.toggle('active');
+                const icon = this.querySelector('.material-icons');
+                icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
             });
         });
     </script>
