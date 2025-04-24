@@ -15,10 +15,11 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            padding-top: 120px;
+            padding-top: 0;
             font-family: 'Poppins', sans-serif;
             width: 100vw;
             position: relative;
+            background-color: #f0fdf4;
         }
         
         /* Fixed header styles */
@@ -34,6 +35,7 @@
             transition: all 0.3s ease;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
+            margin-bottom: -1px;
         }
 
         .top-info-bar {
@@ -48,7 +50,6 @@
 
         .main-nav {
             background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             padding: 0;
@@ -412,6 +413,148 @@
             margin: 0;
             padding: 0 2rem;
         }
+
+        /* Hero section */
+        .hero-banner {
+            margin-top: 0; /* Ensure no gap with navbar */
+            padding-top: 0; /* No padding at top */
+            background-color: #036d5f;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            position: relative;
+            border-radius: 0;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-container {
+            display: flex;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 380px;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            width: 60%;
+            padding: 60px 30px 60px 60px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+        }
+        
+        .hero-text p {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-image {
+            width: 40%;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(0.9);
+            transform-origin: center right;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .hero-text, .hero-image {
+                width: 100%;
+            }
+            
+            .hero-text {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            
+            .hero-image {
+                height: 280px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.75rem;
+            }
+        }
+        
+        /* Main content section - exact alignment with header */
+        main {
+            margin-top: 0; /* Remove margin to connect directly with navbar */
+            padding: 0;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-top: none;
+            background-color: #f0fdf4; /* Match the body background */
+            margin-bottom: 0; /* Ensure no extra margin at bottom */
+        }
+        
+        /* Wave animation styles */
+        .waves {
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .wave-parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+        .wave-parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .wave-parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .wave-parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .wave-parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -489,96 +632,239 @@
     </div>
 
     <!-- Main Content -->
-    <main class="relative">
-        <!-- Hero Section -->
-        <section class="wave-container relative overflow-hidden">
-            <div class="hero-overlay bg-cover bg-center text-white py-24 px-5 relative" style="background-image: url('gas-tank.jpg');">
-                <div class="max-w-4xl mx-auto text-center relative z-10">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in opacity-0" style="animation-delay: 0.3s">ADMINISTRATIVE</h1>
-                    <p class="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in opacity-0" style="animation-delay: 0.6s">
-                        Administrative and Management Information
-                    </p>
-                </div>
+    <main>
+        <!-- Hero Banner -->
+        <div class="hero-banner relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; background-color: #005f56;">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full" style="padding-top: 180px;">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white">ADMINISTRATIVE</h1>
+                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4">
+                    Administrative and Management Information
+                </p>
             </div>
-        </section>
+            
+            <!-- Decorative wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <defs>
+                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                    </g>
+                </svg>
+            </div>
+        </div>
 
         <!-- Administrative Content Section -->
         <section class="container mx-auto px-5 py-16">
             <div class="max-w-6xl mx-auto">
                 <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
-                    <h2 class="text-3xl font-bold text-purple-700 mb-6 text-center">Our Team</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Personnel Card 1 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee1.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
+                    <h2 class="text-3xl font-bold text-purple-700 mb-6 text-center">Our Branches</h2>
+                    
+                    <!-- Scrollable container -->
+                    <div class="overflow-auto pb-4" style="max-height: 800px;">
+                        <!-- Davao Branch Section -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Davao Branch</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Davao Card 1 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_01.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Davao Card 2 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_04.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 3 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_09.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 4 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_02.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 5 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_15.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 6 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_11.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 7 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_16.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 8 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_22.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 9 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_33.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Davao Card 10 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DAVAOIMAGES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_34.jpeg" alt="Davao Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Personnel Card 2 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee2.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
+                        <!-- Legazpi Branch Section -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Legazpi Branch</h3>
+                            <div class="bg-gray-100 rounded-lg p-8 text-center">
+                                <p class="text-gray-600">Images coming soon</p>
+                            </div>
+                        </div>
+
+                        <!-- Palo Leyte Branch Section -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Palo Leyte Branch</h3>
+                            <div class="bg-gray-100 rounded-lg p-8 text-center">
+                                <p class="text-gray-600">Images coming soon</p>
+                            </div>
+                        </div>
+
+                        <!-- Dumaguete Branch Section -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Dumaguete Branch</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Dumaguete Card 1 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_31.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 2 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_32.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 3 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_35.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 4 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_36.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 6 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_38.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 7 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_39.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 8 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_40.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 9 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_42.jpeg" alt="Dumaguete Branch" class="w-full h-full object-contain bg-gray-100">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dumaguete Card 10 -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="DUMAGUETEIMAGES/viber_image_2025-03-06_16-34-37-485_46.jpeg" alt="Dumaguete Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Personnel Card 3 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee3.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
+                        <!-- Naga City Main Section -->
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Naga City Main</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Naga City Card -->
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="NAGAIMAGES/naga.jpg" alt="Naga City Main" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Personnel Card 4 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee4.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Personnel Card 5 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee5.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Personnel Card 6 -->
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                            <div class="relative h-64">
-                                <img src="personnel/employee6.jpg" alt="Employee Name" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-4">
-                                    <h3 class="text-xl font-semibold text-white">Employee Name</h3>
-                                    <p class="text-emerald-200">Position</p>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    
+                    <!-- Scrollbar indicator -->
+                    <div class="flex justify-center mt-6">
+                        <p class="text-gray-500 text-sm">Scroll down to see more branches</p>
                     </div>
                 </div>
             </div>
