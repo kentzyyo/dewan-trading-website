@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products & Services - Dewan Trading Corp</title>
+    <link rel="icon" href="LOGO\dewan-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add AOS for scroll animations -->
@@ -32,7 +33,7 @@
             z-index: 9999;
             transform: scaleY(0);
             transform-origin: top;
-            transition: transform 0.5s ease;
+            transition: transform 0.2s ease;
         }
 
         .page-transition.enter {
@@ -605,11 +606,11 @@
         }
 
         .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeIn 0.2s ease-out forwards;
         }
 
         .animate-scale-in {
-            animation: scaleIn 0.6s ease-out forwards;
+            animation: scaleIn 0.2s ease-out forwards;
         }
     </style>
 </head>
@@ -1754,10 +1755,10 @@
                     contentElements.forEach((element, index) => {
                         setTimeout(() => {
                             element.classList.add('content-visible');
-                        }, 100 * index);
+                        }, 50 * index); // also speed up staggered content
                     });
-                }, 500);
-            }, 300);
+                }, 200);
+            }, 150);
             
             // Handle navigation to other pages
             document.querySelectorAll('a').forEach(link => {
@@ -1774,7 +1775,7 @@
                         // After animation completes, navigate to the target page
                         setTimeout(() => {
                             window.location.href = target;
-                        }, 500);
+                        }, 200);
                     });
                 }
             });
