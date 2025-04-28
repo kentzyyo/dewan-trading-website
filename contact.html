@@ -4,21 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Dewan Trading Corp</title>
+    <link rel="icon" href="LOGO\dewan-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add AOS for scroll animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Add custom fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Roboto Condensed font only for hero text -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            padding-top: 120px;
             font-family: 'Poppins', sans-serif;
-            width: 100vw;
+            width: 100%;
             position: relative;
+            background-color: #f0fdf4;
+        }
+        
+        /* Hero section */
+        .hero-banner {
+            /* background-color: #0ab49e; */
+            background-image: url('gas_tank1.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            position: relative;
+            border-radius: 0;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background-color: rgba(4, 139, 117, 0.5); */
+            z-index: 1;
+        }
+        
+        .hero-container {
+            display: flex;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 380px;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            width: 60%;
+            padding: 60px 30px 60px 60px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 3.5rem;
+        }
+        
+        .hero-text p {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        
+        .hero-image {
+            width: 40%;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(0.9);
+            transform-origin: center right;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .hero-text, .hero-image {
+                width: 100%;
+            }
+            
+            .hero-text {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            
+            .hero-image {
+                height: 280px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.75rem;
+            }
+        }
+        
+        /* Style for the Contact Cards Section - more specific to avoid conflicts */
+        section.contact-cards-section,
+        section.contact-cards-section * {
+            animation: none !important;
+        }
+        
+        section.contact-cards-section {
+            position: relative;
+            z-index: 10;
+        }
+        
+        section.contact-cards-section .contact-card {
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease !important;
+        }
+        
+        section.contact-cards-section .contact-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -8px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+        
+        /* Contact card hover effects for text color */
+        .contact-card:hover h2 {
+            color: #059669 !important; /* Change to emerald-600 */
+            transition: color 0.3s ease;
+        }
+        
+        .contact-card:hover p {
+            color: #4b5563 !important; /* Slightly darker gray */
+            transition: color 0.3s ease;
+        }
+        
+        .contact-card:hover .material-icons {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover .bg-emerald-100 {
+            background-color: #d1fae5 !important; /* emerald-100 with higher saturation */
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-card a .material-icons {
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover a .material-icons {
+            transform: translateX(4px);
         }
         
         /* Fixed header styles */
@@ -28,12 +177,12 @@
             left: 0;
             right: 0;
             z-index: 50;
-            width: 100vw;
+            width: 100%;
             transform: translateZ(0);
             will-change: transform;
             transition: all 0.3s ease;
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
+            margin: 0;
+            padding: 0;
         }
 
         .top-info-bar {
@@ -44,11 +193,17 @@
             width: 100%;
             left: 0;
             right: 0;
+            margin: 0;
+        }
+
+        .top-info-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .main-nav {
             background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             padding: 0;
@@ -59,8 +214,115 @@
             align-items: center;
             min-height: 52px;
             overflow: hidden;
+            padding-left: 0 !important;
+        }
+        
+        .main-nav .container {
+            padding-left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .nav-logo {
+            height: 51px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+            max-height: 100%;
+            margin-left: 0;
+            transform-origin: center;
+            object-position: center top;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.00);
         }
 
+        .scrolled .nav-logo {
+            height: 46px;
+        }
+
+        .scrolled .nav-logo:hover {
+            transform: scale(1.00);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        /* Main content section - exact alignment with header */
+        main {
+            margin-top: 84px; /* Precisely tuned to match navbar height */
+            padding: 0;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-top: none;
+            background-color: #f0fdf4; /* Match the body background */
+            margin-bottom: 0; /* Ensure no extra margin at bottom */
+        }
+        
+        /* Hero image connects directly with navbar */
+        .hero-overlay {
+            margin: 0;
+            padding-top: 0;
+            border-top: none;
+            position: relative;
+            top: -1px; /* Slight negative offset to ensure perfect connection */
+        }
+        
+        /* Hero overlay with better quality */
+        .hero-overlay {
+            background-size: cover !important;
+            background-position: center !important;
+            position: relative;
+            min-height: 320px; /* Reduced height to maintain image quality */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Responsive hero height adjustments - reduced for better image quality */
+        @media (min-width: 1024px) {
+            .hero-overlay {
+                min-height: 350px; /* Reduced from 500px */
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-overlay {
+                min-height: 300px; /* Reduced from 400px */
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-overlay {
+                min-height: 280px; /* Reduced from 350px */
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            main {
+                margin-top: 76px; /* Fine-tuned for smaller navbar */
+            }
+        }
+        
+        @media (max-width: 639px) {
+            main {
+                margin-top: 68px; /* Fine-tuned for smallest navbar */
+            }
+        }
+        
         /* Enhanced scroll behavior */
         .scrolled .fixed-header {
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -76,31 +338,6 @@
             background-color: rgba(255, 255, 255, 0.98);
         }
 
-        .nav-logo {
-            height: 51px;
-            transition: all 0.3s ease;
-            object-fit: contain;
-            max-height: 100%;
-            margin-left: -0.5rem;
-            transform-origin: center;
-        }
-
-        .nav-logo:hover {
-            transform: scale(1.00);
-        }
-
-        .scrolled .nav-logo {
-            height: 46px;
-        }
-
-        .scrolled .nav-logo:hover {
-            transform: scale(1.00);
-        }
-
-        .main-nav .container {
-            padding-left: 0.5rem;
-        }
-        
         .nav-link {
             color: #333;
             font-weight: 500;
@@ -388,6 +625,8 @@
             padding: 0;
             box-sizing: border-box;
             position: relative;
+            overflow-x: hidden;
+            background-color: #fff; /* Ensure footer has white background */
         }
 
         .footer-content {
@@ -396,6 +635,7 @@
             margin: 0;
             padding: 2rem;
             box-sizing: border-box;
+            background-color: white; /* Explicitly set white background */
         }
 
         .copyright-footer {
@@ -403,6 +643,7 @@
             margin: 0;
             padding: 1rem;
             box-sizing: border-box;
+            background-color: #1f2937; /* Ensure dark background for copyright section */
         }
 
         /* Container overrides */
@@ -412,9 +653,65 @@
             margin: 0;
             padding: 0 2rem;
         }
+
+        /* Remove any possible margin/padding */
+        .wave-container {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Disable transitions during page load */
+        .disable-transitions * {
+            transition: none !important;
+            animation: none !important;
+        }
+
+        /* Wave animation styles - matching products.html */
+        .waves {
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .wave-parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+        .wave-parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .wave-parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .wave-parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .wave-parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
+        /* Remove any possible margin/padding */
+        .wave-container {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
     </style>
 </head>
-<body class="bg-green-50">
+<body style="background-color: #f0fdf4;">
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -428,7 +725,7 @@
         <!-- Top info bar -->
         <header class="top-info-bar">
             <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center w-full">
                     <div class="flex items-center top-info-location">
                         <div class="top-info-icon">
                             <span class="material-icons text-sm">location_on</span>
@@ -455,10 +752,11 @@
 
         <!-- Logo and Navigation -->
         <nav class="main-nav">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between">
-                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
-                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+            <div class="container mx-auto px-0">
+                <div class="flex items-center justify-between w-full">
+                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300" style="background-color: rgba(255, 255, 255, 0.95); display: flex; align-items: center; height: 52px; overflow: hidden; position: relative;">
+                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo" style="background-color: rgba(255, 255, 255, 0.95); position: relative; z-index: 1;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 100%; background-color: rgba(255, 255, 255, 0.95); z-index: 0;"></div>
                     </a>
                     
                     <!-- Desktop Navigation Links -->
@@ -488,57 +786,77 @@
         </nav>
     </div>
 
-    <!-- Update main padding -->
-    <main class="relative">
-        <!-- Hero Section with Wave -->
-        <section class="wave-container relative overflow-hidden">
-            <div class="hero-overlay bg-cover bg-center text-white py-24 px-5 relative" style="background-image: url('gas-tank.jpg');">
-                <div class="max-w-4xl mx-auto text-center relative z-10">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in opacity-0" style="animation-delay: 0.3s">CONTACT US</h1>
-                    <p class="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in opacity-0" style="animation-delay: 0.6s">
+    <!-- Main content starts directly after navbar with no gap -->
+    <main>
+        <!-- Hero Banner -->
+        <div class="hero-banner" style="transition: none; background-image: url('gas_tank1.png'); background-blend-mode: overlay;">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1 class="text-4xl md:text-4xl font-bold mb-4 text-white tracking-wide" style="font-family: 'Poppins', sans-serif;">CONTACT US</h1>
+                    <p class="text-base md:text-lg text-white whitespace-nowrap " style="font-family: 'Poppins', sans-serif;">
+                        <!-- <p class="text-base md:text-lg text-white max-w-xl" style="font-family: 'Poppins', sans-serif;"></p> -->
                         Get in touch with us for all your industrial and medical gas needs
                     </p>
                 </div>
+                <div class="hero-image">
+                    <img src="images/call-center.jpg" 
+                         alt="Customer Service Representative">
+                </div>
             </div>
-        </section>
+            <!-- Add padding at the bottom to account for the overlapping cards -->
+            <div class="pb-10"></div>
+            
+            <!-- Decorative wave -->
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                <defs>
+                    <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="wave-parallax">
+                    <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                    <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                    <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                    <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                </g>
+            </svg>
+        </div>
 
         <!-- Contact Cards Section -->
-        <section class="container mx-auto px-5 py-16">
+        <section class="contact-cards-section container mx-auto px-5 py-16 pb-24 bg-green-50 relative z-10" style="margin-top: -40px;">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Phone Card -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300 group">
+                <div class="contact-card bg-white rounded-xl shadow-lg p-8 group hover:shadow-xl" style="transition: all 0.3s ease;">
                     <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-emerald-100 p-3 rounded-full group-hover:bg-emerald-200 transition-colors duration-300">
-                            <span class="material-icons text-3xl text-emerald-600">phone</span>
+                        <div class="bg-emerald-100 p-3 rounded-full transition-colors duration-300">
+                            <span class="material-icons text-3xl text-emerald-600 transition-transform duration-300">phone</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Talk to Sales</h2>
-        </div>
-                    <p class="text-gray-600 mb-6">Call us directly for immediate assistance with your inquiries.</p>
-                    <a href="tel:+639175179396" class="inline-flex items-center text-emerald-600 hover:text-emerald-700 transition-colors duration-300">
-                        <span class="text-2xl font-bold">+639175179396</span>
-                        <span class="material-icons ml-2">arrow_forward</span>
+                        <h2 class="text-2xl font-bold text-gray-800 transition-colors duration-300">Talk to Sales</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6 transition-colors duration-300">Call us directly for immediate assistance with your inquiries.</p>
+                    <a href="tel:+639175179396" class="inline-flex items-center text-emerald-600 font-semibold group">
+                        <span class="text-2xl font-bold group-hover:text-emerald-700 transition-colors duration-300">+639175179396</span>
+                        <span class="material-icons ml-2 transition-all duration-300">arrow_forward</span>
                     </a>
                 </div>
 
                 <!-- Email Card -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300 group">
+                <div class="contact-card bg-white rounded-xl shadow-lg p-8 group hover:shadow-xl" style="transition: all 0.3s ease;">
                     <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-emerald-100 p-3 rounded-full group-hover:bg-emerald-200 transition-colors duration-300">
-                            <span class="material-icons text-3xl text-emerald-600">email</span>
+                        <div class="bg-emerald-100 p-3 rounded-full transition-colors duration-300">
+                            <span class="material-icons text-3xl text-emerald-600 transition-transform duration-300">email</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Contact via Email</h2>
+                        <h2 class="text-2xl font-bold text-gray-800 transition-colors duration-300">Contact via Email</h2>
                     </div>
-                    <p class="text-gray-600 mb-6">Send us an email for detailed information about our products and services.</p>
-                    <a href="mailto:dewantrading88@gmail.com" class="inline-flex items-center text-emerald-600 hover:text-emerald-700 transition-colors duration-300">
-                        <span class="text-lg">dewantrading88@gmail.com</span>
-                        <span class="material-icons ml-2">arrow_forward</span>
+                    <p class="text-gray-600 mb-6 transition-colors duration-300">Send us an email for detailed information about our products and services.</p>
+                    <a href="mailto:dewantrading88@gmail.com" class="inline-flex items-center text-emerald-600 font-semibold group">
+                        <span class="text-lg font-medium group-hover:text-emerald-700 transition-colors duration-300">dewantrading88@gmail.com</span>
+                        <span class="material-icons ml-2 transition-all duration-300">arrow_forward</span>
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- Map and Address Section -->
-        <section class="container mx-auto px-5 py-16">
+        <section class="container mx-auto px-5 py-16 bg-green-50">
             <h2 class="text-4xl text-purple-700 text-center font-bold mb-12 animate-fade-in opacity-0" style="animation-delay: 0.3s">Our Locations</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Map Container -->
@@ -656,7 +974,7 @@
         </section>
 
         <!-- Plant Locations Section -->
-        <section class="container mx-auto px-5 py-16">
+        <section class="container mx-auto px-5 py-16 bg-green-50 mb-0">
             <h2 class="text-4xl text-purple-700 text-center font-bold mb-12">Our Facilities</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 <!-- Palo Plant -->
@@ -665,7 +983,7 @@
                        target="_blank" 
                        rel="noopener noreferrer"
                        class="block relative group">
-                        <img src="images\dewan-trading-palo-plant.png" alt="Palo Plant" class="w-full h-48 object-cover">
+                        <img src="images\dewan-trading-palo-plant.png" alt="Palo Plant" class="w-full h-40 object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </a>
                     <div class="p-6">
@@ -687,7 +1005,7 @@
                        target="_blank" 
                        rel="noopener noreferrer"
                        class="block relative group">
-                        <img src="images\dewan-dumaguete-plant.png" alt="Dumaguete Plant" class="w-full h-48 object-cover">
+                        <img src="images\dewan-dumaguete-plant.png" alt="Dumaguete Plant" class="w-full h-40 object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </a>
                     <div class="p-6">
@@ -709,7 +1027,7 @@
                        target="_blank" 
                        rel="noopener noreferrer"
                        class="block relative group">
-                        <img src="images\dewan-legazpi-plant.png" alt="Legazpi Plant" class="w-full h-48 object-cover">
+                        <img src="images\dewan-legazpi-plant.png" alt="Legazpi Plant" class="w-full h-40 object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </a>
                     <div class="p-6">
@@ -731,7 +1049,7 @@
                        target="_blank" 
                        rel="noopener noreferrer"
                        class="block relative group">
-                        <img src="images\dewan-trading-panabo.png" alt="Panabo Plant" class="w-full h-48 object-cover">
+                        <img src="images\dewan-trading-panabo.png" alt="Panabo Plant" class="w-full h-40 object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </a>
                     <div class="p-6">
@@ -748,10 +1066,13 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Spacer div for proper footer spacing -->
+        <div class="py-16" style="background-color: #f0fdf4;"></div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white mt-20 w-full">
+    <footer class="bg-white">
         <!-- Main Footer Content -->
         <div class="w-full px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -835,12 +1156,24 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Disable transitions during page load
+        document.body.classList.add('disable-transitions');
+        
+        // Function to run when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Re-enable transitions after page is fully rendered
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.body.classList.remove('disable-transitions');
+                }, 300);
+            });
+            
             // Initialize AOS
             AOS.init({
                 duration: 1000,
                 once: true,
-                offset: 100
+                offset: 100,
+                disable: 'mobile' // Disable on mobile to prevent issues
             });
 
             // Progress bar
@@ -965,11 +1298,19 @@
             // Add hover effect to cards
             document.querySelectorAll('.bg-white').forEach(card => {
                 // Skip footer elements and footer sections
-                if (card.closest('footer') || card.classList.contains('footer-section')) return;
+                if (card.closest('footer') || 
+                    card.classList.contains('footer-section')) return;
                 
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                    this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                    // For contact cards, apply immediate hover without transition
+                    if (this.classList.contains('contact-card')) {
+                        this.style.transform = 'translateY(-10px)';
+                        this.style.boxShadow = '0 25px 30px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -8px rgba(0, 0, 0, 0.1)';
+                        this.style.transition = 'none';
+                    } else {
+                        this.style.transform = 'translateY(-10px)';
+                        this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                    }
                 });
 
                 card.addEventListener('mouseleave', function() {

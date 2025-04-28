@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products & Services - Dewan Trading Corp</title>
+    <link rel="icon" href="LOGO\dewan-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add AOS for scroll animations -->
@@ -19,6 +20,41 @@
             font-family: 'Poppins', sans-serif;
             width: 100vw;
             position: relative;
+        }
+
+        /* Page Transition Animations */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #10b981;
+            z-index: 9999;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.2s ease;
+        }
+
+        .page-transition.enter {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+
+        .page-transition.exit {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .content-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .content-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Progress bar */
@@ -399,24 +435,36 @@
         /* Enhanced Navigation Tabs */
         .sticky-nav {
             position: sticky;
-            top: 72px;
-            z-index: 40;
+            top: 80px; /* Adjust to match the main header height */
+            z-index: 30;
             background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-nav {
+                top: 80px; /* Adjust for mobile header height */
+            }
         }
 
         .nav-tab-link {
             position: relative;
             white-space: nowrap;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
-            border-radius: 0.5rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
+
         .nav-tab-link.active {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #065f46;
+            color: #059669;
+            background-color: #f0fdf4;
+            border-radius: 0.5rem;
         }
         
         .nav-tab-link.active .nav-indicator {
@@ -440,7 +488,7 @@
             }
             
             .sticky-nav {
-                top: 60px;
+                top: 20px; /* Adjust for mobile header height */
             }
         }
 
@@ -461,7 +509,7 @@
             }
             
             .sticky-nav {
-                top: 50px;
+                top: 20px; /* Adjust for mobile header height */
             }
             
             /* Adjust layout for product cards on mobile */
@@ -536,9 +584,40 @@
             max-width: 1280px;
             margin: 20px auto;
         }
+
+        /* Add these transition styles to your existing style block */
+        #page-transition-overlay {
+            pointer-events: none;
+        }
+
+        .page-exit #page-transition-overlay {
+            transform: translateX(0);
+        }
+
+        /* Add these styles in your style block */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.2s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-green-50">
+    <!-- Page Transition Element -->
+    <div class="page-transition"></div>
+    
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -580,7 +659,7 @@
         <!-- Logo and Navigation -->
         <nav class="main-nav">
             <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between w-full">
                     <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
                         <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
                     </a>
@@ -613,14 +692,13 @@
     </div>
 
     <!-- Add padding to main content -->
-    <main class="pt-24 md:pt-36">
+    <main class="pt-0">
         <!-- Main Title Section with Enhanced Hero -->
-        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-8 md:py-16">
-            <div class="absolute inset-0 bg-[url('gas-tank.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div class="container mx-auto px-4 relative z-10">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-3 md:mb-6 text-black">Products & Services</h1>
-                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-black">
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="container mx-auto px-4 relative z-10 flex flex-col justify-center h-full">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6 md:mb-8 text-white" data-aos="fade-up" data-aos-delay="300">Products & Services</h1>
+                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white" data-aos="fade-up" data-aos-delay="600">
                     Delivering high-quality industrial and medical gases with exceptional service standards
                 </p>
             </div>
@@ -642,28 +720,19 @@
 
         <!-- Enhanced Navigation Tabs -->
         <div class="sticky-nav">
-            <div class="container mx-auto nav-tabs-container">
-                <nav class="flex justify-center space-x-2 md:space-x-6 py-2 md:py-3 overflow-x-auto scrollbar-hide px-1 md:px-2">
+            <div class="container mx-auto">
+                <nav class="flex justify-center items-center space-x-4 py-3 px-4 overflow-x-auto scrollbar-hide bg-white">
                     <a href="#medical-gases" class="nav-tab-link group active" id="medical-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">medical_services</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Medical & Industrial
-                        </span>
-                        <div class="h-0.5 w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">medical_services</span>
+                        <span>Medical & Industrial</span>
                     </a>
                     <a href="#other-sales-and-services" class="nav-tab-link group" id="services-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">design_services</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Sales & Services
-                        </span>
-                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">design_services</span>
+                        <span>Sales & Services</span>
                     </a>
                     <a href="#completed-projects" class="nav-tab-link group" id="projects-tab">
-                        <span class="material-icons nav-tab-icon text-emerald-600">engineering</span>
-                        <span class="text-sm md:text-base font-medium transition-colors">
-                            Projects
-                        </span>
-                        <div class="h-0.5 w-0 group-hover:w-full bg-emerald-500 nav-indicator transition-all duration-300"></div>
+                        <span class="material-icons nav-tab-icon">engineering</span>
+                        <span>Projects</span>
                     </a>
                 </nav>
             </div>
@@ -672,7 +741,7 @@
         <!-- Main Content with Enhanced Product Cards -->
         <div class="container mx-auto px-3 md:px-4 py-8 md:py-12">
             <!-- Medical and Industrial Gases Section -->
-            <section id="medical-gases" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white">
+            <section id="medical-gases" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white" data-aos="fade-up">
                 <div class="container mx-auto px-3 md:px-4">
                     <!-- Enhanced Section Header -->
                     <div class="text-center mb-8 md:mb-16">
@@ -693,10 +762,10 @@
                         <!-- Products Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <!-- Oxygen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products/main-products-no-bg/oxygen-gas.png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\oxygen (gas and liquid).png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">OXYGEN</h4>
@@ -714,10 +783,10 @@
                             </div>
                             
                             <!-- Nitrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="150" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\nitrogen-gas.png" alt="Nitrogen" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Nitrogen Gas and Liquid.png" alt="Nitrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">NITROGEN</h4>
@@ -735,10 +804,10 @@
                             </div>
 
                             <!-- Argon Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\argon-gas.png" alt="Argon" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Argon Liquid and Gas.png" alt="Argon" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ARGON</h4>
@@ -756,10 +825,10 @@
                             </div>
 
                             <!-- Hydrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="250" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\hydrogen.png" alt="Hydrogen" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Hydrogen1.png" alt="Hydrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">HYDROGEN</h4>
@@ -777,10 +846,10 @@
                             </div>
 
                             <!-- Compressed Air Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\compressed_air.png" alt="Compressed Air" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Compressed Air.png" alt="Compressed Air" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">COMPRESSED AIR</h4>
@@ -798,10 +867,10 @@
                             </div>
 
                             <!-- Acetylene Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="350" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\acetylene.png" alt="Acetylene" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Acytelyne.png" alt="Acetylene" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ACETYLENE</h4>
@@ -819,10 +888,10 @@
                             </div>
 
                             <!-- Arcoweld Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="400" data-aos-easing="ease-out-cubic">
                                 <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\arcoweld-argoshield.png" alt="Arcoweld" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                    <img src="products\main-products-no-bg\Arcoweld.png" alt="Arcoweld" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div class="p-6 flex-grow flex flex-col justify-between">
                                     <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ARCOWELD (Argoshield)</h4>
@@ -849,10 +918,10 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                                 <!-- Carbon Dioxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500">
+                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
                                     <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <img src="products\other-gasses-no-bg\carbon-dioxide.png" alt="Carbon Dioxide" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                        <img src="products\main-products-no-bg\Carbon.png" alt="Carbon Dioxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="p-6">
                                         <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">CARBON DIOXIDE</h4>
@@ -866,10 +935,10 @@
                                 </div>
 
                                 <!-- Nitrous Oxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500">
+                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
                                     <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
                                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <img src="products\other-gasses-no-bg\nitrous-oxide.png" alt="Nitrous Oxide" class="absolute inset-0 w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                        <img src="products\main-products-no-bg\Nitrous.png" alt="Nitrous Oxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="p-6">
                                         <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">NITROUS OXIDE</h4>
@@ -920,7 +989,7 @@
             </section>
 
             <!-- Other Sales and Services Section -->
-            <section id="other-sales-and-services" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20">
+            <section id="other-sales-and-services" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20" data-aos="fade-up">
                 <div class="container mx-auto px-3 md:px-4">
                     <!-- Enhanced Section Title -->
                     <div class="text-center mb-8 md:mb-16">
@@ -1002,7 +1071,7 @@
                                     <div class="absolute inset-0 bg-[url('images/nitrogen-purging.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                     <div class="relative h-full flex items-center justify-center p-12">
-                                        <img src="images/nitrogen-purging.jpg" alt="Nitrogen Purging System" 
+                                        <img src="products\main-products-no-bg\nitrogen-purging.jpg" alt="Nitrogen Purging System" 
                                              class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                              style="max-height: 400px; object-fit: cover;">
                                     </div>
@@ -1078,7 +1147,7 @@
                                     <div class="absolute inset-0 bg-[url('images/pipeline-system.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                     <div class="relative h-full flex items-center justify-center p-12">
-                                        <img src="images/pipeline-system.jpg" alt="Industrial Pipeline System" 
+                                        <img src="products\main-products-no-bg\industrialpipesystem.png" alt="Industrial Pipeline System" 
                                              class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                              style="max-height: 400px; object-fit: cover;">
                                     </div>
@@ -1138,7 +1207,7 @@
                                     <div class="absolute inset-0 bg-[url('images/medical-pipeline.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                     <div class="relative h-full flex items-center justify-center p-12">
-                                        <img src="images/medical-pipeline.jpg" alt="Medical Oxygen Pipeline System" 
+                                        <img src="products\sales&services\medical_pipeline_system.png" alt="Medical Oxygen Pipeline System" 
                                              class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                              style="max-height: 400px; object-fit: cover;">
                                     </div>
@@ -1160,7 +1229,7 @@
                                     <p class="text-gray-600 mb-8 leading-relaxed">
                                         Custom-designed medical bedside tables with integrated oxygen supply systems for healthcare facilities.
                                     </p>
-
+    
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
                                             <div class="flex items-start">
@@ -1195,51 +1264,18 @@
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Ergonomic design for patient comfort</span>
-                                        </div>
+                                    <div class="absolute inset-0 bg-[url('images/gas-stand.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
+                                    <div class="relative h-full flex items-center justify-center p-12">
+                                        <img src="products\sales&services\medical_bedside.png" alt="Medical Gas Stand" 
+                                             class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
+                                             style="max-height: 400px; object-fit: cover;">
                                     </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Durable medical-grade materials</span>
-                                        </div>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-lg border border-emerald-100 hover:border-emerald-200 transition-colors duration-300">
-                                        <div class="flex items-start">
-                                            <span class="text-emerald-500 mr-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="text-gray-700">Customizable configurations available</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="absolute inset-0 bg-[url('images/bedside-table.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
-                                <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/bedside-table.jpg" alt="Medical Bedside Table" 
-                                         class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
-                                         style="max-height: 400px; object-fit: cover;">
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                        
                     <!-- 5. Oxygen Carriage Card -->
                     <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500">
                         <div class="flex flex-col lg:flex-row">
@@ -1292,7 +1328,7 @@
                                 <div class="absolute inset-0 bg-[url('images/oxygen-carriage.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                 <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/oxygen-carriage.jpg" alt="Oxygen Carriage Service" 
+                                    <img src="products\sales&services\oxygen carrigae.png" alt="Oxygen Carriage Service" 
                                          class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                          style="max-height: 400px; object-fit: cover;">
                                 </div>
@@ -1352,7 +1388,7 @@
                                 <div class="absolute inset-0 bg-[url('images/gas-stand.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                 <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="images/gas-stand.jpg" alt="Medical Gas Stand" 
+                                    <img src="products\sales&services\gas_stand.jpg" alt="Medical Gas Stand" 
                                          class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                          style="max-height: 400px; object-fit: cover;">
                                 </div>
@@ -1412,7 +1448,7 @@
                                 <div class="absolute inset-0 bg-[url('products/oxygen-controller-nobg.png')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
                                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
                                 <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="products/oxygen-controller-nobg.png" alt="Oxygen Regulator" 
+                                    <img src="products\sales&services\oxygen_regulator.png" alt="Oxygen Regulator" 
                                          class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
                                          style="max-height: 400px; object-fit: contain;">
                                 </div>
@@ -1423,7 +1459,7 @@
             </div>
 
             <!-- Completed Projects -->
-            <section id="completed-projects" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20">
+            <section id="completed-projects" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20" data-aos="fade-up">
                 <div class="container mx-auto px-4 py-6 bg-gradient-to-b from-white to-green-50">
                     <!-- Section Title -->
                     <div class="flex items-center justify-center mb-16">
@@ -1702,11 +1738,55 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page transition for entrance
+            const pageTransition = document.querySelector('.page-transition');
+            const contentElements = document.querySelectorAll('main > section, main > div');
+            
+            // Add content transition class to all main sections
+            contentElements.forEach(element => {
+                element.classList.add('content-transition');
+            });
+            
+            // Simulate page loading transition
+            setTimeout(() => {
+                pageTransition.classList.add('exit');
+                // After transition is complete, show content with staggered delay
+                setTimeout(() => {
+                    contentElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.classList.add('content-visible');
+                        }, 50 * index); // also speed up staggered content
+                    });
+                }, 200);
+            }, 150);
+            
+            // Handle navigation to other pages
+            document.querySelectorAll('a').forEach(link => {
+                // Only add transition to internal links that are not anchors
+                if (link.href && link.href.startsWith(window.location.origin) && 
+                    !link.href.includes('#') && !link.href.includes('javascript:')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        
+                        // Start transition animation
+                        pageTransition.classList.add('enter');
+                        
+                        // After animation completes, navigate to the target page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 200);
+                    });
+                }
+            });
+            
             // Initialize AOS
             AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100
+                duration: 1200,
+                once: false,
+                offset: 100,
+                mirror: true, // whether elements should animate out while scrolling past them
+                anchorPlacement: 'top-bottom' // defines which position of the element regarding to window should trigger the animation
             });
 
             // Progress bar
@@ -1740,8 +1820,7 @@
                 const header = document.querySelector('.fixed-header');
                 const currentScroll = window.pageYOffset;
 
-                // Remove the logic that hides the header on scroll down
-                // Always keep the header visible
+                // Keep header visible
                 header.style.transform = 'translateY(0)';
 
                 if (currentScroll > 10) {
@@ -1753,174 +1832,12 @@
                 lastScroll = currentScroll;
             });
 
-            // Mobile menu toggle - new
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('show');
-                    
-                    // Change icon based on menu state
-                    const icon = mobileMenuButton.querySelector('.material-icons');
-                    if (mobileMenu.classList.contains('show')) {
-                        icon.textContent = 'close';
-                    } else {
-                        icon.textContent = 'menu';
-                    }
-                });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!mobileMenu.contains(e.target) && 
-                        !mobileMenuButton.contains(e.target) && 
-                        mobileMenu.classList.contains('show')) {
-                        mobileMenu.classList.remove('show');
-                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
-                    }
-                });
-                
-                // Close mobile menu when window is resized above breakpoint
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 1024 && mobileMenu.classList.contains('show')) {
-                        mobileMenu.classList.remove('show');
-                        mobileMenuButton.querySelector('.material-icons').textContent = 'menu';
-                    }
-                });
-            }
-
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.toggle('active');
+                const icon = this.querySelector('.material-icons');
+                icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
             });
-
-            // Active tab highlighting
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-tab-link');
-
-            function highlightNavigation() {
-                const scrollY = window.pageYOffset;
-                
-                sections.forEach(section => {
-                    const sectionHeight = section.offsetHeight;
-                    const sectionTop = section.offsetTop - 150;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === sectionId) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', highlightNavigation);
-
-            // Add data-aos attributes to elements
-            document.querySelectorAll('.product-card').forEach((card, index) => {
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', (index * 100).toString());
-            });
-
-            // Image lazy loading
-            document.querySelectorAll('img').forEach(img => {
-                img.setAttribute('loading', 'lazy');
-            });
-        });
-
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('active');
-            const icon = this.querySelector('.material-icons');
-            icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
-        });
-
-        // Progress bar
-        window.addEventListener('scroll', function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.progress-bar').style.width = scrolled + '%';
-            
-            // Show/hide back to top button
-            if (winScroll > 300) {
-                document.getElementById('backToTop').classList.add('active');
-            } else {
-                document.getElementById('backToTop').classList.remove('active');
-            }
-        });
-
-        // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Enhanced navigation tabs functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = ['medical-gases', 'other-sales-and-services', 'completed-projects'];
-            const tabs = ['medical-tab', 'services-tab', 'projects-tab'];
-            
-            // Smooth scrolling for tab links
-            tabs.forEach((tabId, index) => {
-                document.getElementById(tabId).addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetSection = document.getElementById(sections[index]);
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Set active tab
-                    setActiveTab(tabId);
-                });
-            });
-            
-            // Update active tab on scroll
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY + 150;
-                
-                sections.forEach((sectionId, index) => {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        const sectionTop = section.offsetTop;
-                        const sectionBottom = sectionTop + section.offsetHeight;
-                        
-                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                            setActiveTab(tabs[index]);
-                        }
-                    }
-                });
-            });
-            
-            function setActiveTab(activeTabId) {
-                tabs.forEach(tabId => {
-                    const tab = document.getElementById(tabId);
-                    if (tabId === activeTabId) {
-                        tab.classList.add('active');
-                    } else {
-                        tab.classList.remove('active');
-                    }
-                });
-            }
         });
     </script>
 </body>

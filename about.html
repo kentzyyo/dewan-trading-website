@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Dewan Trading Corp</title>
+    <link rel="icon" href="LOGO\dewan-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add AOS for scroll animations -->
@@ -120,6 +121,43 @@
             max-width: 1280px;
             margin: 20px auto;
         }
+
+        /* Enhanced wave animation */
+        .waves {
+            width: 100%;
+            height: 100px;
+            min-height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .wave-parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+        .wave-parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .wave-parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .wave-parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .wave-parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
 
         /* Enhanced scroll behavior */
         .scrolled .fixed-header {
@@ -357,6 +395,41 @@
             background: #059669;
         }
 
+        /* Page Transition Animations */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #10b981;
+            z-index: 9999;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+        }
+
+        .page-transition.enter {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+
+        .page-transition.exit {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .content-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .content-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Static background white - won't receive hover effects */
         .bg-white-static {
             background-color: white;
@@ -543,6 +616,9 @@
     </style>
 </head>
 <body class="bg-green-50">
+    <!-- Page Transition Element -->
+    <div class="page-transition"></div>
+    
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -617,9 +693,9 @@
     </div>
 
     <!-- Add padding to main content to prevent it from being hidden behind fixed header -->
-    <main class="pt-36">
+    <main class="pt-0">
         <!-- Hero Section with Wave -->
-        <section class="wave-container relative overflow-hidden">
+        <!-- <section class="wave-container relative overflow-hidden">
             <div class="hero-overlay bg-cover bg-center text-white py-24 px-5 relative" style="background-image: url('gas-tank.jpg');">
                 <div class="max-w-4xl mx-auto text-center relative z-10">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in opacity-0" style="animation-delay: 0.3s">ABOUT US</h1>
@@ -636,7 +712,25 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/50"></div>
+            
+            <!-- Decorative wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <defs>
+                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                    </g>
+                </svg>
+            </div>
+        </div>
 
         <!-- About Us Section -->
         <section id="our-history" class="container mx-auto p-8">
@@ -1103,6 +1197,48 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page transition for entrance
+            const pageTransition = document.querySelector('.page-transition');
+            const contentElements = document.querySelectorAll('main > section, main > div');
+            
+            // Add content transition class to all main sections
+            contentElements.forEach(element => {
+                element.classList.add('content-transition');
+            });
+            
+            // Simulate page loading transition
+            setTimeout(() => {
+                pageTransition.classList.add('exit');
+                // After transition is complete, show content with staggered delay
+                setTimeout(() => {
+                    contentElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.classList.add('content-visible');
+                        }, 100 * index);
+                    });
+                }, 500);
+            }, 300);
+            
+            // Handle navigation to other pages
+            document.querySelectorAll('a').forEach(link => {
+                // Only add transition to internal links that are not anchors
+                if (link.href && link.href.startsWith(window.location.origin) && 
+                    !link.href.includes('#') && !link.href.includes('javascript:')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        
+                        // Start transition animation
+                        pageTransition.classList.add('enter');
+                        
+                        // After animation completes, navigate to the target page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 500);
+                    });
+                }
+            });
+
             // Initialize AOS
             AOS.init({
                 duration: 1000,
