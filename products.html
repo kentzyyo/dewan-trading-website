@@ -1325,13 +1325,21 @@
                                 </div>
                             </div>
                             <div class="lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50">
-                                <div class="absolute inset-0 bg-[url('images/oxygen-carriage.jpg')] bg-cover bg-center opacity-90 group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20"></div>
-                                <div class="relative h-full flex items-center justify-center p-12">
-                                    <img src="products\sales&services\oxygen carrigae.png" alt="Oxygen Carriage Service" 
-                                         class="rounded-lg shadow-2xl max-w-md w-full transform group-hover:scale-95 transition-all duration-500"
+                                <!-- Carousel Start -->
+                                <div id="truckCarousel" class="relative h-full flex items-center justify-center p-12">
+                                    <button id="carouselPrev" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/70 hover:bg-white rounded-full p-2 shadow-md focus:outline-none">
+                                        <span class="material-icons">chevron_left</span>
+                                    </button>
+                                    <img id="carouselImage" src="DewanTruck/viber_image_2025-03-06_16-34-37-485_13.jpeg" alt="Oxygen Carriage Truck" 
+                                         class="rounded-lg shadow-2xl max-w-md w-full transition-all duration-700 object-cover opacity-100"
                                          style="max-height: 400px; object-fit: cover;">
+                                    <button id="carouselNext" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/70 hover:bg-white rounded-full p-2 shadow-md focus:outline-none">
+                                        <span class="material-icons">chevron_right</span>
+                                    </button>
+                                    <!-- Indicators -->
+                                    <div id="carouselIndicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20"></div>
                                 </div>
+                                <!-- Carousel End -->
                             </div>
                         </div>
                     </div>
@@ -1839,6 +1847,58 @@
                 icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
             });
         });
+    </script>
+    <script>
+    // Carousel logic for Oxygen Carriage
+    (function() {
+        const images = [
+            'DewanTruck/viber_image_2025-03-06_16-34-37-485_13.jpeg',
+            'DewanTruck/viber_image_2025-03-06_16-34-37-485_10.jpeg',
+            'DewanTruck/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_49.jpeg',
+            'DewanTruck/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_48.jpeg',
+            'DewanTruck/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_47.jpeg',
+            'DewanTruck/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_42.jpeg',
+            'DewanTruck/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_38.jpeg',
+            'DewanTruck/combinepdf_39.jpeg',
+            'DewanTruck/combinepdf_26.jpeg',
+            'DewanTruck/combinepdf_03.jpeg',
+        ];
+        let current = 0;
+        let interval = null;
+        const img = document.getElementById('carouselImage');
+        const indicators = document.getElementById('carouselIndicators');
+        function show(idx) {
+            current = (idx + images.length) % images.length;
+            // Fade out
+            img.style.opacity = 0;
+            setTimeout(() => {
+                img.src = images[current];
+                // Fade in
+                img.style.opacity = 1;
+            }, 350);
+            // Update indicators
+            if (indicators) {
+                indicators.innerHTML = images.map((_, i) =>
+                    `<button class='w-3 h-3 rounded-full ${i===current?'bg-emerald-600':'bg-gray-300'}' style='margin:0 2px;border:none;outline:none;' onclick='window.truckCarouselGoTo(${i})'></button>`
+                ).join('');
+            }
+        }
+        window.truckCarouselGoTo = show;
+        function next() { show(current + 1); }
+        function prev() { show(current - 1); }
+        document.getElementById('carouselNext').onclick = next;
+        document.getElementById('carouselPrev').onclick = prev;
+        function startAuto() {
+            interval = setInterval(next, 3000);
+        }
+        function stopAuto() {
+            clearInterval(interval);
+        }
+        img.onmouseenter = stopAuto;
+        img.onmouseleave = startAuto;
+        show(0);
+        startAuto();
+    })();
     </script>
 </body>
 </html>
