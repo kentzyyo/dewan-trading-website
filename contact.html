@@ -789,35 +789,28 @@
     <!-- Main content starts directly after navbar with no gap -->
     <main>
         <!-- Hero Banner -->
-        <div class="hero-banner" style="transition: none; background-image: url('gas_tank1.png'); background-blend-mode: overlay;">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <h1 class="text-4xl md:text-4xl font-bold mb-4 text-white tracking-wide" style="font-family: 'Poppins', sans-serif;">CONTACT US</h1>
-                    <p class="text-base md:text-lg text-white whitespace-nowrap " style="font-family: 'Poppins', sans-serif;">
-                        <!-- <p class="text-base md:text-lg text-white max-w-xl" style="font-family: 'Poppins', sans-serif;"></p> -->
-                        Get in touch with us for all your industrial and medical gas needs
-                    </p>
-                </div>
-                <div class="hero-image">
-                    <img src="images/call-center.jpg" 
-                         alt="Customer Service Representative">
-                </div>
+        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32 hero-banner" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white">CONTACT US</h1>
+                <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4">
+                    Get in touch with us for all your industrial and medical gas needs
+                </p>
             </div>
-            <!-- Add padding at the bottom to account for the overlapping cards -->
-            <div class="pb-10"></div>
-            
             <!-- Decorative wave -->
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
-                <defs>
-                    <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="wave-parallax">
-                    <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
-                    <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
-                    <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
-                    <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
-                </g>
-            </svg>
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <defs>
+                        <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="wave-parallax">
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                    </g>
+                </svg>
+            </div>
         </div>
 
         <!-- Contact Cards Section -->
@@ -857,7 +850,10 @@
 
         <!-- Map and Address Section -->
         <section class="container mx-auto px-5 py-16 bg-green-50">
-            <h2 class="text-4xl text-purple-700 text-center font-bold mb-12 animate-fade-in opacity-0" style="animation-delay: 0.3s">Our Locations</h2>
+            <div class="flex flex-col items-center mb-10 animate-fade-in opacity-0" style="animation-delay: 0.3s">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Our Locations</h2>
+                <div class="w-32 h-1 rounded-full bg-gradient-to-r from-[#741595] to-[#CFF7D3] mb-2"></div>
+            </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Map Container -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[600px]">
@@ -975,7 +971,10 @@
 
         <!-- Plant Locations Section -->
         <section class="container mx-auto px-5 py-16 bg-green-50 mb-0">
-            <h2 class="text-4xl text-purple-700 text-center font-bold mb-12">Our Facilities</h2>
+            <div class="flex flex-col items-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Our Facilities</h2>
+                <div class="w-32 h-1 rounded-full bg-gradient-to-r from-[#741595] to-[#CFF7D3] mb-2"></div>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 <!-- Palo Plant -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">

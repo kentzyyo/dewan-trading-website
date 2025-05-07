@@ -116,46 +116,38 @@ body {
 
 /* Hero Banner Styles */
 .hero-banner {
-    background-color: #036d5f;
-    background-image: url('gas-tank.jpg');
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%) !important;
+    background-image: none !important;
+    background-blend-mode: unset !important;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    position: relative;
     overflow: hidden;
     left: 0;
     right: 0;
 }
 
 .hero-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(3, 109, 95, 0.8);
-    z-index: 1;
+    display: none !important;
 }
 
-.hero-container {
-    display: flex;
-    position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
-    height: 380px;
-    z-index: 2;
+.hero-container, .hero-image {
+    display: none !important;
 }
 
 .hero-text {
-    width: 50%;
-    padding: 60px 40px 60px 60px;
-    z-index: 2;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
@@ -1742,15 +1734,17 @@ main {
 
 /* Hero Banner Styles */
 .hero-banner {
-    background-color: #036d5f;
-    background-image: url('gas-tank.jpg');
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%) !important;
+    background-image: none !important;
+    background-blend-mode: unset !important;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    position: relative;
     overflow: hidden;
     left: 0;
     right: 0;

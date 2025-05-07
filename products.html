@@ -612,6 +612,22 @@
         .animate-scale-in {
             animation: scaleIn 0.2s ease-out forwards;
         }
+
+        /* Gallery Button Pressed Effect */
+        #gallery-view-btn:active {
+            transform: scale(0.96) translateY(2px);
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        /* Gallery Image Float Effect */
+        .gallery-float {
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .gallery-float:hover {
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 0 12px 32px -8px rgba(44, 62, 80, 0.18), 0 4px 12px -4px rgba(44, 62, 80, 0.10);
+            z-index: 2;
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -734,6 +750,10 @@
                         <span class="material-icons nav-tab-icon">engineering</span>
                         <span>Projects</span>
                     </a>
+                    <a href="#gallery" class="nav-tab-link group" id="gallery-tab">
+                        <span class="material-icons nav-tab-icon">photo_library</span>
+                        <span>Gallery</span>
+                    </a>
                 </nav>
             </div>
         </div>
@@ -753,22 +773,21 @@
                     </div>
 
                     <!-- Main Products Section -->
-                    <div class="mb-8 md:mb-16">
-                        <h3 class="text-xl md:text-2xl font-bold text-emerald-700 mb-6 md:mb-12 flex items-center justify-center">
-                            <span class="material-icons text-emerald-500 mr-2 md:mr-3">inventory_2</span>
-                            Main Products
-                        </h3>
-
-                        <!-- Products Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Oxygen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\oxygen (gas and liquid).png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">OXYGEN</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        <!-- Oxygen Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\oxygen (gas and liquid).png" alt="Oxygen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">OXYGEN</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
+                                    </div>
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-gray-600">
                                             <span>Type:</span>
@@ -779,17 +798,35 @@
                                             <span class="font-medium">99.9%</span>
                                         </div>
                                     </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Oxygen (O₂) is a colorless, odorless gas essential for life and various industrial processes.</p>
+                                        <p class="mb-2"><strong>Key Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Medical: Life support systems, hospitals</li>
+                                            <li>Industrial: Metal cutting, welding</li>
+                                            <li>Chemical manufacturing</li>
+                                            <li>Water treatment</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <!-- Nitrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="150" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Nitrogen Gas and Liquid.png" alt="Nitrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">NITROGEN</h4>
+                        </div>
+
+                        <!-- Nitrogen Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\Nitrogen Gas and Liquid.png" alt="Nitrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">NITROGEN</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
+                                    </div>
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-gray-600">
                                             <span>Type:</span>
@@ -800,17 +837,35 @@
                                             <span class="font-medium">99.999%</span>
                                         </div>
                                     </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Nitrogen (N₂) is an inert gas that makes up about 78% of Earth's atmosphere.</p>
+                                        <p class="mb-2"><strong>Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Food packaging and preservation</li>
+                                            <li>Electronics manufacturing</li>
+                                            <li>Chemical blanketing and purging</li>
+                                            <li>Laser cutting and welding</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Argon Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Argon Liquid and Gas.png" alt="Argon" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ARGON</h4>
+                        <!-- Argon Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\Argon Liquid and Gas.png" alt="Argon" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">ARGON</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
+                                    </div>
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-gray-600">
                                             <span>Type:</span>
@@ -821,168 +876,246 @@
                                             <span class="font-medium">99.999%</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <!-- Hydrogen Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="250" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Hydrogen1.png" alt="Hydrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">HYDROGEN</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>Type:</span>
-                                            <span class="font-medium">Gas</span>
-                                        </div>
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>&nbsp;</span>
-                                            <span>&nbsp;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Compressed Air Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Compressed Air.png" alt="Compressed Air" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">COMPRESSED AIR</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>Type:</span>
-                                            <span class="font-medium">Gas</span>
-                                        </div>
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>&nbsp;</span>
-                                            <span>&nbsp;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Acetylene Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="350" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Acytelyne.png" alt="Acetylene" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ACETYLENE</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>Type:</span>
-                                            <span class="font-medium">Gas</span>
-                                        </div>
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>&nbsp;</span>
-                                            <span>&nbsp;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Arcoweld Card -->
-                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col" data-aos="fade-up" data-aos-delay="400" data-aos-easing="ease-out-cubic">
-                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img src="products\main-products-no-bg\Arcoweld.png" alt="Arcoweld" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                </div>
-                                <div class="p-6 flex-grow flex flex-col justify-between">
-                                    <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">ARCOWELD (Argoshield)</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>Type:</span>
-                                            <span class="font-medium">Gas</span>
-                                        </div>
-                                        <div class="flex items-center justify-between text-gray-600">
-                                            <span>&nbsp;</span>
-                                            <span>&nbsp;</span>
-                                        </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Argon (Ar) is a noble gas that is colorless, odorless, and non-reactive.</p>
+                                        <p class="mb-2"><strong>Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Welding and metal fabrication</li>
+                                            <li>Lighting (neon signs)</li>
+                                            <li>Semiconductor manufacturing</li>
+                                            <li>Window insulation</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Other Gases Section -->
-                        <div class="mt-16">
-                            <h3 class="text-2xl font-bold text-emerald-700 mb-12 flex items-center justify-center">
-                                <span class="material-icons text-emerald-500 mr-3">category</span>
-                                Other Gases
-                            </h3>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                                <!-- Carbon Dioxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-out-cubic">
-                                    <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <img src="products\main-products-no-bg\Carbon.png" alt="Carbon Dioxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                        <!-- Hydrogen Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\Hydrogen1.png" alt="Hydrogen" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">HYDROGEN</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
                                     </div>
-                                    <div class="p-6">
-                                        <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">CARBON DIOXIDE</h4>
-                                        <div class="space-y-2">
-                                            <div class="flex items-center justify-between text-gray-600">
-                                                <span>Type:</span>
-                                                <span class="font-medium">Liquid</span>
-                                            </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>Type:</span>
+                                            <span class="font-medium">Gas</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>&nbsp;</span>
+                                            <span>&nbsp;</span>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Nitrous Oxide Card -->
-                                <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out-cubic">
-                                    <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <img src="products\main-products-no-bg\Nitrous.png" alt="Nitrous Oxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
-                                    </div>
-                                    <div class="p-6">
-                                        <h4 class="text-xl font-bold text-emerald-800 mb-3 group-hover:text-emerald-600 transition-colors duration-300">NITROUS OXIDE</h4>
-                                        <div class="space-y-2">
-                                            <div class="flex items-center justify-between text-gray-600">
-                                                <span>Type:</span>
-                                                <span class="font-medium">Liquid</span>
-                                            </div>
-                                        </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Hydrogen (H₂) is a colorless, odorless, and highly flammable gas.</p>
+                                        <p class="mb-2"><strong>Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Fuel cells</li>
+                                            <li>Chemical synthesis</li>
+                                            <li>Metal fabrication</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Additional Features -->
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16 max-w-7xl mx-auto">
-                            <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
-                                <div class="text-emerald-500 mb-4">
-                                    <span class="material-icons text-4xl">verified</span>
-                                </div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Quality Assured</h4>
-                                <p class="text-gray-600 text-sm">All products meet strict industry standards and certifications</p>
+                        <!-- Acetylene Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\Acytelyne.png" alt="Acetylene" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                             </div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
-                                <div class="text-emerald-500 mb-4">
-                                    <span class="material-icons text-4xl">local_shipping</span>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">ACETYLENE</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>Type:</span>
+                                            <span class="font-medium">Gas</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>&nbsp;</span>
+                                            <span>&nbsp;</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Acetylene (C₂H₂) is a colorless, odorless, and highly flammable gas.</p>
+                                        <p class="mb-2"><strong>Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Welding and metal fabrication</li>
+                                            <li>Chemical synthesis</li>
+                                            <li>Lighting (acetylene torches)</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
+                                    </div>
                                 </div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Fast Delivery</h4>
-                                <p class="text-gray-600 text-sm">Reliable delivery service across the region</p>
                             </div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
-                                <div class="text-emerald-500 mb-4">
-                                    <span class="material-icons text-4xl">support_agent</span>
+                        </div>
+
+                        <!-- Arcoweld Card -->
+                        <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                            <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="products\main-products-no-bg\Arcoweld.png" alt="Arcoweld" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-xl font-bold text-emerald-800">ARCOWELD (Argoshield)</h3>
+                                        <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                            <span class="material-icons">expand_more</span>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>Type:</span>
+                                            <span class="font-medium">Gas</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-gray-600">
+                                            <span>&nbsp;</span>
+                                            <span>&nbsp;</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                        <p class="mb-2">Arcoweld is a type of welding process that uses argon gas as a shielding gas.</p>
+                                        <p class="mb-2"><strong>Applications:</strong></p>
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Welding and metal fabrication</li>
+                                            <li>Automotive manufacturing</li>
+                                            <li>Aerospace manufacturing</li>
+                                        </ul>
+                                        <p class="mt-2"><strong>Safety:</strong> Store in a well-ventilated area away from combustible materials.</p>
+                                    </div>
                                 </div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">24/7 Support</h4>
-                                <p class="text-gray-600 text-sm">Round-the-clock customer service and technical support</p>
                             </div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
-                                <div class="text-emerald-500 mb-4">
-                                    <span class="material-icons text-4xl">engineering</span>
+                        </div>
+                    </div>
+
+                    <!-- Other Gases Section -->
+                    <div class="mt-16">
+                        <h3 class="text-2xl font-bold text-emerald-700 mb-12 flex items-center justify-center">
+                            <span class="material-icons text-emerald-500 mr-3">category</span>
+                            Other Gases
+                        </h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            <!-- Carbon Dioxide Card -->
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="products/other-gasses-no-bg/carbon-dioxide.png" alt="Carbon Dioxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
                                 </div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Expert Team</h4>
-                                <p class="text-gray-600 text-sm">Experienced professionals at your service</p>
+                                <div class="p-6 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-3">
+                                            <h3 class="text-xl font-bold text-emerald-800">CARBON DIOXIDE</h3>
+                                            <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                                <span class="material-icons">expand_more</span>
+                                            </button>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between text-gray-600">
+                                                <span>Type:</span>
+                                                <span class="font-medium">Gas</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                            <p class="mb-2">Carbon Dioxide (CO₂) is a colorless, odorless gas that is essential for life on Earth.</p>
+                                            <p class="mb-2"><strong>Key Applications:</strong></p>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Beverage carbonation</li>
+                                                <li>Food packaging and preservation</li>
+                                                <li>Greenhouse enrichment</li>
+                                                <li>Fire extinguishers</li>
+                                                <li>Industrial cleaning</li>
+                                            </ul>
+                                            <p class="mt-2"><strong>Safety:</strong> Use in well-ventilated areas. Can displace oxygen in confined spaces.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- Nitrous Oxide Card -->
+                            <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                                <div class="relative h-48 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="products/other-gasses-no-bg/nitrous-oxide.png" alt="Nitrous Oxide" class="absolute inset-0 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-3">
+                                            <h3 class="text-xl font-bold text-emerald-800">NITROUS OXIDE</h3>
+                                            <button class="info-toggle-btn text-emerald-600 hover:text-emerald-700 transition-transform duration-300">
+                                                <span class="material-icons">expand_more</span>
+                                            </button>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between text-gray-600">
+                                                <span>Type:</span>
+                                                <span class="font-medium">Gas</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-content hidden mt-4 text-gray-600 text-sm">
+                                            <p class="mb-2">Nitrous Oxide (N₂O) is a colorless gas with a slightly sweet odor, also known as "laughing gas".</p>
+                                            <p class="mb-2"><strong>Key Applications:</strong></p>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Medical and dental anesthesia</li>
+                                                <li>Food industry (whipped cream propellant)</li>
+                                                <li>Automotive industry (engine performance)</li>
+                                                <li>Laboratory research</li>
+                                            </ul>
+                                            <p class="mt-2"><strong>Safety:</strong> Medical-grade gas requiring proper handling and storage. Use only under professional supervision.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Features -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16 max-w-7xl mx-auto">
+                        <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="text-emerald-500 mb-4">
+                                <span class="material-icons text-4xl">verified</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Quality Assured</h4>
+                            <p class="text-gray-600 text-sm">All products meet strict industry standards and certifications</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="text-emerald-500 mb-4">
+                                <span class="material-icons text-4xl">local_shipping</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Fast Delivery</h4>
+                            <p class="text-gray-600 text-sm">Reliable delivery service across the region</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="text-emerald-500 mb-4">
+                                <span class="material-icons text-4xl">support_agent</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">24/7 Support</h4>
+                            <p class="text-gray-600 text-sm">Round-the-clock customer service and technical support</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="text-emerald-500 mb-4">
+                                <span class="material-icons text-4xl">engineering</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Expert Team</h4>
+                            <p class="text-gray-600 text-sm">Experienced professionals at your service</p>
                         </div>
                     </div>
                 </div>
@@ -1659,6 +1792,37 @@
         </div>
     </main>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="scroll-mt-24 md:scroll-mt-32 py-10 md:py-20 bg-gradient-to-b from-green-50 to-white" data-aos="fade-up">
+        <div class="container mx-auto px-3 md:px-4">
+            <div class="text-center mb-8 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-3 md:mb-4">Gallery</h2>
+                <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-4 md:mb-8"></div>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-2">
+                    Explore our collection of images showcasing our gases and operations.
+                </p>
+                <button id="gallery-view-btn" class="flex items-center gap-3 px-6 py-3 mt-6 rounded-md text-white font-medium text-lg shadow-lg focus:outline-none transition-all duration-300 bg-gradient-to-r from-purple-700 via-blue-500 to-teal-400 hover:scale-105 active:scale-95" style="margin: 0 auto;">
+                    <span class="material-icons text-white transition-transform duration-300" id="gallery-arrow" style="transform: rotate(0deg);">arrow_forward</span>
+                    View Images
+                </button>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="gallery-grid" style="opacity:0; pointer-events:none; max-height:0; overflow:hidden; transition:max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s;">
+                <!-- Gallery Images -->
+                <template id="gallery-template">
+                    <div class="relative group cursor-pointer opacity-0 transform translate-y-8 transition-all duration-700">
+                        <img src="" alt="Gallery Image" class="rounded-lg shadow-md w-full h-40 object-cover object-center gallery-float" loading="lazy">
+                    </div>
+                </template>
+                <!-- Dynamically insert images here -->
+            </div>
+        </div>
+        <!-- Lightbox Modal -->
+        <div id="gallery-lightbox" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+            <span class="absolute top-8 right-8 text-white text-4xl cursor-pointer" id="gallery-lightbox-close">&times;</span>
+            <img id="gallery-lightbox-img" src="" alt="Gallery Large" class="max-h-[80vh] max-w-[90vw] rounded-lg shadow-2xl">
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-white mt-20 w-full">
         <!-- Main Footer Content -->
@@ -1846,6 +2010,46 @@
                 const icon = this.querySelector('.material-icons');
                 icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
             });
+
+            // --- Dynamic Tab Highlighting ---
+            const tabLinks = [
+                {id: 'medical-tab', section: 'medical-gases'},
+                {id: 'services-tab', section: 'other-sales-and-services'},
+                {id: 'projects-tab', section: 'completed-projects'},
+                {id: 'gallery-tab', section: 'gallery'}
+            ];
+            function setActiveTab(tabId) {
+                tabLinks.forEach(t => {
+                    const el = document.getElementById(t.id);
+                    if (el) el.classList.remove('active');
+                });
+                const activeEl = document.getElementById(tabId);
+                if (activeEl) activeEl.classList.add('active');
+            }
+            // On click, scroll to section and set active
+            tabLinks.forEach(t => {
+                const el = document.getElementById(t.id);
+                if (el) {
+                    el.addEventListener('click', function(e) {
+                        setActiveTab(t.id);
+                    });
+                }
+            });
+            // On scroll, update active tab based on section in view
+            function getSectionTop(id) {
+                const el = document.getElementById(id);
+                if (!el) return Infinity;
+                return el.getBoundingClientRect().top - 120; // offset for sticky nav
+            }
+            window.addEventListener('scroll', function() {
+                let current = tabLinks[0];
+                for (let i = 0; i < tabLinks.length; i++) {
+                    if (getSectionTop(tabLinks[i].section) < 0) {
+                        current = tabLinks[i];
+                    }
+                }
+                setActiveTab(current.id);
+            });
         });
     </script>
     <script>
@@ -1899,6 +2103,148 @@
         show(0);
         startAuto();
     })();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for info toggle buttons
+            document.querySelectorAll('.info-toggle-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.closest('.group').querySelector('.info-content');
+                    const icon = this.querySelector('.material-icons');
+                    
+                    // Toggle content visibility
+                    content.classList.toggle('hidden');
+                    
+                    // Rotate icon
+                    if (content.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+    // Gallery Section Script
+    document.addEventListener('DOMContentLoaded', function() {
+        // List of images from GASES directory
+        const galleryImages = [
+            "GASES/viber_image_2025-03-06_16-34-37-485_41.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_34.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_33.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_32.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_31.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_30.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_29.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_27.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_26.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_25.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_24.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_23.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_22.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_21.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_16.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_15.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_14.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_09.jpeg",
+            "GASES/viber_image_2025-03-06_16-34-37-485_06.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_51.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_50.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_46.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_45.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_44.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_34.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_33.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_32.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_31.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_29.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_27.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_26.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_23.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_22.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_18.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_17.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_14.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_13.jpeg",
+            "GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_12.jpeg",
+            "GASES/combinepdf_38.jpeg",
+            "GASES/combinepdf_36.jpeg",
+            "GASES/combinepdf_34.jpeg",
+            "GASES/combinepdf_31.jpeg",
+            "GASES/combinepdf_30.jpeg",
+            "GASES/combinepdf_28.jpeg",
+            "GASES/combinepdf_27.jpeg",
+            "GASES/combinepdf_26.jpeg",
+            "GASES/combinepdf_24.jpeg",
+            "GASES/combinepdf_23.jpeg",
+            "GASES/combinepdf_11.jpeg",
+            "GASES/combinepdf_08.jpeg",
+            "GASES/combinepdf_07.jpeg",
+            "GASES/combinepdf_03.jpeg",
+            "GASES/combinepdf_01.jpeg"
+        ];
+        const galleryGrid = document.getElementById('gallery-grid');
+        const template = document.getElementById('gallery-template');
+        // Insert images but keep them hidden initially
+        galleryImages.forEach(src => {
+            const clone = template.content.cloneNode(true);
+            const img = clone.querySelector('img');
+            img.src = src;
+            img.alt = 'Gallery Image';
+            img.addEventListener('click', function() {
+                document.getElementById('gallery-lightbox-img').src = src;
+                document.getElementById('gallery-lightbox').classList.remove('hidden');
+            });
+            galleryGrid.appendChild(clone);
+        });
+
+        // Reveal images one by one on button click
+        const viewBtn = document.getElementById('gallery-view-btn');
+        let galleryShown = false;
+        viewBtn.addEventListener('click', function() {
+            const cards = galleryGrid.querySelectorAll('.group');
+            const arrow = document.getElementById('gallery-arrow');
+            if (!galleryShown) {
+                galleryGrid.style.opacity = 1;
+                galleryGrid.style.pointerEvents = 'auto';
+                galleryGrid.style.maxHeight = '2000px';
+                galleryGrid.style.overflow = 'visible';
+                cards.forEach((card, i) => {
+                    setTimeout(() => {
+                        card.classList.remove('opacity-0', 'translate-y-8');
+                        card.classList.add('opacity-100', 'translate-y-0');
+                    }, 120 * i);
+                });
+                arrow.style.transform = 'rotate(90deg)'; // Down
+                galleryShown = true;
+            } else {
+                cards.forEach((card, i) => {
+                    setTimeout(() => {
+                        card.classList.remove('opacity-100', 'translate-y-0');
+                        card.classList.add('opacity-0', 'translate-y-8');
+                    }, 80 * i);
+                });
+                setTimeout(() => {
+                    galleryGrid.style.opacity = 0;
+                    galleryGrid.style.pointerEvents = 'none';
+                    galleryGrid.style.maxHeight = '0';
+                    galleryGrid.style.overflow = 'hidden';
+                }, 80 * cards.length + 400);
+                arrow.style.transform = 'rotate(0deg)'; // Right
+                galleryShown = false;
+            }
+        });
+
+        document.getElementById('gallery-lightbox-close').addEventListener('click', function() {
+            document.getElementById('gallery-lightbox').classList.add('hidden');
+        });
+        document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+    });
     </script>
 </body>
 </html>

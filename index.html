@@ -879,7 +879,11 @@
                     <!-- Medical Oxygen -->
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                         <div class="relative h-64">
-                            <img src="products/medical-oxygen-nobg.png" alt="Medical Oxygen" class="absolute inset-0 w-full h-full object-contain p-6">
+                            <div class="carousel" id="oxygen-carousel">
+                                <img src="GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_44.jpeg" alt="Medical Oxygen" class="carousel-img absolute inset-0 w-full h-full object-contain p-6" style="display:block;">
+                            </div>
+                            <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="oxygen-carousel">&#8592;</button>
+                            <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="oxygen-carousel">&#8594;</button>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">Medical Oxygen</h3>
@@ -896,7 +900,11 @@
                     <!-- Industrial Gases -->
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                         <div class="relative h-64">
-                            <img src="products/industrial-gas-nobg.png" alt="Industrial Gases" class="absolute inset-0 w-full h-full object-contain p-6">
+                            <div class="carousel" id="industrial-carousel">
+                                <img src="GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_27.jpeg" alt="Industrial Gases" class="carousel-img absolute inset-0 w-full h-full object-contain p-6" style="display:block;">
+                            </div>
+                            <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="industrial-carousel">&#8592;</button>
+                            <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="industrial-carousel">&#8594;</button>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">Industrial Gases</h3>
@@ -913,7 +921,11 @@
                     <!-- Gas Equipment -->
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                         <div class="relative h-64">
-                            <img src="products/gas-equipment-nobg.png" alt="Gas Equipment" class="absolute inset-0 w-full h-full object-contain p-6">
+                            <div class="carousel" id="equipment-carousel">
+                                <img src="viber_image_2025-03-06_16-34-37-485_16.jpeg" alt="Gas Equipment" class="carousel-img absolute inset-0 w-full h-full object-contain p-6" style="display:block;">
+                            </div>
+                            <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="equipment-carousel">&#8592;</button>
+                            <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md" data-carousel="equipment-carousel">&#8594;</button>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">Gas Equipment</h3>
@@ -1988,6 +2000,46 @@
                 mobileMenu.classList.toggle('show');
                 console.log('Mobile menu toggled programmatically:', mobileMenu.classList.contains('show'));
             }
+        });
+    </script>
+
+    <script>
+        // --- Featured Products Carousels ---
+        const carousels = {
+            'oxygen-carousel': [
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_44.jpeg'
+            ],
+            'industrial-carousel': [
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_27.jpeg',
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_26.jpeg',
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_46.jpeg'
+            ],
+            'equipment-carousel': [
+                'viber_image_2025-03-06_16-34-37-485_16.jpeg',
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_51.jpeg',
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_50.jpeg',
+                'GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_29.jpeg',
+                'GASES/combinepdf_38.jpeg',
+                'products/sales&services/medical_bedside.png',
+                'products/sales&services/medical_pipeline_system.png',
+                'products/sales&services/oxygen_regulator.png'
+            ]
+        };
+        Object.keys(carousels).forEach(id => {
+            const carousel = document.getElementById(id);
+            if (!carousel) return;
+            let idx = 0;
+            const imgs = carousels[id];
+            function showImg(i) {
+                idx = (i + imgs.length) % imgs.length;
+                let imgEl = carousel.querySelector('.carousel-img');
+                imgEl.src = imgs[idx];
+            }
+            carousel.parentElement.querySelector('.carousel-prev').onclick = () => showImg(idx - 1);
+            carousel.parentElement.querySelector('.carousel-next').onclick = () => showImg(idx + 1);
+            let interval = setInterval(() => showImg(idx + 1), 3000);
+            carousel.onmouseenter = () => clearInterval(interval);
+            carousel.onmouseleave = () => interval = setInterval(() => showImg(idx + 1), 3000);
         });
     </script>
 </body>
