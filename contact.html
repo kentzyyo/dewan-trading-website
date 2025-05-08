@@ -709,9 +709,47 @@
             padding: 0;
             position: relative;
         }
+
+        /* Page Transition Animations */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #10b981;
+            z-index: 9999;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.2s ease;
+        }
+
+        .page-transition.enter {
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+
+        .page-transition.exit {
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .content-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .content-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body style="background-color: #f0fdf4;">
+    <!-- Page Transition Element -->
+    <div class="page-transition"></div>
+
     <!-- Progress Bar -->
     <div class="progress-bar" style="width: 0%"></div>
 
@@ -851,7 +889,7 @@
         <!-- Map and Address Section -->
         <section class="container mx-auto px-5 py-16 bg-green-50">
             <div class="flex flex-col items-center mb-10 animate-fade-in opacity-0" style="animation-delay: 0.3s">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Our Locations</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-top: 50px;">Our Locations</h2>
                 <div class="w-32 h-1 rounded-full bg-gradient-to-r from-[#741595] to-[#CFF7D3] mb-2"></div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -972,7 +1010,7 @@
         <!-- Plant Locations Section -->
         <section class="container mx-auto px-5 py-16 bg-green-50 mb-0">
             <div class="flex flex-col items-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Our Facilities</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#741595] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #741595 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-top: 50px;">Our Facilities</h2>
                 <div class="w-32 h-1 rounded-full bg-gradient-to-r from-[#741595] to-[#CFF7D3] mb-2"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -1155,18 +1193,49 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Disable transitions during page load
-        document.body.classList.add('disable-transitions');
-        
-        // Function to run when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Re-enable transitions after page is fully rendered
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.body.classList.remove('disable-transitions');
-                }, 300);
+            // Initialize page transition for entrance
+            const pageTransition = document.querySelector('.page-transition');
+            const contentElements = document.querySelectorAll('main > section, main > div');
+            
+            // Add content transition class to all main sections
+            contentElements.forEach(element => {
+                element.classList.add('content-transition');
             });
             
+            // Simulate page loading transition
+            setTimeout(() => {
+                pageTransition.classList.add('exit');
+                // After transition is complete, show content with staggered delay
+                setTimeout(() => {
+                    contentElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.classList.add('content-visible');
+                        }, 50 * index); // speed up staggered content
+                    });
+                }, 200);
+            }, 150);
+            
+            // Handle navigation to other pages
+            document.querySelectorAll('a').forEach(link => {
+                // Only add transition to internal links that are not anchors
+                if (link.href && link.href.startsWith(window.location.origin) && 
+                    !link.href.includes('#') && !link.href.includes('javascript:')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = this.href;
+                        
+                        // Start transition animation
+                        pageTransition.classList.add('enter');
+                        
+                        // After animation completes, navigate to the target page
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 200);
+                    });
+                }
+            });
+
             // Initialize AOS
             AOS.init({
                 duration: 1000,
