@@ -2402,11 +2402,41 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers for info toggle buttons
-            document.querySelectorAll('.info-toggle-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const content = this.closest('.group').querySelector('.info-content');
+            // Get all product cards in the main products section
+            const productGrid = document.querySelector('#medical-gases .grid');
+            const productCards = productGrid.querySelectorAll('.group');
+            const originalGridClass = productGrid.className;
+            let expandedCard = null;
+            let isExpanded = false;
+
+            // Create a back button element
+            const backButton = document.createElement('button');
+            backButton.className = 'fixed bottom-4 right-4 bg-emerald-600 text-white p-3 rounded-full shadow-lg z-50 hidden transition-all transform hover:scale-110';
+            backButton.innerHTML = '<span class="material-icons">arrow_back</span>';
+            backButton.title = 'Back to all products';
+            document.body.appendChild(backButton);
+
+            // Add click event to back button
+            backButton.addEventListener('click', function() {
+                if (expandedCard && isExpanded) {
+                    // Find and click the info button to collapse
+                    const infoButton = expandedCard.querySelector('.info-toggle-btn');
+                    if (infoButton) infoButton.click();
+                    
+                    // Hide back button
+                    backButton.classList.add('hidden');
+                }
+            });
+
+            // Add click handlers for info toggle buttons in the main products section
+            productGrid.querySelectorAll('.info-toggle-btn').forEach((button, index) => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const card = this.closest('.group');
+                    const content = card.querySelector('.info-content');
                     const icon = this.querySelector('.material-icons');
+                    const imageContainer = card.querySelector('.relative.h-48');
+                    const originalImageHeight = imageContainer ? imageContainer.style.height : '';
                     
                     // Toggle content visibility
                     content.classList.toggle('hidden');
@@ -2414,10 +2444,101 @@
                     // Rotate icon
                     if (content.classList.contains('hidden')) {
                         icon.style.transform = 'rotate(0deg)';
+                        
+                        // If we're in single-product mode, return to grid view
+                        if (isExpanded && expandedCard === card) {
+                            // Restore grid
+                            productGrid.className = originalGridClass;
+                            
+                            // Show all cards
+                            productCards.forEach(c => {
+                                c.style.display = '';
+                                c.style.width = '';
+                                c.style.maxWidth = '';
+                                c.style.margin = '';
+                                
+                                // Restore image container height
+                                const imgContainer = c.querySelector('.relative.h-48');
+                                if (imgContainer) {
+                                    imgContainer.style.height = '12rem'; // h-48 = 12rem
+                                }
+                                
+                                // Restore content styles
+                                const cardContent = c.querySelector('.p-6');
+                                if (cardContent) {
+                                    cardContent.style.padding = '';
+                                    cardContent.style.fontSize = '';
+                                }
+                            });
+                            
+                            isExpanded = false;
+                            expandedCard = null;
+                            
+                            // Hide back button
+                            backButton.classList.add('hidden');
+                        }
                     } else {
                         icon.style.transform = 'rotate(180deg)';
+                        
+                        // Enter single-product mode
+                        expandedCard = card;
+                        isExpanded = true;
+                        
+                        // Change grid to single column
+                        productGrid.className = 'grid grid-cols-1 gap-8 mb-12';
+                        
+                        // Hide all other cards
+                        productCards.forEach(c => {
+                            if (c !== card) {
+                                c.style.display = 'none';
+                            } else {
+                                // Enhance the displayed card
+                                c.style.width = '100%';
+                                c.style.maxWidth = '800px';
+                                c.style.margin = '0 auto';
+                                
+                                // Increase image size
+                                const imgContainer = c.querySelector('.relative.h-48');
+                                if (imgContainer) {
+                                    imgContainer.style.height = '280px';
+                                }
+                                
+                                // Enhance content
+                                const cardContent = c.querySelector('.p-6');
+                                if (cardContent) {
+                                    cardContent.style.padding = '2rem';
+                                    cardContent.style.fontSize = '1.1rem';
+                                }
+                            }
+                        });
+                        
+                        // Show back button
+                        backButton.classList.remove('hidden');
+                        
+                        // Scroll to the card
+                        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
+            });
+
+            // Add click handlers for other info toggle buttons (not in main products section)
+            document.querySelectorAll('.info-toggle-btn').forEach(button => {
+                if (!productGrid.contains(button)) {
+                    button.addEventListener('click', function() {
+                        const content = this.closest('.group').querySelector('.info-content');
+                        const icon = this.querySelector('.material-icons');
+                        
+                        // Toggle content visibility
+                        content.classList.toggle('hidden');
+                        
+                        // Rotate icon
+                        if (content.classList.contains('hidden')) {
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    });
+                }
             });
         });
     </script>
