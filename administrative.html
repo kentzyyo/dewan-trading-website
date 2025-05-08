@@ -421,7 +421,7 @@
             padding-top: 0; /* No padding at top */
             /* background-color: #00c5ab; */
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-blend-mode: overlay;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
@@ -635,8 +635,9 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Banner -->
-        <div class="hero-banner relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32" style="background-image: url('gas-tank3.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh;">
-            <div class="absolute inset-0 bg-black/50"></div>
+        <div class="hero-banner relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32" style="background-image: url('DAVAOIMAGES/dewan_administrative.jpeg'); background-size: cover; background-position: center top; background-blend-mode: overlay; min-height: 50vh;">
+            <div class="absolute inset-0 bg-black/50" style="z-index:1;"></div>
+            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.75); z-index:2; border-radius: inherit;"></div>
             <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full" style="padding-top: 180px;">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white">ADMINISTRATIVE</h1>
                 <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4">
@@ -664,14 +665,27 @@
         <section class="container mx-auto px-5 py-16">
             <div class="max-w-6xl mx-auto">
                 <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
-                    <h2 class="text-3xl font-bold text-purple-700 mb-6 text-center">Our Branches</h2>
+                    <!-- Redesigned Our Branches Header -->
+                    <div class="flex flex-col items-center mb-10">
+                        <div class="flex items-center justify-center mb-2">
+                            <span class="material-icons text-4xl mr-2" style="color: #01312B;">location_on</span>
+                            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-[#01312B] to-[#CFF7D3] bg-clip-text text-transparent" style="background: linear-gradient(90deg, #01312B 0%, #CFF7D3 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Our Branches</h2>
+                        </div>
+                        <div class="w-32 h-1 rounded-full bg-gradient-to-r from-[#01312B] to-[#CFF7D3] mb-2"></div>
+                        <p class="text-lg text-gray-700 font-medium text-center max-w-2xl">Meet the teams that power Dewan Trading Corp across the Philippines.</p>
+                    </div>
                     
                     <!-- Scrollable container -->
                     <div class="overflow-auto pb-4" style="max-height: 800px;">
                         <!-- Davao Branch Section -->
                         <div class="mb-12">
-                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Davao Branch</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200 flex items-center">
+                                <button class="branch-toggle-btn mr-3 bg-gradient-to-r from-purple-700 to-teal-400 text-white px-3 py-1 rounded-l-full rounded-r-full flex items-center focus:outline-none transition-transform duration-300">
+                                    <span class="material-icons transform transition-transform duration-300">play_arrow</span>
+                                </button>
+                                Davao Branch
+                            </h3>image.png
+                            <div class="branch-image-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-700">
                                 <!-- Davao Card 1 -->
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                                     <div class="relative h-64">
@@ -756,9 +770,61 @@
 
                         <!-- Legazpi Branch Section -->
                         <div class="mb-12">
-                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Legazpi Branch</h3>
-                            <div class="bg-gray-100 rounded-lg p-8 text-center">
-                                <p class="text-gray-600">Images coming soon</p>
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200 flex items-center">
+                                <button class="branch-toggle-btn mr-3 bg-gradient-to-r from-purple-700 to-teal-400 text-white px-3 py-1 rounded-l-full rounded-r-full flex items-center focus:outline-none transition-transform duration-300">
+                                    <span class="material-icons transform transition-transform duration-300">play_arrow</span>
+                                </button>
+                                Legazpi Branch
+                            </h3>
+                            <div class="branch-image-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-700">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_13.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_18.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_24.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_25.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_27.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_17.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_07.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                                    <div class="relative h-64">
+                                        <img src="LEGAZPIIMAGES/combinepdf_06.jpeg" alt="Legazpi Branch" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -772,8 +838,13 @@
 
                         <!-- Dumaguete Branch Section -->
                         <div class="mb-12">
-                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Dumaguete Branch</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200 flex items-center">
+                                <button class="branch-toggle-btn mr-3 bg-gradient-to-r from-purple-700 to-teal-400 text-white px-3 py-1 rounded-l-full rounded-r-full flex items-center focus:outline-none transition-transform duration-300">
+                                    <span class="material-icons transform transition-transform duration-300">play_arrow</span>
+                                </button>
+                                Dumaguete Branch
+                            </h3>
+                            <div class="branch-image-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-700">
                                 <!-- Dumaguete Card 1 -->
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                                     <div class="relative h-64">
@@ -850,8 +921,13 @@
 
                         <!-- Naga City Main Section -->
                         <div class="mb-12">
-                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200">Naga City Main</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-6 pb-2 border-b-2 border-emerald-200 flex items-center">
+                                <button class="branch-toggle-btn mr-3 bg-gradient-to-r from-purple-700 to-teal-400 text-white px-3 py-1 rounded-l-full rounded-r-full flex items-center focus:outline-none transition-transform duration-300">
+                                    <span class="material-icons transform transition-transform duration-300">play_arrow</span>
+                                </button>
+                                Naga City Main
+                            </h3>
+                            <div class="branch-image-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-700">
                                 <!-- Naga City Card -->
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
                                     <div class="relative h-64">
@@ -1105,6 +1181,35 @@
             // Image lazy loading
             document.querySelectorAll('img').forEach(img => {
                 img.setAttribute('loading', 'lazy');
+            });
+
+            document.querySelectorAll('.branch-toggle-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const grid = btn.closest('div.mb-12').querySelector('.branch-image-grid');
+                    const icon = btn.querySelector('.material-icons');
+                    if (grid.classList.contains('opacity-0')) {
+                        grid.classList.remove('opacity-0', 'pointer-events-none');
+                        grid.classList.add('opacity-100');
+                        grid.style.maxHeight = grid.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(90deg)';
+                        // Animate images one by one
+                        const cards = grid.querySelectorAll('.bg-white');
+                        cards.forEach((card, i) => {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(30px)';
+                            setTimeout(() => {
+                                card.style.transition = 'opacity 0.5s, transform 0.5s';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 120 * i);
+                        });
+                    } else {
+                        grid.classList.add('opacity-0', 'pointer-events-none');
+                        grid.classList.remove('opacity-100');
+                        grid.style.maxHeight = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
             });
         });
     </script>
