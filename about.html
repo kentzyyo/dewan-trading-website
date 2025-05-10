@@ -1057,8 +1057,9 @@
     <!-- Add padding to main content to prevent it from being hidden behind fixed header -->
     <main class="pt-0">
         <!-- Hero Section with Wave -->
-        <div class="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-10 md:py-32 hero-banner" style="background-image: url('gas_tank1.png'); background-size: cover; background-position: center; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
-            <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32 hero-banner" style="background-image: url('aboutus_banner.png'); background-size: cover; background-position: center 25%; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/50" style="z-index:1;"></div>
+            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.75); z-index:2; border-radius: inherit;"></div>
             <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white" data-aos="fade-up" data-aos-delay="300">ABOUT US</h1>
                 <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4" data-aos="fade-up" data-aos-delay="600">
@@ -1066,16 +1067,16 @@
                 </p>
             </div>
             <!-- Decorative wave -->
-            <div class="absolute bottom-0 left-0 right-0">
+            <div class="absolute bottom-0 left-0 right-0" style="z-index: 3;">
                 <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
                     <defs>
                         <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>
                     <g class="wave-parallax">
-                        <use xlink:href="#wave" x="48" y="0" fill="rgba(240, 253, 244, 0.7)" />
-                        <use xlink:href="#wave" x="48" y="3" fill="rgba(240, 253, 244, 0.5)" />
-                        <use xlink:href="#wave" x="48" y="5" fill="rgba(240, 253, 244, 0.3)" />
-                        <use xlink:href="#wave" x="48" y="7" fill="#f0fdf4" />
+                        <use xlink:href="#wave" x="48" y="0" fill="rgba(255, 255, 255, 0.7)" />
+                        <use xlink:href="#wave" x="48" y="3" fill="rgba(255, 255, 255, 0.5)" />
+                        <use xlink:href="#wave" x="48" y="5" fill="rgba(255, 255, 255, 0.3)" />
+                        <use xlink:href="#wave" x="48" y="7" fill="#ffffff" />
                     </g>
                 </svg>
             </div>
