@@ -179,12 +179,15 @@
             transition: all 0.3s ease;
             object-fit: contain;
             max-height: 100%;
-            margin-left: -0.5rem;
+            margin-left: 0;
             transform-origin: center;
+            border-radius: 4px;
+            background-color: transparent;
         }
 
         .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .scrolled .nav-logo {
@@ -192,7 +195,7 @@
         }
 
         .scrolled .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
         }
 
         .main-nav .container {
@@ -1022,8 +1025,8 @@
             <div class="container mx-auto">
                 <div class="flex items-center justify-between w-full"> <!-- Ensure always justify-between and w-full -->
                     <div class="flex items-center">
-                        <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
-                            <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo" style="margin-left: -7px;">
+                        <a href="index.html" class="flex items-center justify-center bg-transparent py-1">
+                            <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo" style="margin-left: 0;">
                         </a>
                     </div>
                     <!-- Desktop Navigation Links -->
@@ -1057,9 +1060,9 @@
     <!-- Add padding to main content to prevent it from being hidden behind fixed header -->
     <main class="pt-0">
         <!-- Hero Section with Wave -->
-        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32 hero-banner" style="background-image: url('aboutus_banner.png'); background-size: cover; background-position: center 25%; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
-            <div class="absolute inset-0 bg-black/50" style="z-index:1;"></div>
-            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.75); z-index:2; border-radius: inherit;"></div>
+        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-16 md:py-40 hero-banner" style="background-image: url('aboutus_banner.png'); background-size: cover; background-position: center 25%; background-blend-mode: overlay; min-height: 70vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/40" style="z-index:1;"></div>
+            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.55); z-index:2; border-radius: inherit;"></div>
             <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white" data-aos="fade-up" data-aos-delay="300">ABOUT US</h1>
                 <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4" data-aos="fade-up" data-aos-delay="600">
@@ -1334,83 +1337,6 @@
             <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-purple-500/5 rounded-3xl transform -skew-y-2"></div>
                 <div class="relative">
-                    <!-- <h1 class="text-4xl text-purple-700 text-center font-bold mb-16 flex items-center justify-center">
-                        <span class="relative">
-                            OUR MISSION
-                            <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-purple-500"></div>
-                        </span>
-                    </h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"> -->
-                        <!-- Left Column - Image -->
-                        <!-- <div class="flex justify-center transform hover:scale-105 transition-all duration-500">
-                            <div class="relative group">
-                                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                                <img src="GASES/combinepdf_27.jpeg" alt="Mission Image" class="relative rounded-xl shadow-2xl w-full max-w-[500px] h-auto object-cover">
-                            </div>
-                        </div> -->
-                        
-                        <!-- Right Column - Mission Details -->
-                        <!-- <div class="space-y-6">
-                            <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
-                                <div class="space-y-6">
-                                    <p class="text-lg text-gray-700 leading-relaxed font-semibold uppercase">
-                                        DEWAN TRADING AIMS TO PROVIDE PRODUCTS AND SERVICES WHICH CONFORM TO THE SPECIFIED REQUIREMENTS OF ISO 9001:2015.
-                                    </p>
-                                    <div class="h-px bg-gradient-to-r from-emerald-500/20 to-purple-500/20"></div>
-                                    <p class="text-lg text-gray-700 leading-relaxed">
-                                        To do this we are:
-                                    </p>
-                                    <ul class="list-disc pl-6 text-lg text-gray-700 leading-relaxed">
-                                        <li>Committed to continually review our organizations workforce and resources so that our trained personnel, equipment, and materials are always ready for customers.</li>
-                                        <li>Committed to regularly review our quality management system for the company's continuous improvement.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- Vision Section -->
-                    <!-- <div class="mt-24">
-                        <h1 class="text-4xl text-purple-700 text-center font-bold mb-16 flex items-center justify-center">
-                            <span class="relative">
-                                OUR VISION
-                                <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-emerald-500"></div>
-                            </span>
-                        </h1>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"> -->
-                            <!-- Left Column - Vision Image -->
-                            <!-- <div class="flex justify-center order-2 md:order-1 transform hover:scale-105 transition-all duration-500">
-                                <div class="relative group">
-                                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-emerald-500 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                                    <img src="GASES/DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_13.jpeg" alt="Vision Image" class="relative rounded-xl shadow-2xl w-full max-w-[500px] h-auto object-cover">
-                                </div>
-                            </div> -->
-                            <!-- Right Column - Vision Details -->
-                            <!-- <div class="space-y-6 order-1 md:order-2">
-                                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-all duration-300">
-                                    <div class="space-y-8">
-                                        <div class="text-center">
-                                            <p class="text-xl text-gray-800 leading-relaxed font-semibold mb-4">
-                                                To be a recognized firm throughout the industry for delivering value as well as competitive, innovative and customer-focused performance.
-                                            </p>
-                                            <div class="h-0.5 bg-gray-800 w-48 mx-auto"></div>
-                                        </div>
-                                        
-                                        <div class="space-y-6">
-                                            <p class="text-lg text-gray-700 leading-relaxed text-center">
-                                                We aspire to be acknowledged by customers and associates as an integral part of their success.
-                                            </p>
-                                            
-                                            <p class="text-lg text-gray-700 leading-relaxed text-center">
-                                                We aim to take part in nation-building in the fields of engineering and health care services.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <!-- New Vers of Mission -->
                     <div class="group bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-all duration-500 mt-15">
                         <div class="flex flex-col lg:flex-row">

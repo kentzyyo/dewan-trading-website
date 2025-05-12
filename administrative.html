@@ -50,7 +50,7 @@
         }
 
         .main-nav {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgb(255, 255, 255);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             padding: 0;
@@ -83,12 +83,15 @@
             transition: all 0.3s ease;
             object-fit: contain;
             max-height: 100%;
-            margin-left: -0.5rem;
+            margin-left: 0;
             transform-origin: center;
+            border-radius: 4px;
+            background-color: transparent;
         }
 
         .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .scrolled .nav-logo {
@@ -96,7 +99,7 @@
         }
 
         .scrolled .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
         }
 
         .main-nav .container {
@@ -421,13 +424,16 @@
             padding-top: 0; /* No padding at top */
             /* background-color: #00c5ab; */
             background-size: cover;
-            background-position: center top;
+            background-position: center 0%;
             background-blend-mode: overlay;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
             position: relative;
             border-radius: 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
         }
         
         .hero-banner::before {
@@ -557,19 +563,23 @@
             100% { transform: translate3d(85px,0,0); }
         }
 
-        .admin-hero-text-container {
-            padding-top: 180px;
+        .hero-text-container {
+            padding-top: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         @media (max-width: 768px) {
-            .admin-hero-text-container {
-                padding-top: 120px;
+            .hero-text-container {
+                padding-top: 80px;
             }
         }
         
         @media (max-width: 480px) {
-            .admin-hero-text-container {
-                padding-top: 90px;
+            .hero-text-container {
+                padding-top: 60px;
             }
         }
     </style>
@@ -617,9 +627,11 @@
         <nav class="main-nav">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between">
-                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
-                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
-                    </a>
+                    <div class="flex items-center">
+                        <a href="index.html" class="flex items-center justify-center bg-transparent py-1">
+                            <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                        </a>
+                    </div>
                     
                     <!-- Desktop Navigation Links -->
                     <div class="hidden lg:flex items-center space-x-6 nav-links">
@@ -651,11 +663,11 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Banner -->
-        <div class="hero-banner relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32" style="background-image: url('DAVAOIMAGES/dewan_administrative.jpeg'); background-size: cover; background-position: center top; background-blend-mode: overlay; min-height: 50vh;">
-            <div class="absolute inset-0 bg-black/50" style="z-index:1;"></div>
-            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.75); z-index:2; border-radius: inherit;"></div>
-            <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full admin-hero-text-container">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white" data-aos="fade-up" data-aos-delay="300">ADMINISTRATIVE</h1>
+        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-16 md:py-40 hero-banner" style="background-image: url('DEWAN TRADING CORPORATION DAVAO ACTUAL PICTURES_09-Picsart-AiImageEnhancer.jpeg'); background-size: cover; background-position: center 0%; background-blend-mode: overlay; min-height: 70vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/40" style="z-index:1;"></div>
+            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.55); z-index:2; border-radius: inherit;"></div>
+            <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full hero-text-container">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-white" data-aos="fade-up" data-aos-delay="300">ADMINISTRATIVE</h1>
                 <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4" data-aos="fade-up" data-aos-delay="600">
                     Administrative and Management Information
                 </p>

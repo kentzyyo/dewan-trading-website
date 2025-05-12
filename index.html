@@ -311,12 +311,15 @@
             transition: all 0.3s ease;
             object-fit: contain;
             max-height: 100%;
-            margin-left: -0.5rem;
+            margin-left: 0;
             transform-origin: center;
+            border-radius: 4px;
+            background-color: transparent;
         }
 
         .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .scrolled .nav-logo {
@@ -324,7 +327,7 @@
         }
 
         .scrolled .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
         }
 
         .main-nav .container {
@@ -416,7 +419,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             z-index: 100;
             display: none;
-            border-top: 3px solid #10b981;
         }
 
         .mobile-menu.show {
@@ -760,11 +762,13 @@
         <nav class="main-nav">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between">
-                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300">
-                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
-                    </a>
-                    
-                    <!-- Desktop Navigation Links -->
+                    <div class="flex items-center">
+                        <a href="index.html" class="flex items-center justify-center bg-transparent py-1">
+                            <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links -->
                     <div class="hidden lg:flex items-center space-x-6 nav-links">
                         <a href="index.html" class="nav-link nav-link-active">Home</a>
                         <a href="about.html" class="nav-link">About Us</a>

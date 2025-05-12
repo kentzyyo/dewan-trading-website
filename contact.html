@@ -203,7 +203,8 @@
         }
 
         .main-nav {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             padding: 0;
@@ -218,7 +219,7 @@
         }
         
         .main-nav .container {
-            padding-left: 0;
+            padding-left: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -232,12 +233,13 @@
             max-height: 100%;
             margin-left: 0;
             transform-origin: center;
-            object-position: center top;
-            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 4px;
+            background-color: transparent;
         }
         
         .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .scrolled .nav-logo {
@@ -245,7 +247,7 @@
         }
 
         .scrolled .nav-logo:hover {
-            transform: scale(1.00);
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -808,10 +810,11 @@
         <nav class="main-nav">
             <div class="container mx-auto px-0">
                 <div class="flex items-center justify-between w-full">
-                    <a href="index.html" class="transform hover:scale-105 transition-transform duration-300" style="background-color: rgba(255, 255, 255, 0.95); display: flex; align-items: center; height: 52px; overflow: hidden; position: relative;">
-                        <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo" style="background-color: rgba(255, 255, 255, 0.95); position: relative; z-index: 1;">
-                        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 100%; background-color: rgba(255, 255, 255, 0.95); z-index: 0;"></div>
-                    </a>
+                    <div class="flex items-center -ml-3">
+                        <a href="index.html" class="flex items-center justify-center bg-transparent py-1 pl-0">
+                            <img src="LOGO/dewan-logo.jpg" alt="Dewan Trading Corporation" class="nav-logo">
+                        </a>
+                    </div>
                     
                     <!-- Desktop Navigation Links -->
                     <div class="hidden lg:flex items-center space-x-6 nav-links">
@@ -843,9 +846,9 @@
     <!-- Main content starts directly after navbar with no gap -->
     <main>
         <!-- Hero Banner -->
-        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-10 md:py-32 hero-banner" style="background-image: url('combinepdf_13-Picsart-AiImageEnhancer.jpeg'); background-size: cover; background-position: center 45%; background-blend-mode: overlay; min-height: 50vh; margin-top: -28px;">
-            <div class="absolute inset-0 bg-black/50" style="z-index:1;"></div>
-            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.75); z-index:2; border-radius: inherit;"></div>
+        <div class="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white py-16 md:py-40 hero-banner" style="background-image: url('combinepdf_13-Picsart-AiImageEnhancer.jpeg'); background-size: cover; background-position: center 45%; background-blend-mode: overlay; min-height: 70vh; margin-top: -28px;">
+            <div class="absolute inset-0 bg-black/40" style="z-index:1;"></div>
+            <div class="absolute inset-0 w-full h-full" style="background: rgba(4,151,132,0.55); z-index:2; border-radius: inherit;"></div>
             <div class="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full hero-text-container">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-2 text-white" data-aos="fade-up" data-aos-delay="300">CONTACT US</h1>
                 <p class="text-lg md:text-xl text-center max-w-3xl mx-auto text-white mb-4" data-aos="fade-up" data-aos-delay="600">

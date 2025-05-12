@@ -120,7 +120,7 @@ body {
     background-image: url('combinepdf_13-Picsart-AiImageEnhancer.jpeg') !important;
     background-position: center 45% !important;
     background-blend-mode: overlay !important;
-    min-height: 50vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,7 +140,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(4, 151, 132, 0.75);
+    background-color: rgba(4, 151, 132, 0.55);
     z-index: 2;
 }
 
@@ -1574,7 +1574,7 @@ body {
 }
 
 .main-nav {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     border-bottom: 1px solid #e5e7eb;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
@@ -1586,14 +1586,16 @@ body {
     align-items: center;
     min-height: 52px;
     overflow: hidden;
+    padding-left: 0 !important;
 }
 
 .main-nav .container {
+    padding-left: 0;
+    margin-left: -5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-left: 0;
 }
 
 .nav-logo {
@@ -1603,10 +1605,13 @@ body {
     max-height: 100%;
     margin-left: 0;
     transform-origin: center;
+    border-radius: 4px;
+    background-color: transparent;
 }
 
 .nav-logo:hover {
-    transform: scale(1.00);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -1746,9 +1751,9 @@ main {
 .hero-banner {
     background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%) !important;
     background-image: url('combinepdf_13-Picsart-AiImageEnhancer.jpeg') !important;
-    background-position: center 30% !important;
+    background-position: center 45% !important;
     background-blend-mode: overlay !important;
-    min-height: 50vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1768,7 +1773,7 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(4, 151, 132, 0.75);
+    background-color: rgba(4, 151, 132, 0.55);
     z-index: 2;
 }
 
