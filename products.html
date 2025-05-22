@@ -631,6 +631,27 @@
             box-shadow: 0 12px 32px -8px rgba(44, 62, 80, 0.18), 0 4px 12px -4px rgba(44, 62, 80, 0.10);
             z-index: 2;
         }
+
+        @media (max-width: 640px) {
+          .nav-tabs-mobile {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 0.5rem !important;
+            text-align: center !important;
+          }
+          .nav-tabs-mobile .nav-tab-link {
+            font-size: 0.8rem !important;
+            word-break: break-word !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            min-width: 0 !important;
+            padding: 0.5rem 0.25rem !important;
+          }
+          .nav-tabs-mobile .nav-tab-icon {
+            margin-bottom: 0.15rem !important;
+            font-size: 1.1rem !important;
+          }
+        }
     </style>
 </head>
 <body class="bg-green-50">
@@ -740,22 +761,22 @@
         <!-- Enhanced Navigation Tabs -->
         <div class="sticky-nav">
             <div class="container mx-auto">
-                <nav class="flex justify-center items-center space-x-4 py-3 px-4 overflow-x-auto scrollbar-hide bg-white">
+                <nav class="nav-tabs-mobile grid grid-cols-2 sm:flex sm:justify-center sm:items-center sm:space-x-4 py-3 px-2 bg-white gap-2 text-xs">
                     <a href="#medical-gases" class="nav-tab-link group active" id="medical-tab">
                         <span class="material-icons nav-tab-icon">medical_services</span>
-                        <span>Medical & Industrial</span>
+                        <span class="break-words">Medical & Industrial</span>
                     </a>
                     <a href="#other-sales-and-services" class="nav-tab-link group" id="services-tab">
                         <span class="material-icons nav-tab-icon">design_services</span>
-                        <span>Sales & Services</span>
+                        <span class="break-words">Sales & Services</span>
                     </a>
                     <a href="#completed-projects" class="nav-tab-link group" id="projects-tab">
                         <span class="material-icons nav-tab-icon">local_hospital</span>
-                        <span>Hospital Customers</span>
+                        <span class="break-words">Hospital Customers</span>
                     </a>
                     <a href="#gallery" class="nav-tab-link group" id="gallery-tab">
                         <span class="material-icons nav-tab-icon">photo_library</span>
-                        <span>Gallery</span>
+                        <span class="break-words">Gallery</span>
                     </a>
                 </nav>
             </div>
@@ -1684,7 +1705,7 @@
                                             </svg>
                                             <div>
                                                 <h4 class="font-semibold text-gray-800">Location</h4>
-                                                <p class="text-gray-600">Rinconada, Camarines Sur</p>
+                                                <p class="text-gray-600">Nabua, Camarines Sur</p>
                                             </div>
                                         </div>
                                         <div class="flex items-start space-x-3">
@@ -1715,14 +1736,14 @@
                                 <!-- Image Section -->
                                 <div class="relative overflow-hidden">
                                     <div class="absolute inset-0 z-10"></div>
-                                    <img src="Hospital/LUMBIS- RANCES HOSPITAL-Picsart-AiImageEnhancer.jpg" alt="Lumbis-Rances Hospital" 
+                                    <img src="Hospital/LUMBIS- RANCES HOSPITAL-Picsart-AiImageEnhancer.jpg" alt="Lumbis-Rances General Hospital" 
                                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                          style="min-height: 400px;">
                                 </div>
 
                                 <!-- Content Section -->
                                 <div class="p-8 flex flex-col justify-center">
-                                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Lumbis-Rances Hospital</h3>
+                                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Lumbis-Rances General Hospital</h3>
                                     <div class="space-y-4">
                                         <div class="flex items-start space-x-3">
                                             <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1730,7 +1751,7 @@
                                             </svg>
                                             <div>
                                                 <h4 class="font-semibold text-gray-800">Location</h4>
-                                                <p class="text-gray-600">Lumbis, Camarines Sur</p>
+                                                <p class="text-gray-600">Oas, Albay</p>
                                             </div>
                                         </div>
                                         <div class="flex items-start space-x-3">
@@ -1752,7 +1773,7 @@
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                 <!-- Content Section (Reversed order) -->
                                 <div class="p-8 flex flex-col justify-center order-2 lg:order-1">
-                                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Bicol Regional Training and Teaching Hospital</h3>
+                                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Bicol Regional Hospital and Medical Center</h3>
                                     <div class="space-y-4">
                                         <div class="flex items-start space-x-3">
                                             <svg class="w-6 h-6 text-emerald-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1775,11 +1796,11 @@
                                     </div>
                                 </div>
 
-                                <!-- Image Section for BRTTH -->
+                                <!-- Image Section for BRHMC -->
                                 <!-- Image Section -->
                                 <div class="relative overflow-hidden order-1 lg:order-2">
                                     <div class="absolute inset-0 z-10"></div>
-                                    <img src="Hospital/Bicol-Regional-Training-And-Teaching-Hospital-Picsart-AiImageEnhancer.jpeg" alt="Bicol Regional Training and Teaching Hospital" 
+                                    <img src="Hospital/Bicol-Regional-Training-And-Teaching-Hospital-Picsart-AiImageEnhancer.jpeg" alt="Bicol Regional Hospital and Medical Center" 
                                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                          style="min-height: 400px;">
                                 </div>
@@ -2035,7 +2056,7 @@
                                             </svg>
                                             <div>
                                                 <h4 class="font-semibold text-gray-800">Location</h4>
-                                                <p class="text-gray-600">Naga City, Camarines Sur</p>
+                                                <p class="text-gray-600">Ligao City, Albay</p>
                                             </div>
                                         </div>
                                         <div class="flex items-start space-x-3">
@@ -2065,7 +2086,7 @@
                                             </svg>
                                             <div>
                                                 <h4 class="font-semibold text-gray-800">Location</h4>
-                                                <p class="text-gray-600">Ago, Camarines Sur</p>
+                                                <p class="text-gray-600">Legazpi City, Albay</p>
                                             </div>
                                         </div>
                                         <div class="flex items-start space-x-3">
