@@ -762,6 +762,46 @@
                 padding-top: 80px;
             }
         }
+
+        /* Add these styles to fix map display on mobile */
+        @media (max-width: 768px) {
+            .map-container {
+                height: 350px !important;
+                overflow: hidden;
+            }
+            
+            .map-container iframe {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+            }
+            
+            .map-legend {
+                max-width: 150px !important;
+                padding: 8px !important;
+                font-size: 10px !important;
+            }
+            
+            .map-legend .text-sm {
+                font-size: 10px !important;
+            }
+            
+            .map-legend .text-xs {
+                font-size: 8px !important;
+            }
+        }
+
+        /* Fix for iOS Safari */
+        @supports (-webkit-touch-callout: none) {
+            .map-container iframe {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
     </style>
 </head>
 <body style="background-color: #f0fdf4;">
@@ -914,21 +954,18 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Map Container -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[600px]">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px] md:h-[600px] w-full map-container">
                     <div class="relative w-full h-full">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3497697.6368678114!2d125.44412287873953!3d10.278750757671446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdewan%20trading%20corporation!5e1!3m2!1sen!2sph!4v1743997887336!5m2!1sen!2sph" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
+                            style="border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
                             allowfullscreen="" 
                             loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            class="absolute inset-0">
+                            referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                         
                         <!-- Map Legend -->
-                        <div class="absolute top-4 right-4 bg-white rounded-lg shadow-md p-4 max-w-xs">
+                        <div class="absolute top-4 right-4 bg-white rounded-lg shadow-md p-4 max-w-xs z-10 map-legend">
                             <div class="text-sm font-medium text-gray-700 mb-2">Plant Locations:</div>
                             <ul class="space-y-2 text-xs">
                                 <li class="flex items-center">
